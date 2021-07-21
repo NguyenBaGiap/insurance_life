@@ -1,0 +1,62 @@
+@import '_mixin';
+
+header {
+  padding: 16px 0;
+  width: 100%;
+  box-sizing: border-box;
+  @include MAX_768 {
+    padding: 12px 0;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    .logo-vpbank {
+      height: 38px;
+      margin-right: 31px;
+    }
+    .logo-aia {
+      height: 44px;
+    }
+  }
+  .menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    .menu-item {
+      padding-left: 3rem;
+      list-style: none;
+      a {
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 400;
+        letter-spacing: 0.010em;
+      }
+      &.active {
+        div {
+          margin: 0 auto;
+          width: 20px;
+          border-bottom: 1px solid #ffffff;
+        }
+      }
+
+    }
+    .advisory-link {
+      background: var(--color-red);
+      border-radius: 8px;
+      padding: 12px 19px;
+      margin-left: 3.75rem;
+      margin-right: 1px;
+      a {
+        text-transform: uppercase;
+        color: var(--color-white) !important;
+        &:hover,
+        &.active {
+          color: var(--color-white) !important;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}

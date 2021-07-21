@@ -1,0 +1,34 @@
+.insurance-banner {
+  background: linear-gradient(84.68deg, #1D4289 0%, #00B74F 99.12%);
+  .app-banner {
+    position: relative;
+    height: calc(100vh - 70px);
+    img {
+      position: absolute;
+      right: 0;
+      max-height: 100%;
+    }
+    .contents {
+      padding-top: 10%;
+      .title {
+        font-size: 62px;
+      }
+      .content-text {
+        font-size: 16px;
+        margin: 40px auto;
+      }
+      .register-button {
+        button {
+          background: linear-gradient(83.5deg, #1D4289 -31.55%, #00B74F 77.87%);
+          color: #ffff;
+          font-size: 16px;
+          width: 200px;
+          border-radius: 34px;
+          padding: 16px;
+          border: none;
+        }
+      }
+    }
+  }
+
+}

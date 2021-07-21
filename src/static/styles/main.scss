@@ -1,0 +1,62 @@
+@import '_mixin';
+
+@font-face {
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Gilroy Bold'), local('Gilroy-Bold'), url("../fonts/SVN-Gilroy Bold.otf") format('opentype');
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Gilroy SemiBold'), local('Gilroy-SemiBold'), url("../fonts/SVN-Gilroy SemiBold.otf") format('opentype');
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Gilroy Light'), local('Gilroy-Light'), url("../fonts/SVN-Gilroy Light.otf") format('opentype');
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Gilroy Thin'), local('Gilroy-Thin'), url("../fonts/SVN-Gilroy Thin.otf") format('opentype');
+}
+
+:root {
+  font-size: 100%;
+  @include MAX_1640 {
+    font-size: 80%;
+  }
+}
+
+body {
+  font-family: 'Gilroy', sans-serif !important;
+  font-size: 1rem;
+  color: #26272c;
+  @include MAX_768 {
+    background-color: #f2f3f7;
+  }
+  @include MAX_620 {
+    overflow-x: hidden;
+  }
+}
+@include MIN_1919 {
+  .container {
+    max-width: 1825px;
+  }
+}
+@include MAX_768 {
+  .container {
+    padding: 0 1.5rem;
+  }
+}

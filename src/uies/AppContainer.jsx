@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react'
 import AOS from 'aos'
 import { Switch, Route } from 'react-router-dom'
+import 'static/styles/main.scss'
 
 const LandingPage = React.lazy(() => import('redux/containers/LandingPage'))
 
