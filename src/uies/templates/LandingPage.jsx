@@ -20,8 +20,8 @@ import silver from 'static/img/_package/silver.svg'
 // import gold from 'static/img/_package/gold.svg'
 // import diamond from 'static/img/_package/diamond.svg'
 // cmt
-
 import cmt from 'static/img/cmt.svg'
+import user1 from 'static/img/_customer/user1.svg'
 
 export default function LandingPage() {
   return (
@@ -32,44 +32,28 @@ export default function LandingPage() {
           <div className="container menu-list p-3">
             <div className="row">
               <div className="col-md-3">
-                <div
-                  className="aos-init"
-                  data-aos="fade-up"
-                  data-aos-anchor-placement="top-bottom"
-                >
+                <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                   <button type="button" className="border-0 bg-white">
                     <img src={heathyInsIcon} alt="car-ins" />
                   </button>
                 </div>
               </div>
               <div className="col-md-3">
-                <div
-                  className="aos-init"
-                  data-aos="fade-up"
-                  data-aos-anchor-placement="top-bottom"
-                >
+                <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                   <button type="button" className="border-0 bg-white">
                     <img src={carInsIcon} alt="car-ins" />
                   </button>
                 </div>
               </div>
               <div className="col-md-3">
-                <div
-                  className="aos-init"
-                  data-aos="fade-up"
-                  data-aos-anchor-placement="top-bottom"
-                >
+                <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                   <button type="button" className="border-0 bg-white">
                     <img src={houseInsIcon} alt="car-ins" />
                   </button>
                 </div>
               </div>
               <div className="col-md-3">
-                <div
-                  className="aos-init"
-                  data-aos="fade-up"
-                  data-aos-anchor-placement="top-bottom"
-                >
+                <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                   <button type="button" className="border-0 bg-white">
                     <img src={travelInsIcon} alt="car-ins" />
                   </button>
@@ -83,7 +67,6 @@ export default function LandingPage() {
             <div className="row">
               <div className="col-md-12">
                 <div
-                  className="aos-init"
                   data-aos="zoom-in-up"
                   data-aos-anchor-placement="top-bottom"
                 >
@@ -102,7 +85,6 @@ export default function LandingPage() {
               </div>
               <div className="col-md-4 ins-list">
                 <div
-                  className="aos-init"
                   data-aos="zoom-in-up"
                   data-aos-anchor-placement="top-bottom"
                 >
@@ -114,7 +96,6 @@ export default function LandingPage() {
               </div>
               <div className="col-md-4 ins-list">
                 <div
-                  className="aos-init"
                   data-aos="zoom-in-up"
                   data-aos-anchor-placement="top-bottom"
                 >
@@ -126,7 +107,6 @@ export default function LandingPage() {
               </div>
               <div className="col-md-4 ins-list">
                 <div
-                  className="aos-init"
                   data-aos="zoom-in-up"
                   data-aos-anchor-placement="top-bottom"
                 >
@@ -138,7 +118,6 @@ export default function LandingPage() {
               </div>
               <div className="col-md-4 ins-list">
                 <div
-                  className="aos-init"
                   data-aos="zoom-in-up"
                   data-aos-anchor-placement="top-bottom"
                 >
@@ -150,7 +129,6 @@ export default function LandingPage() {
               </div>
               <div className="col-md-4 ins-list">
                 <div
-                  className="aos-init"
                   data-aos="zoom-in-up"
                   data-aos-anchor-placement="top-bottom"
                 >
@@ -168,7 +146,7 @@ export default function LandingPage() {
         <div className="container">
           <div className="row">
             <div className="col-md-6 d-flex justify-content-center flex-column">
-              <div className="aos-init" data-aos="zoom-in-right">
+              <div data-aos="zoom-in-right">
                 <div className="benefit-title">
                   <p className="title-gradient">
                     Lợi ích của Người được bảo hiểm khi tham gia sản phẩm Bảo
@@ -189,7 +167,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="col-md-6">
-              <div className="aos-init" data-aos="zoom-in-left">
+              <div data-aos="zoom-in-left">
                 <img className="mw-100" src={family} alt="img-benefit" />
               </div>
             </div>
@@ -200,7 +178,7 @@ export default function LandingPage() {
         <div className="container">
           <div className="row flex-row-reverse">
             <div className="col-md-6 d-flex justify-content-center flex-column-reverse">
-              <div className="aos-init" data-aos="zoom-in-right">
+              <div data-aos="zoom-in-right">
                 <div className="benefit-title">
                   <p className="title-gradient">Đối tượng bảo hiểm</p>
                 </div>
@@ -222,7 +200,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="col-md-6">
-              <div className="aos-init" data-aos="zoom-in-left">
+              <div data-aos="zoom-in-left">
                 <img className="mw-100" src={family2} alt="img-benefit" />
               </div>
             </div>
@@ -233,7 +211,7 @@ export default function LandingPage() {
         <div className="container">
           <div className="row align-items-start">
             <div className="col-md-12 pb-5 text-center">
-              <div className="aos-init" data-aos="zoom-in">
+              <div data-aos="zoom-in">
                 <p className="title-gradient">Lựa chọn gói bảo hiểm</p>
                 <p className="sub-title">
                   Số tiền bảo hiểm: 100.000 VNĐ/người/năm
@@ -243,7 +221,7 @@ export default function LandingPage() {
             <div className="col-sm-12 col-md-4 px-2 ps-md-0 pb-5 pt-5 pb-md-0 d-flex justify-content-center">
               <div className=" package-item">
                 <div className="content p-4">
-                  <div className="aos-init" data-aos="fade-up">
+                  <div data-aos="fade-up">
                     <img src={silver} alt="silver" className="d-flex" />
                     <p className="text-center font-weight-bold pt-2 package-name">
                       Gói Bạc
@@ -269,7 +247,7 @@ export default function LandingPage() {
             <div className="col-sm-12 col-md-4 px-2 ps-md-0 pb-5 pt-5 pb-md-0 d-flex justify-content-center">
               <div className=" package-item">
                 <div className="content p-4">
-                  <div className="aos-init" data-aos="fade-up">
+                  <div data-aos="fade-up">
                     <img src={silver} alt="silver" className="d-flex" />
                     <p className="text-center font-weight-bold pt-2 package-name">
                       Gói Bạc
@@ -295,7 +273,7 @@ export default function LandingPage() {
             <div className="col-sm-12 col-md-4 px-2 ps-md-0 pb-5 pt-5 pb-md-0 d-flex justify-content-center">
               <div className=" package-item">
                 <div className="content p-4">
-                  <div className="aos-init" data-aos="fade-up">
+                  <div data-aos="fade-up">
                     <img src={silver} alt="silver" className="d-flex" />
                     <p className="text-center font-weight-bold pt-2 package-name">
                       Gói Bạc
@@ -326,9 +304,72 @@ export default function LandingPage() {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="aos-init box-title">
+              <div className=" box-title">
                 <p className="title-gradient">Khách hàng nói về chúng tôi</p>
                 <img src={cmt} alt="cus-cmt" />
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-4 px-2 ps-md-0 pb-5 pt-5 pb-md-0 d-flex justify-content-center">
+              <div className="customer p-3">
+                <div className="user-detail d-flex">
+                  <img src={user1} alt="" />
+                  <p className="d-flex flex-column justify-content-end">
+                    <span className="font-weight-bold user-name">
+                      Lê Vinh Quang
+                    </span>
+                    <span className="sub-title">Kỹ sư công nghệ thông tin</span>
+                  </p>
+                </div>
+                <div className="user-comment">
+                  <p className="text-left p-3">
+                    Tôi rất bất ngờ vì quy trình mua bảo hiểm online rất nhanh
+                    chóng và dễ dàng, không cần phải gặp trực tiếp nhân viên bán
+                    hàng, tuân thủ đúng quy định giãn cách xã hội khi dịch
+                    Covid-19 bùng phát.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-4 px-2 ps-md-0 pb-5 pt-5 pb-md-0 d-flex justify-content-center">
+              <div className="customer p-3">
+                <div className="user-detail d-flex">
+                  <img src={user1} alt="" />
+                  <p className="d-flex flex-column justify-content-end">
+                    <span className="font-weight-bold user-name">
+                      Lê Vinh Quang
+                    </span>
+                    <span className="sub-title">Kỹ sư công nghệ thông tin</span>
+                  </p>
+                </div>
+                <div className="user-comment">
+                  <p className="text-left p-3">
+                    Tôi rất bất ngờ vì quy trình mua bảo hiểm online rất nhanh
+                    chóng và dễ dàng, không cần phải gặp trực tiếp nhân viên bán
+                    hàng, tuân thủ đúng quy định giãn cách xã hội khi dịch
+                    Covid-19 bùng phát.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-4 px-2 ps-md-0 pb-5 pt-5 pb-md-0 d-flex justify-content-center">
+              <div className="customer p-3">
+                <div className="user-detail d-flex">
+                  <img src={user1} alt="" />
+                  <p className="d-flex flex-column justify-content-end">
+                    <span className="font-weight-bold user-name">
+                      Lê Vinh Quang
+                    </span>
+                    <span className="sub-title">Kỹ sư công nghệ thông tin</span>
+                  </p>
+                </div>
+                <div className="user-comment">
+                  <p className="text-left p-3">
+                    Tôi rất bất ngờ vì quy trình mua bảo hiểm online rất nhanh
+                    chóng và dễ dàng, không cần phải gặp trực tiếp nhân viên bán
+                    hàng, tuân thủ đúng quy định giãn cách xã hội khi dịch
+                    Covid-19 bùng phát.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

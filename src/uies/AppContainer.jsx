@@ -14,6 +14,7 @@ class AppContainer extends React.Component {
       disable() {
         return window.innerWidth < 621
       },
+      startEvent: 'DOMContentLoaded',
     })
     window.onload = function () {
       AOS.refresh()
