@@ -2,7 +2,7 @@
   background: linear-gradient(84.68deg, #1D4289 0%, #00B74F 99.12%);
   .app-banner {
     position: relative;
-    height: calc(100vh - 70px);
+    height: 100vh;
     img {
       position: absolute;
       right: 0;
@@ -11,7 +11,7 @@
     .contents {
       padding-top: 10%;
       .title {
-        font-size: 62px;
+        font-size: 55px;
       }
       .content-text {
         font-size: 16px;
@@ -30,5 +30,4 @@
       }
     }
   }
-
 }

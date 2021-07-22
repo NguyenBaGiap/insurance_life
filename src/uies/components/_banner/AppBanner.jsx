@@ -3,7 +3,7 @@ import AppHeader from 'uies/components/_header/AppHeader'
 import family from 'static/img/VPB bg@2x.png'
 import 'static/styles/_banner.scss'
 
-export default function AppBanner() {
+function AppBanner() {
   return (
     <div className="insurance-banner">
       <AppHeader />
@@ -31,3 +31,5 @@ export default function AppBanner() {
     </div>
   )
 }
+
+export default AppBanner

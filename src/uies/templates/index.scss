@@ -1,0 +1,126 @@
+.title-gradient {
+  font-size: 33px;
+  font-weight: bold;
+  line-height: 124%;
+  background: #1D4289;
+  background: -webkit-linear-gradient(to right, #1D4289 0%, #00B74F 81%);
+  background: -moz-linear-gradient(to right, #1D4289 0%, #00B74F 81%);
+  background: linear-gradient(to right, #1D4289 0%, #00B74F 81%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.sub-title {
+  font-size: 14px;
+  line-height: 160%;
+  letter-spacing: 0.004em;
+  color: #697883;
+}
+
+.insurance-intro {
+  .intro-menu {
+    position: relative;
+    flex: 1 0 auto;
+    height: 100%;
+    flex-direction: column;
+    justify-items: center;
+    text-align: center;
+    .menu-list {
+      position: absolute;
+      align-items: center;
+      align-content: center;
+      border-radius: 1.5rem;
+      transform: translateY(-50%);
+      top: 0;
+      z-index: 9;
+      background: #FFF;
+      box-shadow: 0px 8px 24px rgba(108, 145, 181, 0.09);
+    }
+  }
+  .intro-content {
+    margin-top: 100px;
+    .big-title {
+      font-size: 33px;
+      line-height: 124%;
+      display: flex;
+      color: #082854;
+    }
+  }
+}
+
+.insurance-benefit {
+  margin-top: 100px;
+}
+.insurance-package {
+  margin-top: 50px;
+  .package-item {
+    width: 80%;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 20px rgba(89, 104, 118, 0.1);
+    border-radius: 20px;
+    img {
+      display: flex;
+      margin: 0 auto;
+    }
+    .package-name {
+      font-size: 32px;
+      line-height: 124%;
+      color: #082854;
+    }
+    .package-total {
+      font-weight: bold;
+      font-size: 42px;
+      line-height: 100%;
+      color: #00B74F;
+      text-align: center;
+    }
+    .package-min {
+      span {
+        color: #00B74F;
+      }
+    }
+    .action {
+      display: none;
+      @media (max-width: 768px) {
+        display: flex;
+      }
+      button {
+        font-weight: bold;
+        width: 140px;
+        font-size: 16px;
+        border-radius: 40px;
+      }
+      .register {
+        background: linear-gradient(85.11deg, #1D4289 0%, #00B74F 80.53%);
+        color: #ffffff;
+      }
+      .advisory {
+        color: #069E4E;
+        border: 1px solid #069E4E;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      transition: height 2s;
+      z-index: 999;
+      .action {
+        display: flex;
+      }
+    }
+  }
+}
+
+.insurance-cus-cmt {
+  margin-top: 100px;
+
+  .box-title {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      position: absolute;
+      transform: translateY(-20%);
+    }
+  }
+}
