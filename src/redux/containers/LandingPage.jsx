@@ -1,8 +1,21 @@
 import { connect } from 'react-redux'
 import LandingPage from 'uies/templates/LandingPage'
+import {
+  benefit,
+  customerPotential,
+  insurancePackage,
+  customerComment,
+  footer,
+} from 'utilities/constants'
 
 const mapStateToProps = () => ({
-  test: 'LandingPage',
+  initialValues: {
+    benefit,
+    customerPotential,
+    insurancePackage,
+    customerComment,
+    footer,
+  },
 })
 
 const mapDispatchToProps = () => ({})

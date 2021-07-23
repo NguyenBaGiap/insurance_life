@@ -1,0 +1,60 @@
+.insurance-package {
+  min-height: 650px;
+  margin-top: 100px;
+  .package-item {
+    width: 80%;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 20px rgba(89, 104, 118, 0.1);
+    border-radius: 20px;
+    img {
+      display: flex;
+      margin: 0 auto;
+    }
+    .package-name {
+      font-size: 32px;
+      line-height: 124%;
+      color: #082854;
+    }
+    .package-total {
+      font-weight: bold;
+      font-size: 32px;
+      line-height: 100%;
+      color: #00B74F;
+      text-align: center;
+    }
+    .package-min {
+      span {
+        color: #00B74F;
+      }
+    }
+    .action {
+      display: none;
+      @media (max-width: 768px) {
+        display: flex;
+      }
+      button {
+        font-weight: bold;
+        width: 140px;
+        font-size: 14px;
+        border-radius: 40px;
+      }
+      .register {
+        background: linear-gradient(85.11deg, #1D4289 0%, #00B74F 80.53%);
+        color: #ffffff;
+      }
+      .advisory {
+        color: #069E4E;
+        border: 1px solid #069E4E;
+      }
+    }
+
+    &:hover {
+      transform: scaleY(1.11);
+      transition: height 2s;
+      z-index: 999999;
+      .action {
+        display: flex;
+      }
+    }
+  }
+}

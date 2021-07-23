@@ -1,6 +1,6 @@
 import React from 'react'
 import AppHeader from 'uies/components/_header/AppHeader'
-import family from 'static/img/VPB bg@2x.png'
+import family from 'static/img/VPB-bg.png'
 import 'static/styles/_banner.scss'
 
 function AppBanner() {

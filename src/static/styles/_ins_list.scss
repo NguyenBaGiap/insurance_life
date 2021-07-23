@@ -1,0 +1,30 @@
+.insurance-intro {
+  .intro-menu {
+    position: relative;
+    flex: 1 0 auto;
+    height: 100%;
+    flex-direction: column;
+    justify-items: center;
+    text-align: center;
+    .menu-list {
+      position: absolute;
+      align-items: center;
+      align-content: center;
+      border-radius: 1.5rem;
+      transform: translateY(-50%);
+      top: 0;
+      z-index: 9;
+      background: #FFF;
+      box-shadow: 0px 8px 24px rgba(108, 145, 181, 0.09);
+    }
+  }
+  .intro-content {
+    margin-top: 100px;
+    .big-title {
+      font-size: 33px;
+      line-height: 124%;
+      display: flex;
+      color: #082854;
+    }
+  }
+}

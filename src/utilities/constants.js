@@ -1,4 +1,14 @@
 import logoFooter from 'static/img/vpbank-footer.svg'
+import secure from 'static/img/_benefit/secure.svg'
+import family from 'static/img/_benefit/family.svg'
+import family2 from 'static/img/_customer/family.svg'
+import user from 'static/img/_customer/user.svg'
+import silver from 'static/img/_package/silver.svg'
+import gold from 'static/img/_package/gold.svg'
+import diamond from 'static/img/_package/diamond.svg'
+import user1 from 'static/img/_customer/user1.svg'
+import user2 from 'static/img/_customer/user2.svg'
+import user3 from 'static/img/_customer/user3.svg'
 
 export const footer = {
   address: [
@@ -62,6 +72,108 @@ export const footer = {
     {
       content: 'Tra cứu lịch sử bồi thường',
       url: '/',
+    },
+  ],
+}
+
+export const benefit = {
+  title:
+    'Lợi ích của Người được bảo hiểm khi tham gia sản phẩm Bảo hiểm Bệnh hiểm nghèo',
+  contents: [
+    {
+      image: secure,
+      content:
+        'Bảo vệ trước các bệnh các bệnh hiểm nghèo ngay từ giai đoạn đầu.',
+    },
+    {
+      image: secure,
+      content: 'Đảm bảo kế hoạch tài chính cho bản thân và gia đình.',
+    },
+  ],
+  isRightContent: false,
+  image: family,
+}
+
+export const customerPotential = {
+  title: 'Đối tượng bảo hiểm',
+  contents: [
+    {
+      image: user,
+      content:
+        'Công dân Việt Nam hoặc người nước ngoài đang cư trú trong\n' +
+        '                    lãnh thổ Việt Nam không quá độ tuổi quy định và không bị\n' +
+        '                    bệnh ung thư, bệnh hiểm nghèo theo định nghĩa (tại thời điểm\n' +
+        '                    tham gia bảo hiểm), tâm thần hoặc bị thương tật vĩnh viễn từ\n' +
+        '                    80% trở lên.',
+    },
+    {
+      image: user,
+      content:
+        'Độ tuổi quy định: Từ đủ 01 tuổi đến 60 tuổi. Mở rộng độ tuổi\n' +
+        '                    đến 65 tuổi nếu tham gia liên tục từ năm 60 tuổi.',
+    },
+  ],
+  isRightContent: true,
+  image: family2,
+}
+
+export const insurancePackage = {
+  contents: [
+    {
+      image: silver,
+      name: 'Gói Bạc',
+      description: 'Số tiền bảo hiểm',
+      moneyTotal: '110.000.000',
+      forMonth: 'Mức phí chỉ từ',
+      moneyMonth: '220.000',
+      register: 'Đăng ký ngay',
+      advisory: 'Tư vấn',
+    },
+    {
+      image: gold,
+      name: 'Gói Vàng',
+      description: 'Số tiền bảo hiểm',
+      moneyTotal: '220.000.000',
+      forMonth: 'Mức phí chỉ từ',
+      moneyMonth: '330.000',
+      register: 'Đăng ký ngay',
+      advisory: 'Tư vấn',
+    },
+    {
+      image: diamond,
+      name: 'Gói Kim Cương',
+      description: 'Số tiền bảo hiểm',
+      moneyTotal: '330.000.000',
+      forMonth: 'Mức phí chỉ từ',
+      moneyMonth: '483.000',
+      register: 'Đăng ký ngay',
+      advisory: 'Tư vấn',
+    },
+  ],
+}
+
+export const customerComment = {
+  contents: [
+    {
+      avatar: user1,
+      userName: 'Lê Vinh Quang',
+      job: 'Kỹ sư công nghệ thông tin',
+      comment:
+        'Tôi rất bất ngờ vì quy trình mua bảo hiểm online rất nhanh chóng và dễ dàng, không cần phải gặp trực tiếp nhân viên bán hàng, tuân thủ đúng quy định giãn cách xã hội khi dịch Covid-19 bùng phát.',
+    },
+    {
+      avatar: user2,
+      userName: 'Nguyễn Ngọc Thu Hương',
+      job: 'Nhân viên văn phòng',
+      comment:
+        'Bảo hiểm Bệnh hiểm nghèo như bùa hộ mệnh của gia đình tôi. Có bảo hiểm, tôi rất yên tâm chăm sóc gia đình mình.',
+    },
+    {
+      avatar: user3,
+      userName: 'Trần Hoài Linh',
+      job: 'Kế toán',
+      comment:
+        'Con trai tôi rất vui mỗi khi bị ốm được mẹ đưa vào bệnh viện Hồng Ngọc khám mà không phải trả tiền. Cám ơn công ty bảo hiểm rất nhiều vì đã đem lại niềm vui và sự an tâm cho gia đình nhỏ của tôi.',
     },
   ],
 }
