@@ -7,40 +7,53 @@ import ptiLogo from '../../../static/img/_intro/pti-logo.svg'
 import dot from '../../../static/img/_intro/dot.svg'
 import 'static/styles/_ins_list.scss'
 
+const TABS = [
+  {
+    name: 'PTI',
+    img: heathyInsIcon,
+  },
+  {
+    name: 'HOUSE',
+    img: houseInsIcon,
+  },
+  {
+    name: 'CAR',
+    img: carInsIcon,
+  },
+  {
+    name: 'TRAVEL',
+    img: travelInsIcon,
+  },
+]
+
+const TabComponent = ({ input: { name, img }, onClick }) => {
+  return (
+    <div className="col-md-3">
+      <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+        <button
+          type="button"
+          className="border-0 bg-white"
+          onClick={onClick(name)}
+        >
+          <img src={img} alt="car-ins" />
+        </button>
+      </div>
+    </div>
+  )
+}
+
 export default function InsuranceList() {
+  const [active, setActive] = React.useState(0)
+  const handleSelectTab = (value) => () => setActive(value)
+  console.log('active', active)
   return (
     <div className="insurance-intro">
       <div className="intro-menu d-none d-md-flex align-items-center">
         <div className="container menu-list p-3">
           <div className="row">
-            <div className="col-md-3">
-              <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                <button type="button" className="border-0 bg-white">
-                  <img src={heathyInsIcon} alt="car-ins" />
-                </button>
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                <button type="button" className="border-0 bg-white">
-                  <img src={carInsIcon} alt="car-ins" />
-                </button>
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                <button type="button" className="border-0 bg-white">
-                  <img src={houseInsIcon} alt="car-ins" />
-                </button>
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                <button type="button" className="border-0 bg-white">
-                  <img src={travelInsIcon} alt="car-ins" />
-                </button>
-              </div>
-            </div>
+            {TABS.map((tab, index) => (
+              <TabComponent key={index} input={tab} onClick={handleSelectTab} />
+            ))}
           </div>
         </div>
       </div>
