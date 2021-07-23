@@ -51,7 +51,8 @@
   margin-top: 100px;
 }
 .insurance-package {
-  margin-top: 50px;
+  min-height: 650px;
+  margin-top: 100px;
   .package-item {
     width: 80%;
     background: #FFFFFF;
@@ -102,7 +103,7 @@
     &:hover {
       transform: scaleY(1.11);
       transition: height 2s;
-      z-index: 999;
+      z-index: 999999;
       .action {
         display: flex;
       }
@@ -110,14 +111,13 @@
   }
 }
 
-.insurance-cus-cmt {
-  margin-top: 200px;
-
+.insurance-comment {
   .box-title {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 2rem;
     img {
       position: absolute;
       transform: translateY(-20%);
@@ -150,3 +150,46 @@
     }
   }
 }
+
+.insurance-follow {
+  margin-top: 100px ;
+  // background-image: url("../../static/img/email-follow.svg");
+  background: linear-gradient(84.68deg, #1D4289 0%, #00B74F 99.12%);
+  .follow-title {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 124%;
+    text-align: center;
+    color: #FFFFFF;
+  }
+  .follow-note {
+    font-size: 16px;
+    line-height: 160%;
+    text-align: center;
+    letter-spacing: 0.004em;
+    color: #FFFFFF;
+  }
+  .user-input {
+    min-height: 55px;
+    input {
+      background: #FFFFFF;
+      box-shadow: 0px 20px 36px rgba(43, 33, 22, 0.03);
+      border-radius: 27.5px;
+      padding-left: 2rem;
+      color: #707070;
+      width: 370px;
+      font-size: 14px;
+      margin-right: 2rem;
+      min-height: 55px
+    }
+    button {
+      background: linear-gradient(84.41deg, #1D4289 -19.51%, #00B74F 85.45%);
+      border-radius: 34px;
+      border: none;
+      color: #ffffff;
+      font-size: 14px;
+      width: 160px;
+    }
+  }
+}
+

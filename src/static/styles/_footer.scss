@@ -1,0 +1,30 @@
+.insurance-footer {
+  .col-item:first-child {
+    .item:nth-child(2) {
+      a {
+        font-size: 14px;
+        font-weight: bold;
+        color:  #082854;
+      }
+    }
+  }
+  .col-item {
+    .item:first-child {
+      padding-bottom: 2rem;
+      a {
+        font-size: 24px;
+        font-weight: bold;
+        color:  #082854;
+      }
+    }
+    .item {
+      a {
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 40px;
+        color: #697883;
+      }
+    }
+  }
+
+}

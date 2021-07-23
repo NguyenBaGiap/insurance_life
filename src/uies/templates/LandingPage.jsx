@@ -1,7 +1,6 @@
 import React from 'react'
 import './index.scss'
 import AppBanner from 'uies/components/_banner/AppBanner'
-
 // intro
 import heathyInsIcon from 'static/img/_intro/heathyIns.svg'
 import ptiLogo from 'static/img/_intro/pti-logo.svg'
@@ -22,6 +21,8 @@ import silver from 'static/img/_package/silver.svg'
 // cmt
 import cmt from 'static/img/cmt.svg'
 import user1 from 'static/img/_customer/user1.svg'
+//footer
+import AppFooter from 'redux/containers/components/AppFooter'
 
 export default function LandingPage() {
   return (
@@ -299,8 +300,7 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-
-      <div className="insurance-cus-cmt">
+      <div className="insurance-comment">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
@@ -375,6 +375,29 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+      <div className="insurance-follow p-5">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <p className="follow-title text-sm-left text-md-center">
+                Đăng ký email để nhận những ưu đãi sớm nhất
+              </p>
+              <p className="follow-note text-md-center text-lg-left">
+                Hãy để lại email của bạn, chúng tôi sẽ liên hệ ngay
+              </p>
+            </div>
+            <div className="col-md-12 user-input d-flex justify-content-center mt-5">
+              <input
+                className="form-control border-0"
+                type="text"
+                placeholder="Nhập email của bạn"
+              />
+              <button>Gửi ngay</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <AppFooter />
     </React.Fragment>
   )
 }
