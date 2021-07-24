@@ -25,9 +25,9 @@ const SimpleTextField = ({
 function EmailFollowForm({ handleSubmit }) {
   return (
     <form className="insurance-follow" onSubmit={handleSubmit}>
-      <div className="container" data-aos="zoom-in">
+      <div className="container container-sm" data-aos="zoom-in">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12 col-sm-12">
             <p className="follow-title text-sm-left text-md-center">
               Đăng ký email để nhận những ưu đãi sớm nhất
             </p>
@@ -35,7 +35,7 @@ function EmailFollowForm({ handleSubmit }) {
               Hãy để lại email của bạn, chúng tôi sẽ liên hệ ngay
             </p>
           </div>
-          <div className="col-md-12 mt-5 user-input d-flex justify-content-center">
+          <div className="col-md-12 col-sm-12 mt-md-5 user-input d-md-flex justify-content-center">
             <div className="input">
               <Field
                 name="email"

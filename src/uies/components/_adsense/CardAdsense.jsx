@@ -14,17 +14,17 @@ export default function CardAdsense({
           <div className="col-md-6 d-flex justify-content-center flex-column">
             <div data-aos="zoom-in-right">
               <div className="benefit-title">
-                <p className="title-gradient">{title}</p>
+                <p className="title-gradient container-sm">{title}</p>
               </div>
-              <div className="benefit-note pt-5">
+              <div className="benefit-note pt-md-5 pt-sm-3">
                 {contents.map((content, index) => (
-                  <p key={index} className="sub-title">
+                  <p key={index} className="sub-title container-sm d-sm-flex">
                     <img
                       className="pr-3"
                       src={content.image}
                       alt="insurance-adsense"
                     />
-                    {content.content}
+                    <span>{content.content}</span>
                   </p>
                 ))}
               </div>

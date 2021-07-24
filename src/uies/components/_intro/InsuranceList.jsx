@@ -42,8 +42,74 @@ const TabComponent = ({ input: { name, img }, onClick }) => {
   )
 }
 
+const TabContent = () => {
+  return (
+    <div className="intro-content">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
+              <p className="big-title font-weight-bold text-center justify-content-center align-items-center d-flex">
+                <img className="pr-3" src={ptiLogo} alt="pti-logo" />
+                Bảo hiểm Bệnh hiểm nghèo
+              </p>
+              <p className="sub-title text-center">
+                Nhận ngay 100% số tiền bảo hiểm khi không may mắc bệnh hiểm
+                nghèo
+              </p>
+              <p className="title-gradient text-center m-5">
+                Danh sách các bệnh hiểm nghèo được bảo hiểm
+              </p>
+            </div>
+          </div>
+          <div className="col-md-4 ins-list">
+            <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
+              <p className="ins-item text-center">
+                <img className="pr-3" src={dot} alt="dot" />
+                Ung thư
+              </p>
+            </div>
+          </div>
+          <div className="col-md-4 ins-list">
+            <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
+              <p className="ins-item text-center">
+                <img className="pr-3" src={dot} alt="dot" />
+                Ung thư
+              </p>
+            </div>
+          </div>
+          <div className="col-md-4 ins-list">
+            <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
+              <p className="ins-item text-center">
+                <img className="pr-3" src={dot} alt="dot" />
+                Ung thư
+              </p>
+            </div>
+          </div>
+          <div className="col-md-4 ins-list">
+            <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
+              <p className="ins-item text-center">
+                <img className="pr-3" src={dot} alt="dot" />
+                Ung thư
+              </p>
+            </div>
+          </div>
+          <div className="col-md-4 ins-list">
+            <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
+              <p className="ins-item text-center">
+                <img className="pr-3" src={dot} alt="dot" />
+                Ung thư
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function InsuranceList() {
-  const [active, setActive] = React.useState(0)
+  const [active, setActive] = React.useState('PTI')
   const handleSelectTab = (value) => () => setActive(value)
   console.log('active', active)
   return (
@@ -57,67 +123,7 @@ export default function InsuranceList() {
           </div>
         </div>
       </div>
-      <div className="intro-content">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
-                <p className="big-title font-weight-bold text-center justify-content-center align-items-center d-flex">
-                  <img className="pr-3" src={ptiLogo} alt="pti-logo" />
-                  Bảo hiểm Bệnh hiểm nghèo
-                </p>
-                <p className="sub-title text-center">
-                  Nhận ngay 100% số tiền bảo hiểm khi không may mắc bệnh hiểm
-                  nghèo
-                </p>
-                <p className="title-gradient text-center m-5">
-                  Danh sách các bệnh hiểm nghèo được bảo hiểm
-                </p>
-              </div>
-            </div>
-            <div className="col-md-4 ins-list">
-              <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
-                <p className="ins-item text-center">
-                  <img className="pr-3" src={dot} alt="dot" />
-                  Ung thư
-                </p>
-              </div>
-            </div>
-            <div className="col-md-4 ins-list">
-              <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
-                <p className="ins-item text-center">
-                  <img className="pr-3" src={dot} alt="dot" />
-                  Ung thư
-                </p>
-              </div>
-            </div>
-            <div className="col-md-4 ins-list">
-              <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
-                <p className="ins-item text-center">
-                  <img className="pr-3" src={dot} alt="dot" />
-                  Ung thư
-                </p>
-              </div>
-            </div>
-            <div className="col-md-4 ins-list">
-              <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
-                <p className="ins-item text-center">
-                  <img className="pr-3" src={dot} alt="dot" />
-                  Ung thư
-                </p>
-              </div>
-            </div>
-            <div className="col-md-4 ins-list">
-              <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
-                <p className="ins-item text-center">
-                  <img className="pr-3" src={dot} alt="dot" />
-                  Ung thư
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {active === 'PTI' && <TabContent />}
     </div>
   )
 }

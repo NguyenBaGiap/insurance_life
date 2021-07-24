@@ -7,6 +7,8 @@ import AppContainer from 'redux/containers/AppContainer'
 import { configureStore, history } from 'redux/store/configureStore'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'aos/dist/aos.css'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 const App = withRouter(AppContainer)
 

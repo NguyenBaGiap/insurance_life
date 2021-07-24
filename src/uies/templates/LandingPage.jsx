@@ -1,5 +1,4 @@
 import React from 'react'
-import './index.scss'
 import AppBanner from 'uies/components/_banner/AppBanner'
 import AppFooter from 'uies/components/_footer/AppFooter'
 import CardAdsense from 'uies/components/_adsense/CardAdsense'
@@ -7,6 +6,7 @@ import InsurancePackage from 'uies/components/_package/InsurancePackage'
 import CustomerComment from 'uies/components/_comment/CustomerComment'
 import EmailFollowForm from 'redux/containers/forms/EmailFollowForm'
 import InsuranceList from 'uies/components/_intro/InsuranceList'
+import 'static/styles/_landing_page.scss'
 
 export default function LandingPage({ initialValues }) {
   return (

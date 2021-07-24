@@ -4,6 +4,9 @@ import { Switch, Route } from 'react-router-dom'
 import 'static/styles/main.scss'
 
 const LandingPage = React.lazy(() => import('redux/containers/LandingPage'))
+const CustomerRegister = React.lazy(() =>
+  import('uies/templates/_customer_register/CustomerRegisterTemplate')
+)
 
 class AppContainer extends React.Component {
   componentDidMount() {
@@ -14,7 +17,7 @@ class AppContainer extends React.Component {
       disable() {
         return window.innerWidth < 621
       },
-      startEvent: 'DOMContentLoaded',
+      //startEvent: 'DOMContentLoaded',
     })
     window.onload = function () {
       AOS.refresh()
@@ -26,6 +29,7 @@ class AppContainer extends React.Component {
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path="/" component={LandingPage} />
+          <Route exact path="/customer/register" component={CustomerRegister} />
         </Switch>
       </Suspense>
     )

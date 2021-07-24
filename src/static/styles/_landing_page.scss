@@ -1,3 +1,5 @@
+@import '_mixin';
+
 .title-gradient {
   font-size: 33px;
   font-weight: bold;
@@ -8,10 +10,20 @@
   background: linear-gradient(to right, #1D4289 0%, #00B74F 81%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  @include MAX_768 {
+    font-size: 20px;
+    text-align: center;
+  }
 }
 .sub-title {
   font-size: 14px;
   line-height: 160%;
   letter-spacing: 0.004em;
   color: #697883;
+}
+
+.insurance-benefit {
+  @include MAX_768 {
+    margin: 80px auto;
+  }
 }

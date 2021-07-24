@@ -1,0 +1,39 @@
+.form-group {
+  position: relative;
+  input {
+    min-height: 48px;
+    font-size: 14px;
+    box-shadow: unset !important;
+    border-radius: 12px;
+  }
+  label {
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #B1B5C4;
+  }
+  .error {
+    background-image: url("../../../static/img/icon-x.svg");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;
+    border: 2px solid #E10600
+  }
+  .success {
+    background-image: url("../../../static/img/icon-y.svg");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;
+    border: 2px solid #00B74F
+  }
+  .spinner {
+    position: absolute;
+    width: 20px;
+    right: 10px;
+    top: 0;
+    transform: translateY(200%);
+  }
+
+}
+
+

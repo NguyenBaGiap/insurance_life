@@ -1,5 +1,6 @@
 import React from 'react'
 import cmt from 'static/img/cmt.svg'
+import Slider from 'react-slick'
 import 'static/styles/_cmt.scss'
 
 const UserComment = ({ data: { avatar, userName, job, comment } }) => {
@@ -25,6 +26,13 @@ const UserComment = ({ data: { avatar, userName, job, comment } }) => {
 }
 
 export default function CustomerComment({ data: { contents } }) {
+  const setting = {
+    dots: true,
+    arrows: false,
+    fade: false,
+    pauseOnHover: false,
+    autoplay: true,
+  }
   return (
     <div className="insurance-comment">
       <div className="container">
@@ -35,9 +43,18 @@ export default function CustomerComment({ data: { contents } }) {
               <img src={cmt} alt="cus-cmt" />
             </div>
           </div>
-          {contents.map((data, index) => (
-            <UserComment key={index} data={data} />
-          ))}
+          <div className="d-none d-md-flex">
+            {contents.map((data, index) => (
+              <UserComment key={index} data={data} />
+            ))}
+          </div>
+          <div className="d-block d-md-none">
+            <Slider {...setting}>
+              {contents.map((data, index) => (
+                <UserComment key={index} data={data} />
+              ))}
+            </Slider>
+          </div>
         </div>
       </div>
     </div>
