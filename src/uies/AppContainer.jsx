@@ -5,7 +5,7 @@ import 'static/styles/main.scss'
 
 const LandingPage = React.lazy(() => import('redux/containers/LandingPage'))
 const CustomerRegister = React.lazy(() =>
-  import('uies/templates/_customer_register/CustomerRegisterTemplate')
+  import('uies/templates/_step0/CustomerRegisterStep0')
 )
 
 class AppContainer extends React.Component {

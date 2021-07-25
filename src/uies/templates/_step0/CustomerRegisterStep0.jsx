@@ -1,7 +1,7 @@
 import React from 'react'
 import CustomerRegisterForm from 'redux/containers/forms/CustomerRegisterForm'
 
-export default function CustomerRegisterTemplate() {
+export default function CustomerRegisterStep0() {
   return (
     <React.Fragment>
       <CustomerRegisterForm />

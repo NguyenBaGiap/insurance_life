@@ -1,0 +1,61 @@
+.form-group {
+  label {
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #B1B5C4;
+  }
+  .error-select {
+    background-image: url("../img/icon-x.svg");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;
+    .react-select__indicators {
+      display: none;
+    }
+    .react-select__control {
+      border: 1px solid #E10600
+    }
+  }
+
+  .success-select {
+    background-image: url("../img/icon-y.svg");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;
+    .react-select__indicators {
+      display: none;
+    }
+    .react-select__control {
+      border: 1px solid #00B74F
+    }
+  }
+
+  .react-select__control {
+    border-radius: 12px;
+    background-color: unset;
+    .react-select__value-container {
+      height: 48px;
+
+      &:hover {
+        border: unset;
+      }
+    }
+    .react-select__indicators {
+      .react-select__indicator-separator {
+        display: none;
+      }
+      .react-select__dropdown-indicator {
+        border-radius: 50%;
+        border: 1px solid;
+        margin-right: 10px;
+      }
+    }
+  }
+  .react-select__single-value {
+    padding-top: 10px;
+  }
+}
+
+
+

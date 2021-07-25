@@ -1,6 +1,6 @@
 import React from 'react'
-import './SimpleTextField.scss'
-import spinerField from 'static/img/spinner.gif'
+import spinnerField from 'static/img/spinner-field.gif'
+import 'static/styles/_input_field.scss'
 import classNames from 'classnames'
 
 export default function SimpleTextField({
@@ -30,7 +30,7 @@ export default function SimpleTextField({
         disabled={disabled || loading}
         {...input}
       />
-      {loading && <img src={spinerField} alt="spinner" className="spinner" />}
+      {loading && <img src={spinnerField} alt="spinner" className="spinner" />}
       {touched &&
         ((error && <i className="text-danger">{error}</i>) ||
           (warning && <i className="text-warning">{warning}</i>))}
