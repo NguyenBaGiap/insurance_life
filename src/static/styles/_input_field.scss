@@ -1,4 +1,4 @@
-.form-group {
+.text-field-example {
   position: relative;
   input {
     min-height: 48px;
@@ -7,24 +7,22 @@
     border-radius: 12px;
   }
   label {
-    font-weight: bold;
+    font-weight: 500;
     font-size: 12px;
-    text-transform: uppercase;
-    color: #B1B5C4;
   }
   .error {
     background-image: url("../img/icon-x.svg");
     background-repeat: no-repeat;
     background-position-x: 95%;
     background-position-y: 50%;
-    border: 1px solid #E10600
+    border: 2px solid #E10600
   }
   .success {
     background-image: url("../img/icon-y.svg");
     background-repeat: no-repeat;
     background-position-x: 95%;
     background-position-y: 50%;
-    border: 1px solid #00B74F
+    border: 2px solid #00B74F
   }
   .spinner {
     position: absolute;

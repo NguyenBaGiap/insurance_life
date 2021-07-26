@@ -19,7 +19,7 @@ function CustomerRegisterForm({ handleSubmit }) {
         <div className="col-md-12 col-sm-12 title-form pb-3 pt-3">
           <h3>Thông tin khách hàng</h3>
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
+        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
             name="fullName"
             label="Tên khách hàng"
@@ -30,7 +30,7 @@ function CustomerRegisterForm({ handleSubmit }) {
             component={SimpleTextField}
           />
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
+        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
             name="pid"
             label="Số Hộ chiếu / CMND"
@@ -41,7 +41,7 @@ function CustomerRegisterForm({ handleSubmit }) {
             component={SimpleTextField}
           />
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
+        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
             name="mobileNumber"
             label="Số điện thoại"
@@ -52,7 +52,7 @@ function CustomerRegisterForm({ handleSubmit }) {
             component={SimpleTextField}
           />
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
+        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
             name="email"
             label="Địa chỉ email"
@@ -66,7 +66,7 @@ function CustomerRegisterForm({ handleSubmit }) {
         <div className="col-md-12 col-sm-12 title-form pt-3 pb-3">
           <h3>Bạn muốn mua bảo hiểm cho</h3>
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
+        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
             name="relationshipWithInsurer"
             label="Mối quan hệ với người yêu cầu"

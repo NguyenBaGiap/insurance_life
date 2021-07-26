@@ -14,9 +14,9 @@ export default function SimpleTextField({
   meta: { touched, error, warning },
 }) {
   return (
-    <div className="form-group">
+    <div className="form-group text-field-example">
       <label htmlFor="labelFormInput">
-        {label}
+        <span>{label}</span>
         {required && <span className="text-danger ml-2">*</span>}
       </label>
       <input
@@ -32,7 +32,7 @@ export default function SimpleTextField({
       />
       {loading && <img src={spinnerField} alt="spinner" className="spinner" />}
       {touched &&
-        ((error && <i className="text-danger">{error}</i>) ||
+        ((error && <i className="text-danger font-weight-bold">{error}</i>) ||
           (warning && <i className="text-warning">{warning}</i>))}
     </div>
   )

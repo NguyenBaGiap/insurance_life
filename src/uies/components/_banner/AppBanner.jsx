@@ -22,7 +22,9 @@ function AppBanner() {
                 <span>Tất cả đều trong tầm tay khi bạn có sức khỏe...</span>
               </div>
               <div className="register-button">
-                <button className="btn">Đăng ký ngay</button>
+                <button type="button" className="btn">
+                  Đăng ký ngay
+                </button>
               </div>
             </div>
           </div>

@@ -33,14 +33,11 @@ header {
         font-weight: 400;
         letter-spacing: 0.010em;
       }
-      &.active {
-        div {
-          margin: 0 auto;
-          width: 20px;
-          border-bottom: 1px solid #ffffff;
-        }
+      .process-active {
+        margin: 0 auto;
+        width: 20px;
+        border-bottom: 1px solid #ffffff;
       }
-
     }
     .advisory-link {
       background: var(--color-red);

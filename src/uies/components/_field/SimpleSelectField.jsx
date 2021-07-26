@@ -5,28 +5,22 @@ import classNames from 'classnames'
 
 export default function SimpleSelectField(props) {
   const {
-    name,
-    input,
-    selectableValues,
-    placeholder = null,
     label,
     required,
     meta: { touched, error, warning },
   } = props
   return (
-    <div className="form-group">
+    <div className="form-group selected-field-example ">
       <label htmlFor="labelFormInput">
-        {label}
+        <span>{label}</span>
         {required && <span className="text-danger ml-2">*</span>}
       </label>
       <Select
-        name={name}
-        options={selectableValues}
-        placeholder={placeholder}
-        value={input.value}
-        onChange={(value) => input.onChange(value)}
-        onBlur={() => input.onBlur()}
-        {...input}
+        {...props}
+        value={props.input.value}
+        onChange={(value) => props.input.onChange(value)}
+        onBlur={() => props.input.onBlur(props.input.value)}
+        options={props.selectableValues}
         className={classNames(
           'react-select-container',
           touched && error && 'error-select',
@@ -35,7 +29,7 @@ export default function SimpleSelectField(props) {
         classNamePrefix="react-select"
       />
       {touched &&
-        ((error && <i className="text-danger">{error}</i>) ||
+        ((error && <i className="text-danger font-weight-bold">{error}</i>) ||
           (warning && <i className="text-warning">{warning}</i>))}
     </div>
   )
