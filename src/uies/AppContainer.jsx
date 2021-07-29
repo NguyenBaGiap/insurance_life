@@ -36,9 +36,12 @@ class AppContainer extends React.Component {
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path="/" component={LandingPage} />
-          <Route path="/pti/register" component={CustomerRegister} />
-          <Route path="/pti/customer/info" component={ClaimInformation} />
-          <Route path="/customer/otp" component={CustomerConfirmOtp} />
+          <Route path="/pti/register/step0" component={CustomerRegister} />
+          <Route path="/pti/register/step1" component={ClaimInformation} />
+          <Route
+            path="/pti/register/customer/otp"
+            component={CustomerConfirmOtp}
+          />
         </Switch>
         <Loading visible={this.props.requestStatus?.isLoading} />
       </Suspense>

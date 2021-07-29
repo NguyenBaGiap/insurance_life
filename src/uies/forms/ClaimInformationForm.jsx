@@ -15,7 +15,7 @@ function ClainInformationForm({ handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="fullName"
+            name="fullNameUserBuy"
             label="Người yêu cầu bảo hiểm"
             type="text"
             validate={[required]}
@@ -26,7 +26,7 @@ function ClainInformationForm({ handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="pid"
+            name="pidUserBuy"
             label="Số Hộ chiếu / CMND"
             type="text"
             validate={[required]}
@@ -37,7 +37,7 @@ function ClainInformationForm({ handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="mobileNumber"
+            name="mobileNumberUserBuy"
             label="Số điện thoại"
             type="text"
             validate={[required]}
@@ -48,7 +48,7 @@ function ClainInformationForm({ handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="email"
+            name="emailUserBuy"
             label="Địa chỉ email"
             type="text"
             validate={[required, emailFormat]}
@@ -62,7 +62,7 @@ function ClainInformationForm({ handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="relationshipWithInsurer"
+            name="relationshipWithUserBuy"
             label="Mối quan hệ với người yêu cầu"
             validate={[required]}
             //loading
@@ -77,7 +77,7 @@ function ClainInformationForm({ handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="pid"
+            name="fullNameUserTarget"
             label="Người Được bảo hiểm"
             type="text"
             validate={[required]}
@@ -88,31 +88,30 @@ function ClainInformationForm({ handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="gender"
+            name="genderUserTarget"
             label="Giới tính"
             validate={[required]}
             //loading
             required
             component={SimpleSelectField}
             selectableValues={[
-              { value: 'chocolate', label: 'Chocolate' },
-              { value: 'strawberry', label: 'Strawberry' },
-              { value: 'vanilla', label: 'Vanilla' },
+              { value: '0', label: 'Nữ' },
+              { value: '1', label: 'Nam' },
             ]}
           />
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="gender"
+            name="birthDateUserTarget"
             label="Ngày sinh"
+            component={SimpleDateField}
             validate={[required]}
             required
-            component={SimpleDateField}
           />
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="pid"
+            name="pidUserTarget"
             label="Số Hộ chiếu / CMND"
             type="text"
             validate={[required]}
@@ -123,7 +122,7 @@ function ClainInformationForm({ handleSubmit }) {
         </div>
         <div className="col-md-9 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="pid"
+            name="addressUserTarget"
             label="Địa chỉ liên hệ"
             type="text"
             validate={[required]}
@@ -137,7 +136,7 @@ function ClainInformationForm({ handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="pid"
+            name="daoSale"
             label="Mã DAO"
             type="text"
             validate={[required]}
