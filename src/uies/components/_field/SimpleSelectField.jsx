@@ -10,7 +10,7 @@ export default function SimpleSelectField(props) {
     meta: { touched, error, warning },
   } = props
   return (
-    <div className="form-group selected-field-example ">
+    <div className="form-group selected-field-example">
       <label htmlFor="labelFormInput">
         <span>{label}</span>
         {required && <span className="text-danger ml-2">*</span>}

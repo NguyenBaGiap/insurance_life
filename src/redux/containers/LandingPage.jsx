@@ -18,6 +18,10 @@ const mapStateToProps = () => ({
   },
 })
 
-const mapDispatchToProps = () => ({})
+const mapDispatchToProps = () => ({
+  onSubmitEmail: (values) => {
+    window.alert(JSON.stringify(values, 0, 2))
+  },
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPage)

@@ -24,10 +24,12 @@ export default function AppHeader() {
             {pathname === '/' && <div className="process-active" />}
           </li>
           <li className="menu-item">
-            <Link to="/product" className="nav-link">
+            <Link to="/customer/register" className="nav-link">
               Sản phẩm
             </Link>
-            {pathname === '/product' && <div className="process-active" />}
+            {pathname === '/customer/register' && (
+              <div className="process-active" />
+            )}
           </li>
           <li className="menu-item">
             <Link to="/information" className="nav-link">

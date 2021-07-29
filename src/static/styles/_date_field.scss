@@ -1,0 +1,28 @@
+.date-picker-custom {
+  .rw-widget-picker {
+    min-height: 48px;
+    font-size: 14px;
+    box-shadow: unset !important;
+    border-radius: 12px;
+  }
+  .rw-input-addon {
+    border-left: none;
+    margin-right: 10px;
+    &:hover {
+      background: none;
+    }
+  }
+  .rw-popup-container {
+    width: 100%;
+  }
+  .error-date-picker {
+
+  }
+  .success-date-picker {
+
+  }
+  label {
+    font-weight: 500;
+    font-size: 12px;
+  }
+}

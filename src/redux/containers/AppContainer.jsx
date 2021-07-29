@@ -1,7 +1,9 @@
 import { connect } from 'react-redux'
 import AppContainer from 'uies/AppContainer'
 
-const mapStateToProps = () => ({})
+const mapStateToProps = (state) => ({
+  requestStatus: state.requestStatusReducer,
+})
 
 const mapDispatchToProps = () => ({})
 

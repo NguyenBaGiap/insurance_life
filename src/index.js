@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'aos/dist/aos.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import 'react-widgets/styles.css'
 
 const App = withRouter(AppContainer)
 

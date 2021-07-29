@@ -1,20 +1,12 @@
 import React from 'react'
-import { Field } from 'redux-form'
+import { Field, reduxForm } from 'redux-form'
 import { required, emailFormat } from 'utilities/validate'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
-import 'static/styles/_reg_step_0.scss'
 
-function CustomerRegisterForm({ handleSubmit }) {
-  const handleSubmitUI = async (values) => {
-    await handleSubmit(values)
-  }
+function RegisterForm({ handleSubmit }) {
   return (
-    <form
-      autoComplete="off"
-      className="container mt-5"
-      onSubmit={handleSubmitUI}
-    >
+    <form autoComplete="off" className="container mt-5" onSubmit={handleSubmit}>
       <div className="row">
         <div className="col-md-12 col-sm-12 title-form pb-3 pt-3">
           <h3>Thông tin khách hàng</h3>
@@ -93,4 +85,6 @@ function CustomerRegisterForm({ handleSubmit }) {
     </form>
   )
 }
-export default CustomerRegisterForm
+export default reduxForm({
+  form: 'RegisterForm',
+})(RegisterForm)
