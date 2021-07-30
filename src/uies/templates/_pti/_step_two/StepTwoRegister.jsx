@@ -1,12 +1,12 @@
 import React from 'react'
-import StepOneForm from 'uies/forms/StepOneForm'
+import StepTwoForm from 'uies/forms/_pti/StepTwoForm'
 import 'static/styles/_form.scss'
 
-export default class StepOneRegister extends React.Component {
+export default class StepTwoRegister extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <StepOneForm
+        <StepTwoForm
           initialValues={this.props.initialValues}
           onSubmit={this.props.onSubmit}
         />

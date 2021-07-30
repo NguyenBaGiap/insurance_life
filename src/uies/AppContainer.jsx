@@ -9,15 +9,15 @@ const CustomerConfirmOtp = React.lazy(() =>
   import('redux/containers/_otp/CustomerConfirmOTP')
 )
 const StepZeroRegister = React.lazy(() =>
-  import('redux/containers/_step_zero/StepZeroRegister')
+  import('redux/containers/_pti/_step_zero/StepZeroRegister')
 )
 
 const StepOneRegister = React.lazy(() =>
-  import('redux/containers/_step_one/StepOneRegister')
+  import('redux/containers/_pti/_step_one/StepOneRegister')
 )
 
 const StepTwoRegister = React.lazy(() =>
-  import('redux/containers/_step_two/StepTwoRegister')
+  import('redux/containers/_pti/_step_two/StepTwoRegister')
 )
 
 class AppContainer extends React.Component {

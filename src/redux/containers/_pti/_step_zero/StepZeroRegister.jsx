@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { submitRegister } from 'redux/actions/registerActions'
 
-import StepZeroRegister from 'uies/templates/_step_zero/StepZeroRegister'
+import StepZeroRegister from 'uies/templates/_pti/_step_zero/StepZeroRegister'
 
 const mapStateToProps = () => ({
   initialValues: {},

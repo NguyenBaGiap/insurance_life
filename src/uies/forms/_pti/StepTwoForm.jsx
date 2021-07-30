@@ -4,18 +4,16 @@ import { required } from 'utilities/validate'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
+import SimpleCheckBoxField from '../../components/_field/SimpleCheckBoxField'
 
 function StepTwoForm({ handleSubmit }) {
-  const minHeight = {
-    minHeight: 120,
-  }
   return (
     <form autoComplete="off" className="container mt-5" onSubmit={handleSubmit}>
       <div className="row">
         <div className="col-md-12 col-sm-12 title-form pb-3 pt-3">
           <h3>Chọn gói bảo hiểm</h3>
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3" style={minHeight}>
+        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
           <Field
             name="insurancePackage"
             label="Gói bảo hiểm"
@@ -30,7 +28,7 @@ function StepTwoForm({ handleSubmit }) {
             ]}
           />
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3" style={minHeight}>
+        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
           <Field
             name="dateActive"
             label="Ngày hiệu lực"
@@ -39,14 +37,21 @@ function StepTwoForm({ handleSubmit }) {
             required
           />
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3" style={minHeight}>
+        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
           <Field
             name="mobileNumber"
             label="Tổng số tiền"
             type="text"
             validate={[]}
-            //loading
+            disabled
             component={SimpleTextField}
+          />
+        </div>
+        <div className="col-md-12 col-sm-12 pt-sm-3 pt-md-3">
+          <Field
+            name="checkbox"
+            component={SimpleCheckBoxField}
+            label="Xuất hóa đơn VAT"
           />
         </div>
         <div className="col-md-12 col-sm-12 btn-action">
