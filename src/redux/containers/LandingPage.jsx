@@ -6,7 +6,7 @@ import {
   insurancePackage,
   customerComment,
   footer,
-} from 'utilities/constants'
+} from 'utilities/initialHomePage'
 
 const mapStateToProps = () => ({
   initialValues: {

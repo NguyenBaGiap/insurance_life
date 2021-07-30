@@ -2,12 +2,12 @@
 
 .insurance-follow {
   margin-top: 100px ;
-  background-image: url("../../static/img/email-follow.svg");
+  //background-image: url("../../static/img/email-follow.svg");
   padding: 6rem;
   @include MAX_768 {
     padding: 3rem;
   }
-  //background: linear-gradient(84.68deg, #1D4289 0%, #00B74F 99.12%);
+  background: linear-gradient(84.68deg, #1D4289 0%, #00B74F 99.12%);
   .follow-title {
     font-weight: bold;
     font-size: 32px;

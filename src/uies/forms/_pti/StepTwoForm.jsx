@@ -1,12 +1,18 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { required } from 'utilities/validate'
+import { PACKAGE_OPTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
-import SimpleCheckBoxField from '../../components/_field/SimpleCheckBoxField'
+import SimpleCheckBoxField from 'uies/components/_field/SimpleCheckBoxField'
+import { useHistory } from 'react-router'
 
 function StepTwoForm({ handleSubmit }) {
+  const history = useHistory()
+  const handleBackStep = () => {
+    history.goBack()
+  }
   return (
     <form autoComplete="off" className="container mt-5" onSubmit={handleSubmit}>
       <div className="row">
@@ -21,11 +27,7 @@ function StepTwoForm({ handleSubmit }) {
             //loading
             required
             component={SimpleSelectField}
-            selectableValues={[
-              { value: 'gold', label: 'Gói vàng' },
-              { value: 'silver', label: 'Gói bạc' },
-              { value: 'diamond', label: 'Gói kim cương' },
-            ]}
+            selectableValues={PACKAGE_OPTION}
           />
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
@@ -55,7 +57,11 @@ function StepTwoForm({ handleSubmit }) {
           />
         </div>
         <div className="col-md-12 col-sm-12 btn-action">
-          <button type="button" className="btn-back mr-3">
+          <button
+            type="button"
+            className="btn-back mr-3"
+            onClick={handleBackStep}
+          >
             Quay lại
           </button>
           <button type="submit" className="btn-submit">

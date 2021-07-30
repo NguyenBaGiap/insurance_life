@@ -1,6 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { required, emailFormat } from 'utilities/validate'
+import { RELATIONSHIP_OPTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 
@@ -69,11 +70,7 @@ function StepZeroForm({ handleSubmit }) {
             //loading
             required
             component={SimpleSelectField}
-            selectableValues={[
-              { value: 'chocolate', label: 'Chocolate' },
-              { value: 'strawberry', label: 'Strawberry' },
-              { value: 'vanilla', label: 'Vanilla' },
-            ]}
+            selectableValues={RELATIONSHIP_OPTION}
           />
         </div>
         <div className="col-md-12 col-sm-12 btn-action">

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { emailFormat, required } from 'utilities/validate'
+import { GENDER_OPTION, RELATIONSHIP_OPTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
@@ -67,11 +68,7 @@ function StepOneForm({ handleSubmit }) {
             //loading
             required
             component={SimpleSelectField}
-            selectableValues={[
-              { value: 'chocolate', label: 'Chocolate' },
-              { value: 'strawberry', label: 'Strawberry' },
-              { value: 'vanilla', label: 'Vanilla' },
-            ]}
+            selectableValues={RELATIONSHIP_OPTION}
           />
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
@@ -93,10 +90,7 @@ function StepOneForm({ handleSubmit }) {
             //loading
             required
             component={SimpleSelectField}
-            selectableValues={[
-              { value: '0', label: 'Nữ' },
-              { value: '1', label: 'Nam' },
-            ]}
+            selectableValues={GENDER_OPTION}
           />
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">

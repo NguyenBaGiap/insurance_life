@@ -4,24 +4,51 @@
     font-size: 14px;
     box-shadow: unset !important;
     border-radius: 12px;
-  }
-  .rw-select-bordered {
-    border-left: none;
-    &:hover {
-      background: none;
+    .rw-widget-input {
+      box-shadow: none;
     }
+    .rw-select-bordered {
+      border-left: none;
+      &:hover {
+        background: none;
+      }
+      .rw-btn-select {
+        background-image: url("../img/calendar.icon.svg");
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: inherit;
+        background-size: 1.5rem;
+        span {
+          display: none;
+        }
+      }
+    }
+
   }
   .rw-popup-container {
     width: 100%;
   }
   .error-date-picker {
     .rw-widget-picker {
-      border: 2px solid #E10600
+      border: 2px solid #E10600;
+      .rw-btn-select {
+        background-image: url("../img/icon-x.svg");
+        background-size: 1rem;
+      }
+      .rw-widget-input {
+        &::placeholder {
+          color: #E10600;
+        }
+      }
     }
   }
   .success-date-picker {
     .rw-widget-picker {
-      border: 2px solid #00B74F
+      border: 2px solid #00B74F;
+      .rw-btn-select {
+        background-image: url("../img/icon-y.svg");
+        background-size: 1rem;
+      }
     }
   }
   label {
