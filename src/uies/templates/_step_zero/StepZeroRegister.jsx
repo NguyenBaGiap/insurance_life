@@ -1,11 +1,12 @@
 import React from 'react'
-import ClainInformationForm from 'uies/forms/ClaimInformationForm'
+import StepZeroForm from 'uies/forms/StepZeroForm'
+import 'static/styles/_form.scss'
 
-export default class ClaimInformation extends React.Component {
+export default class StepZeroRegister extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <ClainInformationForm
+        <StepZeroForm
           initialValues={this.props.initialValues}
           onSubmit={this.props.onSubmit}
         />

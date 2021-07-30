@@ -17,6 +17,7 @@ export default function SimpleSelectField(props) {
       </label>
       <Select
         {...props}
+        placeholder=""
         value={props.input.value}
         onChange={(value) => props.input.onChange(value)}
         onBlur={() => props.input.onBlur(props.input.value)}

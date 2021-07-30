@@ -4,9 +4,8 @@ import { emailFormat, required } from 'utilities/validate'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
-import 'static/styles/_form.scss'
 
-function ClainInformationForm({ handleSubmit }) {
+function StepOneForm({ handleSubmit }) {
   return (
     <form autoComplete="off" className="container mt-5" onSubmit={handleSubmit}>
       <div className="row">
@@ -157,5 +156,5 @@ function ClainInformationForm({ handleSubmit }) {
   )
 }
 export default reduxForm({
-  form: 'ClainInformationForm',
-})(ClainInformationForm)
+  form: 'StepOneForm',
+})(StepOneForm)

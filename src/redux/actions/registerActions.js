@@ -10,9 +10,41 @@ export const submitRegister = (formValue) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
       console.log(JSON.stringify(formValue, 0, 2))
-      await sleep(5000)
+      await sleep(4000)
       dispatch(baseActions.genRequestFinishAction())
-      dispatch(push('/'))
+      dispatch(push('/pti/register/customer/otp'))
+    } catch (error) {
+      console.log(error)
+    } finally {
+      dispatch(baseActions.genRequestFinishAction())
+    }
+  }
+}
+
+export const submitRegisterStep1 = (formValue) => {
+  return async (dispatch) => {
+    try {
+      dispatch(baseActions.genRequestLoadingAction())
+      console.log(JSON.stringify(formValue, 0, 2))
+      await sleep(3000)
+      dispatch(baseActions.genRequestFinishAction())
+      dispatch(push('/pti/register/step2'))
+    } catch (error) {
+      console.log(error)
+    } finally {
+      dispatch(baseActions.genRequestFinishAction())
+    }
+  }
+}
+
+export const submitRegisterStep2 = (formValue) => {
+  return async (dispatch) => {
+    try {
+      dispatch(baseActions.genRequestLoadingAction())
+      console.log(JSON.stringify(formValue, 0, 2))
+      await sleep(3000)
+      dispatch(baseActions.genRequestFinishAction())
+      dispatch(push('/pti/register/step3'))
     } catch (error) {
       console.log(error)
     } finally {

@@ -4,14 +4,17 @@ import { required, emailFormat } from 'utilities/validate'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 
-function RegisterForm({ handleSubmit }) {
+function StepZeroForm({ handleSubmit }) {
+  const styleCustom = {
+    minHeight: 120,
+  }
   return (
     <form autoComplete="off" className="container mt-5" onSubmit={handleSubmit}>
       <div className="row">
         <div className="col-md-12 col-sm-12 title-form pb-3 pt-3">
           <h3>Thông tin khách hàng</h3>
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3" style={styleCustom}>
           <Field
             name="fullName"
             label="Tên khách hàng"
@@ -22,7 +25,7 @@ function RegisterForm({ handleSubmit }) {
             component={SimpleTextField}
           />
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3" style={styleCustom}>
           <Field
             name="pid"
             label="Số Hộ chiếu / CMND"
@@ -33,7 +36,7 @@ function RegisterForm({ handleSubmit }) {
             component={SimpleTextField}
           />
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3" style={styleCustom}>
           <Field
             name="mobileNumber"
             label="Số điện thoại"
@@ -44,7 +47,7 @@ function RegisterForm({ handleSubmit }) {
             component={SimpleTextField}
           />
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3" style={styleCustom}>
           <Field
             name="email"
             label="Địa chỉ email"
@@ -58,7 +61,7 @@ function RegisterForm({ handleSubmit }) {
         <div className="col-md-12 col-sm-12 title-form pt-3 pb-3">
           <h3>Bạn muốn mua bảo hiểm cho</h3>
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3" style={styleCustom}>
           <Field
             name="relationshipWithInsurer"
             label="Mối quan hệ với người yêu cầu"
@@ -86,5 +89,5 @@ function RegisterForm({ handleSubmit }) {
   )
 }
 export default reduxForm({
-  form: 'RegisterForm',
-})(RegisterForm)
+  form: 'StepZeroForm',
+})(StepZeroForm)

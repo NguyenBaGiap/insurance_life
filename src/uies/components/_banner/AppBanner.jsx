@@ -2,8 +2,13 @@ import React from 'react'
 import AppHeader from 'uies/components/_header/AppHeader'
 import family from 'static/img/VPB-bg.png'
 import 'static/styles/_banner.scss'
+import { useHistory } from 'react-router'
 
 function AppBanner() {
+  const history = useHistory()
+  const handleRouting = () => {
+    history.push('/pti/register/step0')
+  }
   return (
     <div className="insurance-banner">
       <AppHeader />
@@ -22,7 +27,7 @@ function AppBanner() {
                 <span>Tất cả đều trong tầm tay khi bạn có sức khỏe...</span>
               </div>
               <div className="register-button">
-                <button type="button" className="btn">
+                <button type="button" className="btn" onClick={handleRouting}>
                   Đăng ký ngay
                 </button>
               </div>

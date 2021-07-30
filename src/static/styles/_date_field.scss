@@ -5,9 +5,8 @@
     box-shadow: unset !important;
     border-radius: 12px;
   }
-  .rw-input-addon {
+  .rw-select-bordered {
     border-left: none;
-    margin-right: 10px;
     &:hover {
       background: none;
     }
@@ -16,10 +15,14 @@
     width: 100%;
   }
   .error-date-picker {
-
+    .rw-widget-picker {
+      border: 2px solid #E10600
+    }
   }
   .success-date-picker {
-
+    .rw-widget-picker {
+      border: 2px solid #00B74F
+    }
   }
   label {
     font-weight: 500;

@@ -1,18 +1,19 @@
 import { connect } from 'react-redux'
+import { submitRegister } from 'redux/actions/registerActions'
 
-import ClaimInformation from 'uies/templates/_info/ClaimInformation'
+import StepZeroRegister from 'uies/templates/_step_zero/StepZeroRegister'
 
 const mapStateToProps = () => ({
   initialValues: {},
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
   onSubmit: (values) => {
-    console.log('step1 submit', values)
+    dispatch(submitRegister(values))
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClaimInformation)
+export default connect(mapStateToProps, mapDispatchToProps)(StepZeroRegister)
 
 // {
 //     fullName: '23232323',
