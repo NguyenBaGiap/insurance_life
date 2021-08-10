@@ -137,7 +137,7 @@ function StepOneForm({ handleSubmit }) {
             component={SimpleTextField}
           />
         </div>
-        <div className="col-md-12 col-sm-12 btn-action">
+        <div className="col-md-12 col-sm-12 btn-action pb-5">
           <button type="button" className="btn-back mr-3">
             Quay lại
           </button>
