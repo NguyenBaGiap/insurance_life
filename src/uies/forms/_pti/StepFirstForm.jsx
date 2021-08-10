@@ -6,7 +6,7 @@ import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
 
-function StepOneForm({ handleSubmit }) {
+function StepFirstForm({ handleSubmit }) {
   return (
     <form autoComplete="off" className="container mt-5" onSubmit={handleSubmit}>
       <div className="row">
@@ -150,5 +150,5 @@ function StepOneForm({ handleSubmit }) {
   )
 }
 export default reduxForm({
-  form: 'StepOneForm',
-})(StepOneForm)
+  form: 'StepFirstForm',
+})(StepFirstForm)

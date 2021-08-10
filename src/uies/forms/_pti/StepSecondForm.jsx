@@ -8,7 +8,7 @@ import SimpleDateField from 'uies/components/_field/SimpleDateField'
 import SimpleCheckBoxField from 'uies/components/_field/SimpleCheckBoxField'
 import { useHistory } from 'react-router'
 
-function StepTwoForm({ handleSubmit }) {
+function StepSecondForm({ handleSubmit }) {
   const history = useHistory()
   const handleBackStep = () => {
     history.goBack()
@@ -73,5 +73,5 @@ function StepTwoForm({ handleSubmit }) {
   )
 }
 export default reduxForm({
-  form: 'StepTwoForm',
-})(StepTwoForm)
+  form: 'StepSecondForm',
+})(StepSecondForm)

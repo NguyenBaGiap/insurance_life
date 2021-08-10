@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { submitRegisterStep1 } from 'redux/actions/registerActions'
-import StepOneRegister from 'uies/templates/_pti/_step_one/StepOneRegister'
+import StepFirstRegister from 'uies/templates/_pti/StepFirstRegister'
 
 const mapStateToProps = () => ({
   initialValues: {},
@@ -12,4 +12,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(StepOneRegister)
+export default connect(mapStateToProps, mapDispatchToProps)(StepFirstRegister)

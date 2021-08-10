@@ -9,16 +9,18 @@ const CustomerConfirmOtp = React.lazy(() =>
   import('redux/containers/_otp/CustomerConfirmOTP')
 )
 const StepZeroRegister = React.lazy(() =>
-  import('redux/containers/_pti/_step_zero/StepZeroRegister')
+  import('redux/containers/_pti/StepZeroRegister')
 )
 
 const StepOneRegister = React.lazy(() =>
-  import('redux/containers/_pti/_step_one/StepOneRegister')
+  import('redux/containers/_pti/StepFirstRegister')
 )
 
 const StepTwoRegister = React.lazy(() =>
-  import('redux/containers/_pti/_step_two/StepTwoRegister')
+  import('redux/containers/_pti/StepSecondRegister')
 )
+
+const PaymentSuccess = React.lazy(() => import('uies/templates/PaymentSuccess'))
 
 class AppContainer extends React.Component {
   componentDidMount() {
@@ -43,6 +45,7 @@ class AppContainer extends React.Component {
           <Route path="/pti/register/step0" component={StepZeroRegister} />
           <Route path="/pti/register/step1" component={StepOneRegister} />
           <Route path="/pti/register/step2" component={StepTwoRegister} />
+          <Route path="/register/payment/success" component={PaymentSuccess} />
           <Route
             path="/pti/register/customer/otp"
             component={CustomerConfirmOtp}
