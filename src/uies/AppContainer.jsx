@@ -26,9 +26,9 @@ class AppContainer extends React.Component {
       easing: 'ease',
       duration: 1000,
       delay: 200,
-      disable() {
-        return window.innerWidth < 621
-      },
+      // disable() {
+      //   return window.innerWidth < 621
+      // },
     })
     window.onload = function () {
       AOS.refresh()

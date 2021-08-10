@@ -1,0 +1,17 @@
+@import "mixin";
+
+.insurance-banner {
+  background: linear-gradient(84.68deg, #1D4289 0%, #00B74F 99.12%);
+  .contents {
+    margin: 40px auto;
+    padding-left: 7.5%;
+    font-weight: bold;
+    font-size: x-large;
+    line-height: 160%;
+    color: #FFFFFF;
+    @include MAX_768 {
+      padding-left: unset;
+      text-align: center;
+    }
+  }
+}
