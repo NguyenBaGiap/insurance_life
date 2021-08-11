@@ -3,6 +3,7 @@ import { Field, FieldArray, reduxForm } from 'redux-form'
 import SimpleNumberField from 'uies/components/_field/SimpleNumberField'
 import Countdown from 'react-countdown'
 
+const now = Date.now()
 const renderItems = ({ fields, meta: { error } }) => {
   return (
     <React.Fragment>
@@ -21,6 +22,13 @@ const renderItems = ({ fields, meta: { error } }) => {
 }
 
 const renderCountDown = (props) => {
+  if (props.completed) {
+    return (
+      <p className="text-center pt-3" style={{ fontSize: 'medium' }}>
+        Mã OTP đã hết hiệu lực, vui lòng bấm gửi lại OTP.
+      </p>
+    )
+  }
   return (
     <p className="text-center pt-3" style={{ fontSize: 'medium' }}>
       Mã OTP sẽ hết hiệu lực trong vòng &nbsp;
@@ -51,7 +59,7 @@ class ConfirmOtpForm extends React.Component {
         </div>
         <div className="row">
           <div className="col-md-12 col-sm-12">
-            <Countdown date={Date.now() + 60000} renderer={renderCountDown} />
+            <Countdown date={now + 600000} renderer={renderCountDown} />
           </div>
         </div>
         <div className="row">
@@ -79,4 +87,5 @@ ConfirmOtpForm.defaultProps = {
 }
 export default reduxForm({
   form: 'ConfirmOtpForm',
+  enableReinitialize: true,
 })(ConfirmOtpForm)
