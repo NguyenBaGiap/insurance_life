@@ -21,10 +21,13 @@
   .intro-content {
     margin-top: 100px;
     .big-title {
-      font-size: 33px;
+      font-size: xx-large;
       line-height: 124%;
       display: flex;
       color: #082854;
+    }
+    .contents {
+      max-width: 65%;
     }
   }
 }

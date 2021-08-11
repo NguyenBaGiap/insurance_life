@@ -1,5 +1,4 @@
 import React from 'react'
-// import AppBanner from 'uies/components/_banner/AppBanner'
 import AppBannerContainer from 'uies/components/_banner/AppBannerContainer'
 import AppFooter from 'uies/components/_footer/AppFooter'
 import CardAdsense from 'uies/components/_adsense/CardAdsense'
@@ -14,7 +13,6 @@ export default function LandingPage({ initialValues, onSubmitEmail }) {
   return (
     <React.Fragment>
       <section id="section-header">
-        {/*<AppBanner />*/}
         <AppBannerContainer>
           <div className="container-fluid banner-home position-relative">
             <img

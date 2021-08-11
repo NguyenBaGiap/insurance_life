@@ -1,16 +1,32 @@
 import React from 'react'
-import heathyInsIcon from '../../../static/img/_intro/heathyIns.svg'
-import carInsIcon from '../../../static/img/_intro/carIns.svg'
-import houseInsIcon from '../../../static/img/_intro/houseIns.svg'
-import travelInsIcon from '../../../static/img/_intro/visitIns.svg'
-import ptiLogo from '../../../static/img/_intro/pti-logo.svg'
-import dot from '../../../static/img/_intro/dot.svg'
+import heathyInsIcon from 'static/img/_intro/heathyIns.svg'
+import carInsIcon from 'static/img/_intro/carIns.svg'
+import houseInsIcon from 'static/img/_intro/houseIns.svg'
+import travelInsIcon from 'static/img/_intro/visitIns.svg'
+import ptiLogo from 'static/img/_intro/pti-logo.svg'
+import dot from 'static/img/_intro/dot.svg'
 import 'static/styles/_ins_list.scss'
 
 const TABS = [
   {
     name: 'PTI',
     img: heathyInsIcon,
+    contents: [
+      'Ung thư',
+      'Cấy ghép nội tạng',
+      'Tăng huyết áp động mạch phổi',
+      'Đột quỵ',
+      'U não lành tính',
+      'Thay thế van tim',
+      'Suy thận',
+      'Phẫu thuật thông động mạch vành',
+      'Bệnh Parkinson',
+      'Liệt vĩnh viễn các chi',
+      'Đa xơ cứng',
+      'Bệnh gan giai đoạn cuối',
+      'Nhồi máu cơ tim lần đầu',
+      'Phẫu thuật ghép động mạch chủ',
+    ],
   },
   {
     name: 'HOUSE',
@@ -42,7 +58,7 @@ const TabComponent = ({ input: { name, img }, onClick }) => {
   )
 }
 
-const TabContent = () => {
+const TabContent = ({ title, subTitle, description, contents }) => {
   return (
     <div className="intro-content">
       <div className="container">
@@ -51,57 +67,26 @@ const TabContent = () => {
             <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
               <p className="big-title font-weight-bold text-center justify-content-center align-items-center d-flex">
                 <img className="pr-3" src={ptiLogo} alt="pti-logo" />
-                Bảo hiểm Bệnh hiểm nghèo
+                {title}
               </p>
-              <p className="sub-title text-center">
-                Nhận ngay 100% số tiền bảo hiểm khi không may mắc bệnh hiểm
-                nghèo
-              </p>
-              <p className="title-gradient text-center m-5">
-                Danh sách các bệnh hiểm nghèo được bảo hiểm
-              </p>
+              <p className="sub-title text-center">{subTitle}</p>
+              <p className="title-gradient text-center m-5">{description}</p>
             </div>
           </div>
-          <div className="col-md-4 ins-list">
-            <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
-              <p className="ins-item text-center">
-                <img className="pr-3" src={dot} alt="dot" />
-                Ung thư
-              </p>
+        </div>
+      </div>
+      <div className="container contents">
+        <div className="row">
+          {contents.map((content, index) => (
+            <div key={index} className="col-md-4 ins-list">
+              <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
+                <p className="ins-item text-left">
+                  <img className="pr-3" src={dot} alt="dot" />
+                  {content}
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="col-md-4 ins-list">
-            <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
-              <p className="ins-item text-center">
-                <img className="pr-3" src={dot} alt="dot" />
-                Ung thư
-              </p>
-            </div>
-          </div>
-          <div className="col-md-4 ins-list">
-            <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
-              <p className="ins-item text-center">
-                <img className="pr-3" src={dot} alt="dot" />
-                Ung thư
-              </p>
-            </div>
-          </div>
-          <div className="col-md-4 ins-list">
-            <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
-              <p className="ins-item text-center">
-                <img className="pr-3" src={dot} alt="dot" />
-                Ung thư
-              </p>
-            </div>
-          </div>
-          <div className="col-md-4 ins-list">
-            <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
-              <p className="ins-item text-center">
-                <img className="pr-3" src={dot} alt="dot" />
-                Ung thư
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
@@ -111,7 +96,6 @@ const TabContent = () => {
 export default function InsuranceList() {
   const [active, setActive] = React.useState('PTI')
   const handleSelectTab = (value) => () => setActive(value)
-  console.log('active', active)
   return (
     <div className="insurance-intro">
       <div className="intro-menu d-none d-md-flex align-items-center">
@@ -123,7 +107,16 @@ export default function InsuranceList() {
           </div>
         </div>
       </div>
-      {active === 'PTI' && <TabContent />}
+      <React.Fragment>
+        {active === 'PTI' && (
+          <TabContent
+            title="Bảo hiểm Bệnh hiểm nghèo"
+            subTitle="Nhận ngay 100% số tiền bảo hiểm khi không may mắc bệnh hiểm nghèo"
+            description="Danh sách các bệnh hiểm nghèo được bảo hiểm"
+            contents={TABS[0].contents}
+          />
+        )}
+      </React.Fragment>
     </div>
   )
 }
