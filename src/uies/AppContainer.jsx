@@ -38,6 +38,10 @@ const PaymentTransaction = React.lazy(() =>
   import('redux/containers/_pti/PaymentTransaction')
 )
 
+const PaymentConfirmTransaction = React.lazy(() =>
+  import('redux/containers/_pti/PaymentConfirmTransaction')
+)
+
 const PaymentSuccess = React.lazy(() =>
   import('uies/templates/_pti/_payment/PaymentSuccess')
 )
@@ -76,6 +80,10 @@ class AppContainer extends React.Component {
           <Route
             path="/pti/register/payment/transaction"
             component={PaymentTransaction}
+          />
+          <Route
+            path="/pti/register/payment/transaction-confirm"
+            component={PaymentConfirmTransaction}
           />
           <Route path="/register/payment/success" component={PaymentSuccess} />
           <Route path="/register/customer/otp" component={InitialConfirmOTP} />

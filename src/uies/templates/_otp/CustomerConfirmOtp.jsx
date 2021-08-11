@@ -4,7 +4,7 @@ import 'static/styles/_otp.scss'
 
 export default class CustomerConfirmOtp extends React.Component {
   render() {
-    const { title, onSubmit, retrySendOTP } = this.props
+    const { title, onSubmit, retrySendOTP, labelSubmit } = this.props
     return (
       <React.Fragment>
         <section className="inject-content">{this.props.children}</section>
@@ -13,6 +13,7 @@ export default class CustomerConfirmOtp extends React.Component {
             title={title}
             onSubmit={onSubmit}
             retrySendOTP={retrySendOTP}
+            labelSubmit={labelSubmit}
           />
         </section>
       </React.Fragment>

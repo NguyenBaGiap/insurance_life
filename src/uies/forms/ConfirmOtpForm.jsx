@@ -3,7 +3,7 @@ import { reduxForm } from 'redux-form'
 
 class ConfirmOtpForm extends React.Component {
   render() {
-    const { retrySendOTP, handleSubmit, title } = this.props
+    const { retrySendOTP, handleSubmit, title, labelSubmit } = this.props
     return (
       <form
         autoComplete="off"
@@ -23,7 +23,7 @@ class ConfirmOtpForm extends React.Component {
               Gửi lại OTP
             </button>
             <button type="submit" className="btn-submit">
-              Tiếp tục
+              {labelSubmit}
             </button>
           </div>
         </div>
@@ -34,6 +34,7 @@ class ConfirmOtpForm extends React.Component {
 
 ConfirmOtpForm.defaultProps = {
   title: 'Nhập mã OTP đã được gửi đến số điện thoại của bạn',
+  labelSubmit: 'Tiếp tục',
 }
 export default reduxForm({
   form: 'ConfirmOtpForm',
