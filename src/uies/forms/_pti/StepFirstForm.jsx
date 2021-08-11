@@ -6,7 +6,7 @@ import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
 
-function StepFirstForm({ handleSubmit }) {
+function StepFirstForm({ handleGoBack, handleSubmit }) {
   return (
     <form autoComplete="off" className="container mt-5" onSubmit={handleSubmit}>
       <div className="row">
@@ -139,7 +139,11 @@ function StepFirstForm({ handleSubmit }) {
           />
         </div>
         <div className="col-md-12 col-sm-12 btn-action pb-5">
-          <button type="button" className="btn-back mr-3">
+          <button
+            type="button"
+            className="btn-back mr-3"
+            onClick={handleGoBack}
+          >
             Quay lại
           </button>
           <button type="submit" className="btn-submit">

@@ -4,7 +4,9 @@ import InitialConfirmOTP from 'uies/templates/_pti/InitialConfirmOTP'
 
 const mapStateToProps = (state) => ({
   requestStatus: state.requestStatusReducer,
-  initialValues: {},
+  initialValues: {
+    items: ['', '', '', ''],
+  },
 })
 
 const mapDispatchToProps = (dispatch) => ({

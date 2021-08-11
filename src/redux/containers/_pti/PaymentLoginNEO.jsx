@@ -1,13 +1,14 @@
 import { connect } from 'react-redux'
+import { submitLoginVPBankNEO } from 'redux/actions/registerActions'
 import PaymentLoginNEO from 'uies/templates/_pti/_payment/PaymentLoginNEO'
 
 const mapStateToProps = (state) => ({
   requestStatus: state.requestStatusReducer,
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
   onSubmit: (formValues) => {
-    console.log(formValues)
+    dispatch(submitLoginVPBankNEO(formValues))
   },
 })
 

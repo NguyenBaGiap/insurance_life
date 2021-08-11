@@ -1,13 +1,14 @@
 import { connect } from 'react-redux'
+import { submitRegisterStep3 } from 'redux/actions/registerActions'
 import StepThirdRegister from 'uies/templates/_pti/StepThirdRegister'
 
 const mapStateToProps = (state) => ({
   requestStatus: state.requestStatusReducer,
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
   onSubmit: (formValues) => {
-    console.log(formValues)
+    dispatch(submitRegisterStep3(formValues))
   },
 })
 

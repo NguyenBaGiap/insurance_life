@@ -1,13 +1,14 @@
 import { connect } from 'react-redux'
+import { submitInformationPaymentTransaction } from 'redux/actions/registerActions'
 import PaymentTransaction from 'uies/templates/_pti/_payment/PaymentTransaction'
 
 const mapStateToProps = (state) => ({
   requestStatus: state.requestStatusReducer,
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
   onSubmit: (formValues) => {
-    console.log(formValues)
+    dispatch(submitInformationPaymentTransaction(formValues))
   },
 })
 

@@ -1,0 +1,13 @@
+.simple-number-filed {
+  .rw-widget-container {
+    min-height: 48px;
+    font-size: medium;
+    border-radius: 12px;
+    .rw-widget-input {
+      text-align: center;
+    }
+  }
+  .rw-select-bordered {
+    display: none;
+  }
+}

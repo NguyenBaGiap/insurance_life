@@ -60,7 +60,87 @@ export const submitRegisterStep2 = (formValue) => {
       console.log(JSON.stringify(formValue, 0, 2))
       await sleep(3000)
       dispatch(baseActions.genRequestFinishAction())
-      // dispatch(push('/pti/register/step3'))
+      dispatch(push('/pti/register/step3'))
+    } catch (error) {
+      console.log(error)
+    } finally {
+      dispatch(baseActions.genRequestFinishAction())
+    }
+  }
+}
+
+export const submitRegisterStep3 = (formValue) => {
+  return async (dispatch) => {
+    try {
+      dispatch(baseActions.genRequestLoadingAction())
+      console.log(JSON.stringify(formValue, 0, 2))
+      await sleep(3000)
+      dispatch(baseActions.genRequestFinishAction())
+      dispatch(push('/pti/register/payment/login'))
+    } catch (error) {
+      console.log(error)
+    } finally {
+      dispatch(baseActions.genRequestFinishAction())
+    }
+  }
+}
+
+export const submitLoginVPBankNEO = (formValue) => {
+  return async (dispatch) => {
+    try {
+      dispatch(baseActions.genRequestLoadingAction())
+      console.log(JSON.stringify(formValue, 0, 2))
+      await sleep(3000)
+      dispatch(baseActions.genRequestFinishAction())
+      dispatch(replace('/pti/register/payment/login-confirm'))
+    } catch (error) {
+      console.log(error)
+    } finally {
+      dispatch(baseActions.genRequestFinishAction())
+    }
+  }
+}
+
+export const submitConfirmLoginVPBankNEO = (formValue) => {
+  return async (dispatch) => {
+    try {
+      dispatch(baseActions.genRequestLoadingAction())
+      console.log(JSON.stringify(formValue, 0, 2))
+      await sleep(3000)
+      dispatch(baseActions.genRequestFinishAction())
+      dispatch(push('/pti/register/payment/transaction'))
+    } catch (error) {
+      console.log(error)
+    } finally {
+      dispatch(baseActions.genRequestFinishAction())
+    }
+  }
+}
+
+export const submitInformationPaymentTransaction = (formValue) => {
+  return async (dispatch) => {
+    try {
+      dispatch(baseActions.genRequestLoadingAction())
+      console.log(JSON.stringify(formValue, 0, 2))
+      await sleep(3000)
+      dispatch(baseActions.genRequestFinishAction())
+      dispatch(push('/pti/register/payment/transaction-confirm'))
+    } catch (error) {
+      console.log(error)
+    } finally {
+      dispatch(baseActions.genRequestFinishAction())
+    }
+  }
+}
+
+export const submitConfirmPaymentTransaction = (formValue) => {
+  return async (dispatch) => {
+    try {
+      dispatch(baseActions.genRequestLoadingAction())
+      console.log(JSON.stringify(formValue, 0, 2))
+      await sleep(3000)
+      dispatch(baseActions.genRequestFinishAction())
+      dispatch(push('/register/payment/success'))
     } catch (error) {
       console.log(error)
     } finally {

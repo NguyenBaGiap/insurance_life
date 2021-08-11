@@ -2,7 +2,7 @@ import React from 'react'
 import ConfirmOtpForm from 'uies/forms/ConfirmOtpForm'
 import 'static/styles/_otp.scss'
 
-export default class CustomerConfirmOtp extends React.Component {
+class CustomerConfirmOtp extends React.Component {
   render() {
     const { title, initialValues, onSubmit, retrySendOTP, labelSubmit } =
       this.props
@@ -22,3 +22,4 @@ export default class CustomerConfirmOtp extends React.Component {
     )
   }
 }
+export default CustomerConfirmOtp

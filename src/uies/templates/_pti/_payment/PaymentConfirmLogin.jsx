@@ -4,11 +4,12 @@ import PaymentTemplate from 'uies/templates/_pti/_payment/PaymentTemplate'
 
 class PaymentConfirmLogin extends React.Component {
   render() {
-    const { onSubmit } = this.props
+    const { initialValues, onSubmit } = this.props
     return (
       <PaymentTemplate>
         <CustomerConfirmOtp
           title="Nhập mã OTP đã được gửi đến số điện thoại của bạn để đăng nhập"
+          initialValues={initialValues}
           onSubmit={onSubmit}
         />
       </PaymentTemplate>

@@ -1,5 +1,33 @@
 import React from 'react'
-import { reduxForm } from 'redux-form'
+import { Field, FieldArray, reduxForm } from 'redux-form'
+import SimpleNumberField from 'uies/components/_field/SimpleNumberField'
+import Countdown from 'react-countdown'
+
+const renderItems = ({ fields, meta: { error } }) => {
+  return (
+    <React.Fragment>
+      {fields.map((item, index) => (
+        <Field
+          key={index}
+          name={item}
+          component={SimpleNumberField}
+          maxLength={1}
+          style={{ width: '60px', marginRight: 20 }}
+        />
+      ))}
+      {error && <span className="text-danger">{error}</span>}
+    </React.Fragment>
+  )
+}
+
+const renderCountDown = (props) => {
+  return (
+    <p className="text-center pt-3" style={{ fontSize: 'medium' }}>
+      Mã OTP sẽ hết hiệu lực trong vòng &nbsp;
+      <strong style={{ color: '#00B74F' }}>{props.seconds}</strong> &nbsp;giây
+    </p>
+  )
+}
 
 class ConfirmOtpForm extends React.Component {
   render() {
@@ -14,6 +42,19 @@ class ConfirmOtpForm extends React.Component {
           <div className="col-md-12 col-sm-12 title-form">
             <h3 className="text-center">{title}</h3>
           </div>
+        </div>
+        <div
+          className="items"
+          style={{ display: 'flex', justifyContent: 'center' }}
+        >
+          <FieldArray name="items" component={renderItems} />
+        </div>
+        <div className="row">
+          <div className="col-md-12 col-sm-12">
+            <Countdown date={Date.now() + 60000} renderer={renderCountDown} />
+          </div>
+        </div>
+        <div className="row">
           <div className="col-md-12 col-sm-12 btn-action">
             <button
               type="button"
