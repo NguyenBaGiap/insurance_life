@@ -10,7 +10,7 @@ function StepZeroForm({ handleSubmit }) {
     minHeight: 120,
   }
   return (
-    <form autoComplete="off" className="container mt-5" onSubmit={handleSubmit}>
+    <form autoComplete="off" className="container mt-3" onSubmit={handleSubmit}>
       <div className="row">
         <div className="col-md-12 col-sm-12 title-form pb-3 pt-3">
           <h3>Thông tin khách hàng</h3>

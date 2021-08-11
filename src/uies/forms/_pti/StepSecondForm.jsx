@@ -56,6 +56,9 @@ function StepSecondForm({ handleSubmit }) {
             label="Xuất hóa đơn VAT"
           />
         </div>
+        <div className="col-md-12 col-sm-12 pt-5">
+          <h3>Câu hỏi sức khỏe</h3>
+        </div>
         <div className="col-md-12 col-sm-12 btn-action">
           <button
             type="button"
