@@ -4,7 +4,13 @@ import { submitRegisterStep2 } from 'redux/actions/registerActions'
 import StepSecondRegister from 'uies/templates/_pti/StepSecondRegister'
 
 const mapStateToProps = () => ({
-  initialValues: {},
+  initialValues: {
+    insurancePackage: {
+      value: 0,
+      label: 'Gói bạc',
+    },
+    dateActive: 1627804880479,
+  },
 })
 
 const mapDispatchToProps = (dispatch) => ({

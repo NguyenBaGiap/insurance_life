@@ -22,3 +22,10 @@ export const phoneNumber = (value) =>
   value && !/^(0|[1-9][0-9]{9})$/i.test(value)
     ? 'Invalid phone number, must be 10 digits'
     : undefined
+
+export const normalizeDate = (value) => {
+  if (!value) {
+    return value
+  }
+  return new Date(value).getTime()
+}

@@ -1,27 +1,40 @@
 import React from 'react'
+import { reduxForm } from 'redux-form'
 
-export default function ConfirmOtpForm({ handleSubmit }) {
-  return (
-    <form
-      autoComplete="off"
-      className="container mt-5 form-otp"
-      onSubmit={handleSubmit}
-    >
-      <div className="row">
-        <div className="col-md-12 col-sm-12 title-form">
-          <h3 className="text-center">
-            Nhập mã OTP đã được gửi đến số điện thoại của bạn
-          </h3>
+class ConfirmOtpForm extends React.Component {
+  render() {
+    const { retrySendOTP, handleSubmit, title } = this.props
+    return (
+      <form
+        autoComplete="off"
+        className="container mt-5 form-otp"
+        onSubmit={handleSubmit}
+      >
+        <div className="row">
+          <div className="col-md-12 col-sm-12 title-form">
+            <h3 className="text-center">{title}</h3>
+          </div>
+          <div className="col-md-12 col-sm-12 btn-action">
+            <button
+              type="button"
+              className="btn-back mr-3"
+              onClick={retrySendOTP}
+            >
+              Gửi lại OTP
+            </button>
+            <button type="submit" className="btn-submit">
+              Tiếp tục
+            </button>
+          </div>
         </div>
-        <div className="col-md-12 col-sm-12 btn-action">
-          <button type="button" className="btn-back mr-3">
-            Gửi lại OTP
-          </button>
-          <button type="submit" className="btn-submit">
-            Tiếp tục
-          </button>
-        </div>
-      </div>
-    </form>
-  )
+      </form>
+    )
+  }
 }
+
+ConfirmOtpForm.defaultProps = {
+  title: 'Nhập mã OTP đã được gửi đến số điện thoại của bạn',
+}
+export default reduxForm({
+  form: 'ConfirmOtpForm',
+})(ConfirmOtpForm)

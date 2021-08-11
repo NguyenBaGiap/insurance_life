@@ -8,12 +8,18 @@ export default class StepSecondRegister extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <AppBannerStep />
-        <Stepper title="Bước 2: Chọn gói bảo hiểm" activeStep={2} />
-        <StepSecondForm
-          initialValues={this.props.initialValues}
-          onSubmit={this.props.onSubmit}
-        />
+        <section>
+          <AppBannerStep />
+        </section>
+        <section>
+          <Stepper title="Bước 2: Chọn gói bảo hiểm" activeStep={2} />
+        </section>
+        <section>
+          <StepSecondForm
+            initialValues={this.props.initialValues}
+            onSubmit={this.props.onSubmit}
+          />
+        </section>
       </React.Fragment>
     )
   }

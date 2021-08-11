@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { required } from 'utilities/validate'
+import { required, normalizeDate } from 'utilities/validate'
 import { PACKAGE_OPTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
@@ -34,6 +34,7 @@ function StepSecondForm({ handleSubmit }) {
           <Field
             name="dateActive"
             label="Ngày hiệu lực"
+            normalize={normalizeDate}
             component={SimpleDateField}
             validate={[required]}
             required

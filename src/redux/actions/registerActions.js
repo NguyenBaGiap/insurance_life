@@ -1,5 +1,6 @@
 import { push } from 'connected-react-router'
 import * as baseActions from './baseActions'
+// import moment from 'moment'
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -44,7 +45,7 @@ export const submitRegisterStep2 = (formValue) => {
       console.log(JSON.stringify(formValue, 0, 2))
       await sleep(3000)
       dispatch(baseActions.genRequestFinishAction())
-      dispatch(push('/pti/register/step3'))
+      // dispatch(push('/pti/register/step3'))
     } catch (error) {
       console.log(error)
     } finally {

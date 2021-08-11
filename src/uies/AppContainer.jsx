@@ -5,8 +5,8 @@ import Loading from 'uies/components/_loading/Loading'
 import 'static/styles/main.scss'
 
 const LandingPage = React.lazy(() => import('redux/containers/LandingPage'))
-const CustomerConfirmOtp = React.lazy(() =>
-  import('redux/containers/_otp/CustomerConfirmOTP')
+const InitialConfirmOTP = React.lazy(() =>
+  import('redux/containers/_pti/InitialConfirmOTP')
 )
 const StepZeroRegister = React.lazy(() =>
   import('redux/containers/_pti/StepZeroRegister')
@@ -46,16 +46,12 @@ class AppContainer extends React.Component {
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path="/" component={LandingPage} />
-
           <Route path="/pti/register/step0" component={StepZeroRegister} />
           <Route path="/pti/register/step1" component={StepOneRegister} />
           <Route path="/pti/register/step2" component={StepTwoRegister} />
           <Route path="/pti/register/step3" component={StepThirdRegister} />
           <Route path="/register/payment/success" component={PaymentSuccess} />
-          <Route
-            path="/pti/register/customer/otp"
-            component={CustomerConfirmOtp}
-          />
+          <Route path="/register/customer/otp" component={InitialConfirmOTP} />
           <Route component={NoMatch} />
         </Switch>
         <Loading visible={this.props.requestStatus?.isLoading} />

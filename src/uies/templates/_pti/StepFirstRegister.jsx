@@ -9,12 +9,18 @@ export default class StepFirstRegister extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <AppBannerStep />
-        <Stepper title="Bước 1: Thông tin yêu cầu bảo hiểm" activeStep={1} />
-        <StepFirstForm
-          initialValues={this.props.initialValues}
-          onSubmit={this.props.onSubmit}
-        />
+        <section className="banner-step-1">
+          <AppBannerStep />
+        </section>
+        <section className="step-1">
+          <Stepper title="Bước 1: Thông tin yêu cầu bảo hiểm" activeStep={1} />
+        </section>
+        <section className="form-step-1">
+          <StepFirstForm
+            initialValues={this.props.initialValues}
+            onSubmit={this.props.onSubmit}
+          />
+        </section>
       </React.Fragment>
     )
   }

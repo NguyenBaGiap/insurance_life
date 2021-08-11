@@ -7,6 +7,7 @@ export default function SimpleSelectField(props) {
   const {
     label,
     required,
+    disabled,
     meta: { touched, error, warning },
   } = props
   return (
@@ -19,6 +20,7 @@ export default function SimpleSelectField(props) {
         {...props}
         placeholder=""
         value={props.input.value}
+        isDisabled={disabled}
         onChange={(value) => props.input.onChange(value)}
         onBlur={() => props.input.onBlur(props.input.value)}
         options={props.selectableValues}
