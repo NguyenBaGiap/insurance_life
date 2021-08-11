@@ -4,10 +4,14 @@ import AppBannerStep from 'uies/components/_banner/AppBannerStep'
 
 class InitialConfirmOTP extends React.Component {
   render() {
-    const { onSubmit, retrySendOTP } = this.props
+    const { initialValues, onSubmit, retrySendOTP } = this.props
     return (
       <section>
-        <CustomerConfirmOtp onSubmit={onSubmit} retrySendOTP={retrySendOTP}>
+        <CustomerConfirmOtp
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+          retrySendOTP={retrySendOTP}
+        >
           <AppBannerStep />
         </CustomerConfirmOtp>
       </section>

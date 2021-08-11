@@ -1,4 +1,4 @@
-import { push } from 'connected-react-router'
+import { push, replace } from 'connected-react-router'
 import * as baseActions from './baseActions'
 // import moment from 'moment'
 
@@ -13,7 +13,22 @@ export const submitRegister = (formValue) => {
       console.log(JSON.stringify(formValue, 0, 2))
       await sleep(4000)
       dispatch(baseActions.genRequestFinishAction())
-      dispatch(push('/pti/register/customer/otp'))
+      dispatch(replace('/register/initial/otp'))
+    } catch (error) {
+      console.log(error)
+    } finally {
+      dispatch(baseActions.genRequestFinishAction())
+    }
+  }
+}
+export const submitInitialConfirmOTP = (formValue) => {
+  return async (dispatch) => {
+    try {
+      dispatch(baseActions.genRequestLoadingAction())
+      console.log(JSON.stringify(formValue, 0, 2))
+      await sleep(4000)
+      dispatch(baseActions.genRequestFinishAction())
+      dispatch(push('/pti/register/step1'))
     } catch (error) {
       console.log(error)
     } finally {

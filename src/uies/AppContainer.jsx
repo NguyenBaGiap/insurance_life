@@ -65,7 +65,8 @@ class AppContainer extends React.Component {
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path="/" component={LandingPage} />
-          <Route path="/pti/register/step0" component={StepZeroRegister} />
+          <Route path="/pti/register/initial" component={StepZeroRegister} />
+          <Route path="/register/initial/otp" component={InitialConfirmOTP} />
           <Route path="/pti/register/step1" component={StepOneRegister} />
           <Route path="/pti/register/step2" component={StepTwoRegister} />
           <Route path="/pti/register/step3" component={StepThirdRegister} />
@@ -86,7 +87,6 @@ class AppContainer extends React.Component {
             component={PaymentConfirmTransaction}
           />
           <Route path="/register/payment/success" component={PaymentSuccess} />
-          <Route path="/register/customer/otp" component={InitialConfirmOTP} />
           <Route component={NoMatch} />
         </Switch>
         <Loading visible={this.props.requestStatus?.isLoading} />

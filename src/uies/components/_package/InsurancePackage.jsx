@@ -12,6 +12,8 @@ const PackageCard = ({
     register,
     advisory,
   },
+  handleRedirectRegister,
+  handleRedirectAdvise,
 }) => (
   <div className="col-sm-12 col-md-4 px-2 ps-md-0 pb-5 pt-5 pb-md-0 d-flex justify-content-center">
     <div className=" package-item">
@@ -30,14 +32,28 @@ const PackageCard = ({
         </div>
       </div>
       <div className="action p-4 justify-content-center">
-        <button className="btn register border-0 mr-3">{register}</button>
-        <button className="btn advisory bg-white">{advisory}</button>
+        <button
+          className="btn register border-0 mr-3"
+          onClick={handleRedirectRegister}
+        >
+          {register}
+        </button>
+        <button
+          className="btn advisory bg-white"
+          onClick={handleRedirectAdvise}
+        >
+          {advisory}
+        </button>
       </div>
     </div>
   </div>
 )
 
-export default function InsurancePackage({ data: { contents } }) {
+export default function InsurancePackage({
+  data: { contents },
+  handleRedirectRegister,
+  handleRedirectAdvise,
+}) {
   return (
     <div className="insurance-package">
       <div className="container">
@@ -49,7 +65,12 @@ export default function InsurancePackage({ data: { contents } }) {
             </div>
           </div>
           {contents.map((content, index) => (
-            <PackageCard key={index} data={content} />
+            <PackageCard
+              key={index}
+              data={content}
+              handleRedirectRegister={handleRedirectRegister}
+              handleRedirectAdvise={handleRedirectAdvise}
+            />
           ))}
         </div>
       </div>

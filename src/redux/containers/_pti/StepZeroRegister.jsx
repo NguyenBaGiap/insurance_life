@@ -3,8 +3,9 @@ import { submitRegister } from 'redux/actions/registerActions'
 
 import StepZeroRegister from 'uies/templates/_pti/StepZeroRegister'
 
-const mapStateToProps = () => ({
+const mapStateToProps = (state) => ({
   initialValues: {},
+  location: state.router.location,
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -14,14 +15,3 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(StepZeroRegister)
-
-// {
-//     fullName: '23232323',
-//         pid: '23232',
-//     mobileNumber: '123131321313',
-//     email: '23424324@gmail.com',
-//     relationshipWithInsurer: {
-//     value: 'strawberry',
-//         label: 'Strawberry',
-// },
-// }

@@ -1,4 +1,5 @@
 import React from 'react'
+import family from 'static/img/VPB-bg.png'
 import AppBannerContainer from 'uies/components/_banner/AppBannerContainer'
 import AppFooter from 'uies/components/_footer/AppFooter'
 import CardAdsense from 'uies/components/_adsense/CardAdsense'
@@ -7,9 +8,15 @@ import CustomerComment from 'uies/components/_comment/CustomerComment'
 import EmailFollowForm from 'uies/forms/EmailFollowForm'
 import InsuranceList from 'uies/components/_intro/InsuranceList'
 import 'static/styles/_landing_page.scss'
-import family from 'static/img/VPB-bg.png'
 
-export default function LandingPage({ initialValues, onSubmitEmail }) {
+export default function LandingPage(props) {
+  const { initialValues, onSubmitEmail } = props
+  const handleRedirectRegister = () => {
+    props.history.push('/pti/register/initial', 'register')
+  }
+  const handleRedirectAdvise = () => {
+    props.history.push('/pti/register/initial', 'advise')
+  }
   return (
     <React.Fragment>
       <section id="section-header">
@@ -33,7 +40,11 @@ export default function LandingPage({ initialValues, onSubmitEmail }) {
                     <span>Tất cả đều trong tầm tay khi bạn có sức khỏe...</span>
                   </div>
                   <div className="register-button">
-                    <button type="button" className="btn">
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleRedirectRegister}
+                    >
                       Đăng ký ngay
                     </button>
                   </div>
@@ -57,7 +68,11 @@ export default function LandingPage({ initialValues, onSubmitEmail }) {
       </section>
 
       <section id="section-package">
-        <InsurancePackage data={initialValues.insurancePackage} />
+        <InsurancePackage
+          data={initialValues.insurancePackage}
+          handleRedirectRegister={handleRedirectRegister}
+          handleRedirectAdvise={handleRedirectAdvise}
+        />
       </section>
 
       <section id="section-comment">

@@ -65,7 +65,7 @@ const TabContent = ({ title, subTitle, description, contents }) => {
         <div className="row">
           <div className="col-md-12">
             <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">
-              <p className="big-title font-weight-bold text-center justify-content-center align-items-center d-flex">
+              <p className="big-title font-weight-bold text-center justify-content-center align-items-center">
                 <img className="pr-3" src={ptiLogo} alt="pti-logo" />
                 {title}
               </p>
