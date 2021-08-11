@@ -7,7 +7,7 @@ class ConfirmOtpForm extends React.Component {
     return (
       <form
         autoComplete="off"
-        className="container mt-5 form-otp"
+        className="container mt-4 form-otp"
         onSubmit={handleSubmit}
       >
         <div className="row">

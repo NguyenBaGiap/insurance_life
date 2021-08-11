@@ -1,19 +1,12 @@
 import React from 'react'
-import AppBannerStep from 'uies/components/_banner/AppBannerStep'
+import PaymentTemplate from 'uies/templates/_pti/_payment/PaymentTemplate'
 import paymentSuccess from 'static/img/paymentSuccess.svg'
-import Stepper from 'uies/components/_stepper/Stepper'
 
 class PaymentSuccess extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <section className="banner-payment">
-          <AppBannerStep />
-        </section>
-        <section className="step-payment">
-          <Stepper title="Bước 4: Thanh toán" activeStep={4} />
-        </section>
-        <section className="content-page">
+        <PaymentTemplate>
           <div className="img-fluid d-flex justify-content-center pt-5">
             <img src={paymentSuccess} alt="img-success" />
           </div>
@@ -26,7 +19,7 @@ class PaymentSuccess extends React.Component {
               Quý khách.
             </h4>
           </div>
-        </section>
+        </PaymentTemplate>
       </React.Fragment>
     )
   }

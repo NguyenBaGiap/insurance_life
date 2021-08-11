@@ -5,11 +5,13 @@ import Loading from 'uies/components/_loading/Loading'
 import 'static/styles/main.scss'
 
 const LandingPage = React.lazy(() => import('redux/containers/LandingPage'))
-const InitialConfirmOTP = React.lazy(() =>
-  import('redux/containers/_pti/InitialConfirmOTP')
-)
+
 const StepZeroRegister = React.lazy(() =>
   import('redux/containers/_pti/StepZeroRegister')
+)
+
+const InitialConfirmOTP = React.lazy(() =>
+  import('redux/containers/_pti/InitialConfirmOTP')
 )
 
 const StepOneRegister = React.lazy(() =>
@@ -24,8 +26,21 @@ const StepThirdRegister = React.lazy(() =>
   import('redux/containers/_pti/StepThirdRegister')
 )
 
-const PaymentSuccess = React.lazy(() => import('uies/templates/PaymentSuccess'))
+const PaymentLoginNEO = React.lazy(() =>
+  import('redux/containers/_pti/PaymentLoginNEO')
+)
 
+const PaymentConfirmLogin = React.lazy(() =>
+  import('redux/containers/_pti/PaymentConfirmLogin')
+)
+
+const PaymentTransaction = React.lazy(() =>
+  import('redux/containers/_pti/PaymentTransaction')
+)
+
+const PaymentSuccess = React.lazy(() =>
+  import('uies/templates/_pti/_payment/PaymentSuccess')
+)
 class AppContainer extends React.Component {
   componentDidMount() {
     AOS.init({
@@ -50,6 +65,18 @@ class AppContainer extends React.Component {
           <Route path="/pti/register/step1" component={StepOneRegister} />
           <Route path="/pti/register/step2" component={StepTwoRegister} />
           <Route path="/pti/register/step3" component={StepThirdRegister} />
+          <Route
+            path="/pti/register/payment/login"
+            component={PaymentLoginNEO}
+          />
+          <Route
+            path="/pti/register/payment/login-confirm"
+            component={PaymentConfirmLogin}
+          />
+          <Route
+            path="/pti/register/payment/transaction"
+            component={PaymentTransaction}
+          />
           <Route path="/register/payment/success" component={PaymentSuccess} />
           <Route path="/register/customer/otp" component={InitialConfirmOTP} />
           <Route component={NoMatch} />
