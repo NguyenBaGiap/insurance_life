@@ -13,7 +13,7 @@ const SimpleTextField = ({
     <div className="d-flex flex-column">
       <input
         {...input}
-        className="form-control border-0"
+        className="form-control border-0 text-center"
         placeholder={placeholder}
         type={type}
       />

@@ -23,6 +23,7 @@
         border-radius: 34px;
         padding: 16px;
         border: none;
+        font-weight: bold;
       }
     }
   }
@@ -34,6 +35,35 @@
     }
     @include MAX_768 {
       text-align: center;
+    }
+  }
+}
+
+.insurance-banner-mobile {
+  @include MAX_768 {
+    background-image: url("../img/banner/header_bg_mobile.png");
+    .contents {
+      margin: 0;
+    }
+    .banner-home {
+      padding-bottom: 0;
+      padding-top: 2rem;
+      .content-title {
+        text-align: center;
+        font-size: xx-large;
+      }
+    }
+    .content-text {
+      text-align: center;
+    }
+    .register-button {
+      text-align: center;
+    }
+    .image-mobile {
+      background-image: url("../img/banner/vpb_flower.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right;
     }
   }
 }

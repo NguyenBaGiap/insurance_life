@@ -1,6 +1,6 @@
 import React from 'react'
 import bannerStep from 'static/img/banner/group1.png'
-import AppBannerContainer from './AppBannerContainer'
+import AppBannerContainer from 'uies/components/_banner/AppBannerContainer'
 
 class AppBannerStep extends React.Component {
   render() {

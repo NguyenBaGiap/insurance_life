@@ -1,5 +1,6 @@
 import React from 'react'
 import family from 'static/img/VPB-bg.png'
+import familyMobile from 'static/img/banner/family_bottom_mobile.png'
 import AppBannerContainer from 'uies/components/_banner/AppBannerContainer'
 import AppFooter from 'uies/components/_footer/AppFooter'
 import CardAdsense from 'uies/components/_adsense/CardAdsense'
@@ -28,8 +29,8 @@ export default function LandingPage(props) {
               className="d-none d-md-block position-absolute mh-100 end-0"
             />
             <div className="container contents">
-              <div className="row d-flex flex-md-row flex-column-reverse">
-                <div className="col-md-6">
+              <div className="row d-flex flex-md-row ">
+                <div className="col-md-6 col-sm-12">
                   <div className="content-title text-white font-weight-bold d-flex flex-column">
                     <span>Mua bảo hiểm online</span>
                     <span>qua VPBank</span>
@@ -51,6 +52,9 @@ export default function LandingPage(props) {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="d-flex justify-content-center pt-5 d-md-none image-mobile">
+            <img src={familyMobile} alt="family" className="img-fluid" />
           </div>
         </AppBannerContainer>
       </section>
