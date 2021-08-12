@@ -9,6 +9,11 @@ import diamond from 'static/img/_package/diamond.svg'
 import user1 from 'static/img/_customer/user1.svg'
 import user2 from 'static/img/_customer/user2.svg'
 import user3 from 'static/img/_customer/user3.svg'
+import heathyInsIcon from 'static/img/_intro/heathyIns.svg'
+import houseInsIcon from 'static/img/_intro/houseIns.svg'
+import carInsIcon from 'static/img/_intro/carIns.svg'
+import travelInsIcon from 'static/img/_intro/visitIns.svg'
+import ptiLogo from 'static/img/_intro/pti-logo.svg'
 
 export const footer = {
   address: [
@@ -177,3 +182,110 @@ export const customerComment = {
     },
   ],
 }
+
+export const introduction = [
+  {
+    name: 'PTI',
+    img: heathyInsIcon,
+    title: 'Bảo hiểm Bệnh hiểm nghèo',
+    logo: ptiLogo,
+    subTitle:
+      'Nhận ngay 100% số tiền bảo hiểm khi không may mắc bệnh hiểm nghèo',
+    description: 'Danh sách các bệnh hiểm nghèo được bảo hiểm',
+    contents: [
+      'Ung thư',
+      'Cấy ghép nội tạng',
+      'Tăng huyết áp động mạch phổi',
+      'Đột quỵ',
+      'U não lành tính',
+      'Thay thế van tim',
+      'Suy thận',
+      'Phẫu thuật thông động mạch vành',
+      'Bệnh Parkinson',
+      'Liệt vĩnh viễn các chi',
+      'Đa xơ cứng',
+      'Bệnh gan giai đoạn cuối',
+      'Nhồi máu cơ tim lần đầu',
+      'Phẫu thuật ghép động mạch chủ',
+    ],
+    activeSlide: 0,
+  },
+  {
+    name: 'HOUSE',
+    img: houseInsIcon,
+    title: 'Bảo hiểm Bệnh hiểm nghèo',
+    logo: ptiLogo,
+    subTitle:
+      'Nhận ngay 100% số tiền bảo hiểm khi không may mắc bệnh hiểm nghèo',
+    description: 'Danh sách các bệnh hiểm nghèo được bảo hiểm',
+    contents: [
+      'Ung thư',
+      'Cấy ghép nội tạng',
+      'Tăng huyết áp động mạch phổi',
+      'Đột quỵ',
+      'U não lành tính',
+      'Thay thế van tim',
+      'Suy thận',
+      'Phẫu thuật thông động mạch vành',
+      'Bệnh Parkinson',
+      'Liệt vĩnh viễn các chi',
+      'Đa xơ cứng',
+      'Bệnh gan giai đoạn cuối',
+      'Nhồi máu cơ tim lần đầu',
+      'Phẫu thuật ghép động mạch chủ',
+    ],
+    activeSlide: 1,
+  },
+  {
+    name: 'CAR',
+    img: carInsIcon,
+    title: 'Bảo hiểm Bệnh hiểm nghèo',
+    logo: ptiLogo,
+    subTitle:
+      'Nhận ngay 100% số tiền bảo hiểm khi không may mắc bệnh hiểm nghèo',
+    description: 'Danh sách các bệnh hiểm nghèo được bảo hiểm',
+    contents: [
+      'Ung thư',
+      'Cấy ghép nội tạng',
+      'Tăng huyết áp động mạch phổi',
+      'Đột quỵ',
+      'U não lành tính',
+      'Thay thế van tim',
+      'Suy thận',
+      'Phẫu thuật thông động mạch vành',
+      'Bệnh Parkinson',
+      'Liệt vĩnh viễn các chi',
+      'Đa xơ cứng',
+      'Bệnh gan giai đoạn cuối',
+      'Nhồi máu cơ tim lần đầu',
+      'Phẫu thuật ghép động mạch chủ',
+    ],
+    activeSlide: 2,
+  },
+  {
+    name: 'TRAVEL',
+    img: travelInsIcon,
+    title: 'Bảo hiểm Bệnh hiểm nghèo',
+    logo: ptiLogo,
+    subTitle:
+      'Nhận ngay 100% số tiền bảo hiểm khi không may mắc bệnh hiểm nghèo',
+    description: 'Danh sách các bệnh hiểm nghèo được bảo hiểm',
+    contents: [
+      'Ung thư',
+      'Cấy ghép nội tạng',
+      'Tăng huyết áp động mạch phổi',
+      'Đột quỵ',
+      'U não lành tính',
+      'Thay thế van tim',
+      'Suy thận',
+      'Phẫu thuật thông động mạch vành',
+      'Bệnh Parkinson',
+      'Liệt vĩnh viễn các chi',
+      'Đa xơ cứng',
+      'Bệnh gan giai đoạn cuối',
+      'Nhồi máu cơ tim lần đầu',
+      'Phẫu thuật ghép động mạch chủ',
+    ],
+    activeSlide: 3,
+  },
+]

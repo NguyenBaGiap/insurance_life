@@ -2,6 +2,7 @@ import React from 'react'
 import family from 'static/img/VPB-bg.png'
 import familyMobile from 'static/img/banner/family_bottom_mobile.png'
 import AppBannerContainer from 'uies/components/_banner/AppBannerContainer'
+import InsuranceListMobile from 'uies/components/_intro/InsuranceListMobile'
 import AppFooter from 'uies/components/_footer/AppFooter'
 import CardAdsense from 'uies/components/_adsense/CardAdsense'
 import InsurancePackage from 'uies/components/_package/InsurancePackage'
@@ -61,6 +62,7 @@ export default function LandingPage(props) {
 
       <section id="section-intro">
         <InsuranceList />
+        <InsuranceListMobile />
       </section>
 
       <section id="section-benefit">
