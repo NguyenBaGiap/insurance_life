@@ -47,7 +47,7 @@ function EmailFollowForm({ handleSubmit }) {
               />
             </div>
             <div className="submit">
-              <button className="btn" type="submit">
+              <button className="btn font-weight-bold" type="submit">
                 Gửi ngay
               </button>
             </div>
