@@ -133,7 +133,7 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
             name="daoSale"
             label="Mã DAO"
             type="text"
-            validate={[required]}
+            validate={[]}
             //loading
             component={SimpleTextField}
           />

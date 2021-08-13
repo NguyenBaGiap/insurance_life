@@ -18,9 +18,12 @@ export default function CardAdsense({
               </div>
               <div className="benefit-note pt-md-5 pt-sm-3">
                 {contents.map((content, index) => (
-                  <p key={index} className="sub-title container-sm d-sm-flex">
+                  <p
+                    key={index}
+                    className="sub-title container-sm d-sm-flex align-items-start"
+                  >
                     <img
-                      className="pr-3"
+                      className="pr-3 pt-2"
                       src={content.image}
                       alt="insurance-adsense"
                     />
