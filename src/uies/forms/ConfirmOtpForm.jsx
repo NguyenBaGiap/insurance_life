@@ -3,8 +3,26 @@ import { Field, FieldArray, reduxForm } from 'redux-form'
 import SimpleNumberField from 'uies/components/_field/SimpleNumberField'
 import Countdown from 'react-countdown'
 
-const now = Date.now()
 const renderItems = ({ fields, meta: { error } }) => {
+  const inputFocus = (element) => {
+    const els = Array.from(element.target.form.elements).filter((el) => {
+      return (
+        el.tagName.toLowerCase() !== 'button' &&
+        el.getAttribute('type') !== 'button'
+      )
+    })
+    if (element.key === 'Delete' || element.key === 'Backspace') {
+      const next = element.target.tabIndex - 2
+      if (next > -1) {
+        els[next].select()
+      }
+    } else {
+      const next = element.target.tabIndex
+      if (next < fields.length) {
+        els[next].focus()
+      }
+    }
+  }
   return (
     <React.Fragment>
       {fields.map((item, index) => (
@@ -14,6 +32,8 @@ const renderItems = ({ fields, meta: { error } }) => {
           component={SimpleNumberField}
           maxLength={1}
           style={{ width: '60px', marginRight: 20 }}
+          tabIndex={`${index + 1}`}
+          onKeyUp={inputFocus}
         />
       ))}
       {error && <span className="text-danger">{error}</span>}
@@ -38,8 +58,15 @@ const renderCountDown = (props) => {
 }
 
 class ConfirmOtpForm extends React.Component {
+  state = {
+    now: Date.now(),
+  }
+  handleRetrySendOTP = async () => {
+    this.props.retrySendOTP()
+    this.setState({ now: Date.now() })
+  }
   render() {
-    const { retrySendOTP, handleSubmit, title, labelSubmit } = this.props
+    const { handleSubmit, title, labelSubmit } = this.props
     return (
       <form
         autoComplete="off"
@@ -59,7 +86,10 @@ class ConfirmOtpForm extends React.Component {
         </div>
         <div className="row">
           <div className="col-md-12 col-sm-12">
-            <Countdown date={now + 600000} renderer={renderCountDown} />
+            <Countdown
+              date={this.state.now + 10000}
+              renderer={renderCountDown}
+            />
           </div>
         </div>
         <div className="row">
@@ -67,7 +97,7 @@ class ConfirmOtpForm extends React.Component {
             <button
               type="button"
               className="btn-back mr-3"
-              onClick={retrySendOTP}
+              onClick={this.handleRetrySendOTP}
             >
               Gửi lại OTP
             </button>

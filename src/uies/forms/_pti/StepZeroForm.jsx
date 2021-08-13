@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { required, emailFormat } from 'utilities/validate'
+import { required, emailFormat, number } from 'utilities/validate'
 import { RELATIONSHIP_OPTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
@@ -57,7 +57,8 @@ class StepZeroForm extends React.Component {
               name="mobileNumber"
               label="Số điện thoại"
               type="text"
-              validate={[required]}
+              maxLength={10}
+              validate={[required, number]}
               //loading
               required
               component={SimpleTextField}

@@ -1,11 +1,15 @@
 .simple-number-filed {
+  label {
+    font-weight: 500;
+    font-size: 12px;
+  }
   .rw-widget-container {
     min-height: 48px;
     font-size: medium;
     border-radius: 12px;
-    .rw-widget-input {
-      text-align: center;
-    }
+    //.rw-widget-input {
+    //  text-align: center;
+    //}
   }
   .rw-select-bordered {
     display: none;

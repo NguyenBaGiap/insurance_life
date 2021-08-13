@@ -24,7 +24,7 @@ export default class SimpleNumberField extends React.Component {
         <NumberPicker
           {...this.props}
           disabled={disabled}
-          inputProps={{ maxLength: maxLength }}
+          inputProps={{ maxLength: maxLength, tabIndex: this.props.tabIndex }}
           onChange={(value) => input.onChange(value)}
         />
         {touched &&

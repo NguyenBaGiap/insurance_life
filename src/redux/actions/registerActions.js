@@ -10,10 +10,12 @@ export const submitRegister = (formValue) => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
-      console.log(JSON.stringify(formValue, 0, 2))
+      console.log(formValue)
       await sleep(4000)
       dispatch(baseActions.genRequestFinishAction())
-      dispatch(replace('/register/initial/otp'))
+      dispatch(
+        replace(`/register/initial/otp?mobileNumber=${formValue.mobileNumber}`)
+      )
     } catch (error) {
       console.log(error)
     } finally {
@@ -21,6 +23,20 @@ export const submitRegister = (formValue) => {
     }
   }
 }
+export const submitRetryRequestOTP = () => {
+  return async (dispatch) => {
+    try {
+      dispatch(baseActions.genRequestLoadingAction())
+      await sleep(2000)
+      dispatch(baseActions.genRequestFinishAction())
+    } catch (error) {
+      console.log(error)
+    } finally {
+      dispatch(baseActions.genRequestFinishAction())
+    }
+  }
+}
+
 export const submitInitialConfirmOTP = (formValue) => {
   return async (dispatch) => {
     try {

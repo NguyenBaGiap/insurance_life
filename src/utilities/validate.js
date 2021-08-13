@@ -13,7 +13,7 @@ export const minLength = (min) => (value) =>
   value && value.length < min ? `Must be ${min} characters or more` : undefined
 
 export const number = (value) =>
-  value && isNaN(Number(value)) ? 'Must be a number' : undefined
+  value && isNaN(Number(value)) ? 'Vui lòng nhập giá trị số' : undefined
 
 export const minValue = (min) => (value) =>
   value && value < min ? `Must be at least ${min}` : undefined
