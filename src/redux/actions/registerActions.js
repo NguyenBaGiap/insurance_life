@@ -14,7 +14,8 @@ export const submitRegister = (formValue) => {
       await sleep(4000)
       dispatch(baseActions.genRequestFinishAction())
       dispatch(
-        replace(`/register/initial/otp?mobileNumber=${formValue.mobileNumber}`)
+        // replace(`/register/initial/otp?mobileNumber=${formValue.mobileNumber}`)
+        push(`/pti/register/step1`)
       )
     } catch (error) {
       console.log(error)

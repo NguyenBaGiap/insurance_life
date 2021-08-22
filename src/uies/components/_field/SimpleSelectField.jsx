@@ -6,6 +6,7 @@ import classNames from 'classnames'
 export default function SimpleSelectField(props) {
   const {
     label,
+    placeholder,
     required,
     disabled,
     meta: { touched, error, warning },
@@ -18,7 +19,7 @@ export default function SimpleSelectField(props) {
       </label>
       <Select
         {...props}
-        placeholder=""
+        placeholder={placeholder}
         value={props.input.value}
         isDisabled={disabled}
         onChange={(value) => props.input.onChange(value)}
@@ -36,4 +37,7 @@ export default function SimpleSelectField(props) {
           (warning && <i className="text-warning">{warning}</i>))}
     </div>
   )
+}
+SimpleSelectField.defaultProps = {
+  placeholder: 'Vui lòng chọn giá trị',
 }

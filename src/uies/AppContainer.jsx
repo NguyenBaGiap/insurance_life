@@ -10,9 +10,9 @@ const StepZeroRegister = React.lazy(() =>
   import('redux/containers/_pti/StepZeroRegister')
 )
 
-const InitialConfirmOTP = React.lazy(() =>
-  import('redux/containers/_pti/InitialConfirmOTP')
-)
+// const InitialConfirmOTP = React.lazy(() =>
+//   import('redux/containers/_pti/InitialConfirmOTP')
+// )
 
 const StepOneRegister = React.lazy(() =>
   import('redux/containers/_pti/StepFirstRegister')
@@ -66,7 +66,7 @@ class AppContainer extends React.Component {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route path="/pti/register/initial" component={StepZeroRegister} />
-          <Route path="/register/initial/otp" component={InitialConfirmOTP} />
+          {/*<Route path="/register/initial/otp" component={InitialConfirmOTP} />*/}
           <Route path="/pti/register/step1" component={StepOneRegister} />
           <Route path="/pti/register/step2" component={StepTwoRegister} />
           <Route path="/pti/register/step3" component={StepThirdRegister} />

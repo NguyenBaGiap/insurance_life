@@ -1,7 +1,9 @@
 .selected-field-example {
   label {
     font-weight: 500;
-    font-size: 12px;
+    font-size: smaller;
+    text-transform: uppercase;
+    color: #B1B5C3;
   }
   .error-select {
     background-image: url("../img/icon-x.svg");

@@ -6,11 +6,18 @@ export const emailFormat = (value) =>
 export const required = (value) =>
   value || typeof value === 'number' ? undefined : 'Vui lòng nhập thông tin'
 
-export const maxLength = (max) => (value) =>
-  value && value.length > max ? `Must be ${max} characters or less` : undefined
+const maxLength = (max) => (value) =>
+  value && value.length > max
+    ? `Giá trị nhập có tối đa ${max} kí tự`
+    : undefined
 
 export const minLength = (min) => (value) =>
   value && value.length < min ? `Must be ${min} characters or more` : undefined
+
+const length = (length) => (value) =>
+  value && value.length !== length
+    ? `Giá trị phải đủ ${length} kí tự`
+    : undefined
 
 export const number = (value) =>
   value && isNaN(Number(value)) ? 'Vui lòng nhập giá trị số' : undefined
@@ -18,14 +25,19 @@ export const number = (value) =>
 export const minValue = (min) => (value) =>
   value && value < min ? `Must be at least ${min}` : undefined
 
-export const phoneNumber = (value) =>
-  value && !/^(0|[1-9][0-9]{9})$/i.test(value)
-    ? 'Invalid phone number, must be 10 digits'
-    : undefined
-
 export const normalizeDate = (value) => {
   if (!value) {
     return value
   }
   return new Date(value).getTime()
 }
+
+export const normalizePhone = (value) => {
+  if (!value) {
+    return value
+  }
+  return value.replace(/[^\d]/g, '')
+}
+
+export const maxLength10 = maxLength(10)
+export const length10 = length(10)

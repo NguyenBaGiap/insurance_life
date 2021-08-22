@@ -1,6 +1,11 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { required, emailFormat, number } from 'utilities/validate'
+import {
+  required,
+  emailFormat,
+  normalizePhone,
+  length10,
+} from 'utilities/validate'
 import { RELATIONSHIP_OPTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
@@ -18,8 +23,8 @@ class StepZeroForm extends React.Component {
         onSubmit={handleSubmit}
       >
         <div className="row">
-          <div className="col-md-12 col-sm-12 title-form pb-3 pt-3">
-            <h3>Thông tin khách hàng</h3>
+          <div className="col-md-12 col-sm-12 title-form pt-3">
+            <h3>Thông tin Người mua bảo hiểm</h3>
           </div>
           <div
             className="col-md-3 col-sm-12 pt-sm-3 pt-md-3"
@@ -56,9 +61,9 @@ class StepZeroForm extends React.Component {
             <Field
               name="mobileNumber"
               label="Số điện thoại"
+              normalize={normalizePhone}
               type="text"
-              maxLength={10}
-              validate={[required, number]}
+              validate={[required, length10]}
               //loading
               required
               component={SimpleTextField}
@@ -81,7 +86,7 @@ class StepZeroForm extends React.Component {
         </div>
         {action !== 'advise' && (
           <div className="row">
-            <div className="col-md-12 col-sm-12 title-form pt-3 pb-3">
+            <div className="col-md-12 col-sm-12 title-form">
               <h3>Bạn muốn mua bảo hiểm cho</h3>
             </div>
             <div
@@ -92,7 +97,7 @@ class StepZeroForm extends React.Component {
                 name="relationshipWithInsurer"
                 label="Mối quan hệ với người yêu cầu"
                 validate={[required]}
-                //loading
+                placeholder="Chọn người được bảo hiểm"
                 required
                 component={SimpleSelectField}
                 selectableValues={RELATIONSHIP_OPTION}

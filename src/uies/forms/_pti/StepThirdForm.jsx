@@ -7,7 +7,13 @@ import {
 } from 'utilities/constants'
 import dots from 'static/img/_intro/dot.svg'
 import editIcon from 'static/img/editIcon.svg'
-import { required, normalizeDate } from 'utilities/validate'
+import {
+  required,
+  emailFormat,
+  normalizeDate,
+  normalizePhone,
+  maxLength10,
+} from 'utilities/validate'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
@@ -15,6 +21,7 @@ import SimpleCheckBoxField from 'uies/components/_field/SimpleCheckBoxField'
 
 class StepThirdForm extends React.Component {
   state = {
+    enableEditPolicyholders: false,
     enableEditProtectedPerson: false,
     enableEditPackageIns: false,
   }
@@ -24,8 +31,15 @@ class StepThirdForm extends React.Component {
   handleAllowEditPackageIns = () => {
     this.setState({ enableEditPackageIns: true })
   }
+  handleAllowEditPolicyholders = () => {
+    this.setState({ enableEditPolicyholders: true })
+  }
   render() {
-    const { enableEditProtectedPerson, enableEditPackageIns } = this.state
+    const {
+      enableEditPolicyholders,
+      enableEditProtectedPerson,
+      enableEditPackageIns,
+    } = this.state
     const { handleSubmit } = this.props
     return (
       <form
@@ -34,7 +48,68 @@ class StepThirdForm extends React.Component {
         onSubmit={handleSubmit}
       >
         <div className="row">
-          <div className="col-md-12 col-sm-12 d-flex">
+          <div className="col-md-12 col-sm-12 title-form d-flex">
+            <h3 className="pr-3 ">Thông tin về Người mua bảo hiểm</h3>
+            <button
+              className="btn d-flex"
+              onClick={this.handleAllowEditPolicyholders}
+            >
+              <img src={editIcon} alt="edit-info" className="pr-3" />
+              Sửa thông tin
+            </button>
+          </div>
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+            <Field
+              name="policyholdersName"
+              label="Tên khách hàng"
+              type="text"
+              validate={[required]}
+              //loading
+              required
+              component={SimpleTextField}
+              disabled={!enableEditPolicyholders}
+            />
+          </div>
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+            <Field
+              name="pidUserBuy"
+              label="Số Hộ chiếu / CMND"
+              type="text"
+              validate={[required]}
+              //loading
+              required
+              component={SimpleTextField}
+              disabled={!enableEditPolicyholders}
+            />
+          </div>
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+            <Field
+              name="mobileNumberUserBuy"
+              label="Số điện thoại"
+              type="text"
+              normalize={normalizePhone}
+              validate={[required, maxLength10]}
+              //loading
+              required
+              component={SimpleTextField}
+              disabled={!enableEditPolicyholders}
+            />
+          </div>
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+            <Field
+              name="emailUserBuy"
+              label="Địa chỉ email"
+              type="text"
+              validate={[required, emailFormat]}
+              //loading
+              required
+              component={SimpleTextField}
+              disabled={!enableEditPolicyholders}
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12 col-sm-12 d-flex pt-4">
             <h3 className="pr-3">Thông tin về Người được bảo hiểm</h3>
             <button
               className="btn d-flex"
@@ -49,7 +124,7 @@ class StepThirdForm extends React.Component {
               name="relationshipWithUserBuy"
               label="Mối quan hệ với người yêu cầu"
               validate={[required]}
-              //loading
+              placeholder="Chọn người được bảo hiểm"
               required
               component={SimpleSelectField}
               selectableValues={RELATIONSHIP_OPTION}
@@ -117,7 +192,7 @@ class StepThirdForm extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-12 col-sm-12 d-flex">
+          <div className="col-md-12 col-sm-12 d-flex pt-4">
             <h3 className="pr-3">Thông tin về gói bảo hiểm</h3>
             <button
               className="btn d-flex"
