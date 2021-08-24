@@ -11,6 +11,7 @@ const PackageCard = ({
     moneyMonth,
     register,
     advisory,
+    tier,
   },
   handleRedirectRegister,
   handleRedirectAdvise,
@@ -34,13 +35,13 @@ const PackageCard = ({
       <div className="action p-4 justify-content-center">
         <button
           className="btn register border-0 mr-3"
-          onClick={handleRedirectRegister}
+          onClick={handleRedirectRegister(tier)}
         >
           {register}
         </button>
         <button
           className="btn advisory bg-white"
-          onClick={handleRedirectAdvise}
+          onClick={handleRedirectAdvise(tier)}
         >
           {advisory}
         </button>

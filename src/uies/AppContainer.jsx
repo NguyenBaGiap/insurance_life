@@ -3,6 +3,7 @@ import AOS from 'aos'
 import { Switch, Route } from 'react-router-dom'
 import Loading from 'uies/components/_loading/Loading'
 import 'static/styles/main.scss'
+import ReduxToastr from 'react-redux-toastr'
 
 const LandingPage = React.lazy(() => import('redux/containers/LandingPage'))
 
@@ -90,6 +91,15 @@ class AppContainer extends React.Component {
           <Route component={NoMatch} />
         </Switch>
         <Loading visible={this.props.requestStatus?.isLoading} />
+        <ReduxToastr
+          timeOut={5000}
+          newestOnTop={false}
+          preventDuplicates
+          position="top-center"
+          getState={(state) => state.toastr} // This is the default
+          transitionIn="fadeIn"
+          transitionOut="fadeOut"
+        />
       </Suspense>
     )
   }

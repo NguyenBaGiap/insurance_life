@@ -5,7 +5,12 @@ export default function SimpleCheckBoxField(props) {
   const { input, label } = props
   return (
     <div className="form-check-custom" id="form-check-custom">
-      <input className="form-check-input" {...input} type="checkbox" />
+      <input
+        className="form-check-input"
+        {...input}
+        type="checkbox"
+        checked={props.input.value}
+      />
       <label className="form-check-label" htmlFor="flexCheckDefault">
         {label}
       </label>

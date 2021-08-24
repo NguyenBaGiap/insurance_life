@@ -21,7 +21,7 @@ export default class StepZeroRegister extends React.Component {
           <StepZeroForm
             initialValues={this.props.initialValues}
             onSubmit={this.props.onSubmit}
-            action={this.props.location.state} // KH register or advise
+            initialState={this.props.location.state} // KH register or advise
             handleGoBack={this.handleGoBack}
           />
         </section>

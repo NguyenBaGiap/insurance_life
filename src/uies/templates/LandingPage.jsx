@@ -13,11 +13,19 @@ import 'static/styles/_landing_page.scss'
 
 export default function LandingPage(props) {
   const { initialValues, onSubmitEmail } = props
-  const handleRedirectRegister = () => {
-    props.history.push('/pti/register/initial', 'register')
+  const handleRedirectRegister = (tier) => () => {
+    const location = {
+      pathname: '/pti/register/initial',
+      state: { tier, target: 'register' },
+    }
+    props.history.push(location)
   }
-  const handleRedirectAdvise = () => {
-    props.history.push('/pti/register/initial', 'advise')
+  const handleRedirectAdvise = (tier) => () => {
+    const location = {
+      pathname: '/pti/register/initial',
+      state: { tier, target: 'advise' },
+    }
+    props.history.push(location)
   }
   return (
     <React.Fragment>
@@ -45,7 +53,7 @@ export default function LandingPage(props) {
                     <button
                       type="button"
                       className="btn"
-                      onClick={handleRedirectRegister}
+                      onClick={handleRedirectRegister()}
                     >
                       Đăng ký ngay
                     </button>

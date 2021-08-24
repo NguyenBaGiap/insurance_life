@@ -2,13 +2,7 @@ h3 {
   font-size: x-large;
   color: #082854;
 }
-//.form-group {
-//  span {
-//    background: #B1B5C3;
-//    -webkit-background-clip: text;
-//    -webkit-text-fill-color: transparent;
-//  }
-//}
+
 .btn-action {
   display: flex;
   justify-content: center;
@@ -30,3 +24,24 @@ h3 {
     color: #fff;
   }
 }
+.form-step-2 {
+  .step-2-question {
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 24px;
+    color: #697883;
+  }
+  .participation-confirm {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: #082854;
+  }
+  .custom-label-toggle {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #082854;
+  }
+}
+

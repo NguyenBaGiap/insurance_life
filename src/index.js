@@ -10,6 +10,8 @@ import 'aos/dist/aos.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import 'react-widgets/dist/css/react-widgets.css'
+import 'react-toggle/style.css'
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 
 const App = withRouter(AppContainer)
 

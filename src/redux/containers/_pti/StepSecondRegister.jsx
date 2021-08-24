@@ -10,6 +10,8 @@ const mapStateToProps = () => ({
       label: 'Gói bạc',
     },
     dateActive: 1627804880479,
+    condition: true,
+    participation: true,
   },
 })
 

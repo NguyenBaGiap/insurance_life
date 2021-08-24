@@ -1,22 +1,51 @@
 import { push, replace } from 'connected-react-router'
 import * as baseActions from './baseActions'
-// import moment from 'moment'
+import { StepOneRegisterSubmitJson } from 'models/StepOneRegisterSubmitJson'
+import { PtiRequestClient } from 'services/PtiRequestClient'
+import { toastr } from 'react-redux-toastr'
+import { CustomException } from 'services/api'
+
+const apiClient = new PtiRequestClient()
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-export const submitRegister = (formValue) => {
+export const submitRegister = (formValue, params) => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
-      console.log(formValue)
-      await sleep(4000)
-      dispatch(baseActions.genRequestFinishAction())
-      dispatch(
-        // replace(`/register/initial/otp?mobileNumber=${formValue.mobileNumber}`)
-        push(`/pti/register/step1`)
+      const searchParams = new URLSearchParams(params)
+      const submitValues = new StepOneRegisterSubmitJson(
+        formValue,
+        searchParams
       )
+      await apiClient.submitRegisterStepOne(submitValues)
+      dispatch(baseActions.genRequestFinishAction())
+      dispatch(push(`/pti/register/step1`))
+    } catch (error) {
+      console.log(error)
+      if (error instanceof CustomException) {
+        toastr.error('Có lỗi xảy ra', error.message)
+      }
+    } finally {
+      dispatch(baseActions.genRequestFinishAction())
+    }
+  }
+}
+
+export const submitAdvisory = (formValue, params) => {
+  return async (dispatch) => {
+    try {
+      dispatch(baseActions.genRequestLoadingAction())
+      const searchParams = new URLSearchParams(params)
+      const submitValues = new StepOneRegisterSubmitJson(
+        formValue,
+        searchParams
+      )
+      await apiClient.submitAdvisoryStepOne(submitValues)
+      dispatch(baseActions.genRequestFinishAction())
+      // open modal
     } catch (error) {
       console.log(error)
     } finally {
@@ -24,6 +53,7 @@ export const submitRegister = (formValue) => {
     }
   }
 }
+
 export const submitRetryRequestOTP = () => {
   return async (dispatch) => {
     try {

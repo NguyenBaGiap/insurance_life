@@ -133,6 +133,7 @@ export const insurancePackage = {
       moneyMonth: '220.000',
       register: 'Đăng ký ngay',
       advisory: 'Tư vấn',
+      tier: 3,
     },
     {
       image: gold,
@@ -143,6 +144,7 @@ export const insurancePackage = {
       moneyMonth: '330.000',
       register: 'Đăng ký ngay',
       advisory: 'Tư vấn',
+      tier: 3,
     },
     {
       image: diamond,
@@ -153,6 +155,7 @@ export const insurancePackage = {
       moneyMonth: '483.000',
       register: 'Đăng ký ngay',
       advisory: 'Tư vấn',
+      tier: 3,
     },
   ],
 }

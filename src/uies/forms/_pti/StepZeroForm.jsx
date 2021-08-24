@@ -15,7 +15,7 @@ class StepZeroForm extends React.Component {
     const styleCustom = {
       minHeight: 120,
     }
-    const { handleSubmit, handleGoBack, action } = this.props
+    const { handleSubmit, handleGoBack, initialState } = this.props
     return (
       <form
         autoComplete="off"
@@ -31,7 +31,7 @@ class StepZeroForm extends React.Component {
             style={styleCustom}
           >
             <Field
-              name="fullName"
+              name="cusName"
               label="Tên khách hàng"
               type="text"
               validate={[required]}
@@ -45,7 +45,7 @@ class StepZeroForm extends React.Component {
             style={styleCustom}
           >
             <Field
-              name="pid"
+              name="legalId"
               label="Số Hộ chiếu / CMND"
               type="text"
               validate={[required]}
@@ -59,7 +59,7 @@ class StepZeroForm extends React.Component {
             style={styleCustom}
           >
             <Field
-              name="mobileNumber"
+              name="phone"
               label="Số điện thoại"
               normalize={normalizePhone}
               type="text"
@@ -84,7 +84,7 @@ class StepZeroForm extends React.Component {
             />
           </div>
         </div>
-        {action !== 'advise' && (
+        {initialState && initialState.target !== 'advise' && (
           <div className="row">
             <div className="col-md-12 col-sm-12 title-form">
               <h3>Bạn muốn mua bảo hiểm cho</h3>
@@ -94,7 +94,7 @@ class StepZeroForm extends React.Component {
               style={styleCustom}
             >
               <Field
-                name="relationshipWithInsurer"
+                name="relationship"
                 label="Mối quan hệ với người yêu cầu"
                 validate={[required]}
                 placeholder="Chọn người được bảo hiểm"
@@ -105,7 +105,6 @@ class StepZeroForm extends React.Component {
             </div>
           </div>
         )}
-
         <div className="row">
           <div className="col-md-12 col-sm-12 btn-action pb-5">
             <button
