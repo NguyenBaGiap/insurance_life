@@ -3,8 +3,9 @@ import { Field, reduxForm } from 'redux-form'
 import {
   required,
   emailFormat,
-  normalizePhone,
+  normalizeNumber,
   length10,
+  maxLength12,
 } from 'utilities/validate'
 import { RELATIONSHIP_OPTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
@@ -12,9 +13,6 @@ import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 
 class StepZeroForm extends React.Component {
   render() {
-    const styleCustom = {
-      minHeight: 120,
-    }
     const { handleSubmit, handleGoBack, initialState } = this.props
     return (
       <form
@@ -26,10 +24,7 @@ class StepZeroForm extends React.Component {
           <div className="col-md-12 col-sm-12 title-form pt-3">
             <h3>Thông tin Người mua bảo hiểm</h3>
           </div>
-          <div
-            className="col-md-3 col-sm-12 pt-sm-3 pt-md-3"
-            style={styleCustom}
-          >
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
               name="cusName"
               label="Tên khách hàng"
@@ -40,28 +35,23 @@ class StepZeroForm extends React.Component {
               component={SimpleTextField}
             />
           </div>
-          <div
-            className="col-md-3 col-sm-12 pt-sm-3 pt-md-3"
-            style={styleCustom}
-          >
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
               name="legalId"
               label="Số Hộ chiếu / CMND"
               type="text"
-              validate={[required]}
+              validate={[required, maxLength12]}
+              normalize={normalizeNumber}
               //loading
               required
               component={SimpleTextField}
             />
           </div>
-          <div
-            className="col-md-3 col-sm-12 pt-sm-3 pt-md-3"
-            style={styleCustom}
-          >
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
               name="phone"
               label="Số điện thoại"
-              normalize={normalizePhone}
+              normalize={normalizeNumber}
               type="text"
               validate={[required, length10]}
               //loading
@@ -69,10 +59,7 @@ class StepZeroForm extends React.Component {
               component={SimpleTextField}
             />
           </div>
-          <div
-            className="col-md-3 col-sm-12 pt-sm-3 pt-md-3"
-            style={styleCustom}
-          >
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
               name="email"
               label="Địa chỉ email"
@@ -89,10 +76,7 @@ class StepZeroForm extends React.Component {
             <div className="col-md-12 col-sm-12 title-form">
               <h3>Bạn muốn mua bảo hiểm cho</h3>
             </div>
-            <div
-              className="col-md-3 col-sm-12 pt-sm-3 pt-md-3"
-              style={styleCustom}
-            >
+            <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
               <Field
                 name="relationship"
                 label="Mối quan hệ với người yêu cầu"

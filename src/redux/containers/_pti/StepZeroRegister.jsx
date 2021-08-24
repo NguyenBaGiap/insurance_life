@@ -1,19 +1,21 @@
 import { connect } from 'react-redux'
 import { submitRegister, submitAdvisory } from 'redux/actions/registerActions'
-
+import { showModalWelcome, closeModalWelcome } from 'redux/actions/popupActions'
 import StepZeroRegister from 'uies/templates/_pti/StepZeroRegister'
 
 const mapStateToProps = (state) => ({
-  initialValues: {
-    cusName: 'a',
-    email: '2@gmail.com',
-    legalId: 'a',
-    phone: '0914249694',
-  },
+  initialValues: {},
   location: state.router.location,
+  isOpenPopupWelcomeCustomer: state.popupReducer.isOpenPopupWelcomeCustomer,
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
+  openPopupWelcome: () => {
+    dispatch(showModalWelcome())
+  },
+  closePopupWelcome: () => {
+    dispatch(closeModalWelcome())
+  },
   onSubmit: (values) => {
     const params = props.location.search
     const initialState = props.location.state

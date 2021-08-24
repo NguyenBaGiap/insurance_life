@@ -20,7 +20,8 @@ export const submitRegister = (formValue, params) => {
         formValue,
         searchParams
       )
-      await apiClient.submitRegisterStepOne(submitValues)
+      const response = await apiClient.submitRegisterStepOne(submitValues)
+      console.log(response)
       dispatch(baseActions.genRequestFinishAction())
       dispatch(push(`/pti/register/step1`))
     } catch (error) {
@@ -45,11 +46,20 @@ export const submitAdvisory = (formValue, params) => {
       )
       await apiClient.submitAdvisoryStepOne(submitValues)
       dispatch(baseActions.genRequestFinishAction())
-      // open modal
+      // open notice
+      toastr.success(
+        'Chào mừng Quý Khách',
+        'Cảm ơn Quý Khách đã quan tâm đến sản phẩm của VPBank. Chúng tôi sẽ liên hệ và tư vấn cho Quý Khách trong thời gian sớm nhất.',
+        {
+          timeOut: 10000,
+          position: 'bottom-left',
+        }
+      )
     } catch (error) {
       console.log(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
+      dispatch(push('/'))
     }
   }
 }

@@ -11,7 +11,7 @@ import {
   required,
   emailFormat,
   normalizeDate,
-  normalizePhone,
+  normalizeNumber,
   maxLength10,
 } from 'utilities/validate'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
@@ -87,7 +87,7 @@ class StepThirdForm extends React.Component {
               name="mobileNumberUserBuy"
               label="Số điện thoại"
               type="text"
-              normalize={normalizePhone}
+              normalize={normalizeNumber}
               validate={[required, maxLength10]}
               //loading
               required

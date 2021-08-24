@@ -1,23 +1,23 @@
 import {
-  SHOW_MODAL_NEW_CUSTOMER,
-  CLOSE_MODAL_NEW_CUSTOMER,
+  SHOW_MODAL_WELCOME_CUSTOMER,
+  CLOSE_MODAL_WELCOME_CUSTOMER,
 } from 'redux/actions/actionTypes'
 
 const initialState = {
-  isOpenPopupNewCustomer: false,
+  isOpenPopupWelcomeCustomer: false,
 }
 
 export const popupReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SHOW_MODAL_NEW_CUSTOMER:
+    case SHOW_MODAL_WELCOME_CUSTOMER:
       return {
         ...state,
-        isOpenPopupNewCustomer: true,
+        isOpenPopupWelcomeCustomer: true,
       }
-    case CLOSE_MODAL_NEW_CUSTOMER:
+    case CLOSE_MODAL_WELCOME_CUSTOMER:
       return {
         ...state,
-        isOpenPopupNewCustomer: true,
+        isOpenPopupWelcomeCustomer: false,
       }
 
     default:

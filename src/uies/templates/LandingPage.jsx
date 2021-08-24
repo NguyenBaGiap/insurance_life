@@ -13,13 +13,15 @@ import 'static/styles/_landing_page.scss'
 
 export default function LandingPage(props) {
   const { initialValues, onSubmitEmail } = props
-  const handleRedirectRegister = (tier) => () => {
-    const location = {
-      pathname: '/pti/register/initial',
-      state: { tier, target: 'register' },
+  const handleRedirectRegister =
+    (tier = null) =>
+    () => {
+      const location = {
+        pathname: '/pti/register/initial',
+        state: { tier, target: 'register' },
+      }
+      props.history.push(location)
     }
-    props.history.push(location)
-  }
   const handleRedirectAdvise = (tier) => () => {
     const location = {
       pathname: '/pti/register/initial',

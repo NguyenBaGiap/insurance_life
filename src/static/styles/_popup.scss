@@ -1,0 +1,19 @@
+.popup-welcome {
+  .modal-content {
+    padding: 3rem;
+  }
+  .btn-close-popup {
+    min-width: 100px;
+    background: linear-gradient(85.11deg, #1D4289 0%, #00B74F 80.53%);
+    border-radius: 40px;
+    color: #ffffff;
+  }
+  .description {
+    p {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      color: #082854;
+    }
+  }
+}

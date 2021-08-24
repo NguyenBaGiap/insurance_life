@@ -32,7 +32,7 @@ export const normalizeDate = (value) => {
   return new Date(value).getTime()
 }
 
-export const normalizePhone = (value) => {
+export const normalizeNumber = (value) => {
   if (!value) {
     return value
   }
@@ -40,4 +40,5 @@ export const normalizePhone = (value) => {
 }
 
 export const maxLength10 = maxLength(10)
+export const maxLength12 = maxLength(12)
 export const length10 = length(10)
