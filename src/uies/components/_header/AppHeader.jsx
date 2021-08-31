@@ -27,7 +27,7 @@ export default function AppHeader() {
             <Link to="/customer/register" className="nav-link">
               Sản phẩm
             </Link>
-            {pathname === '/customer/register' && (
+            {pathname.includes('/register') && (
               <div className="process-active" />
             )}
           </li>

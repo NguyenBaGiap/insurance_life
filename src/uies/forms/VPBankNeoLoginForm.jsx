@@ -16,9 +16,9 @@ class VPBankNeoLoginForm extends React.Component {
           <div className="col-md-12 col-sm-12">
             <h3>Đăng nhập VPBank NEO</h3>
           </div>
-          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
-              name="username"
+              name="userName"
               label="Tên đăng nhập"
               type="text"
               validate={[required]}
@@ -27,16 +27,36 @@ class VPBankNeoLoginForm extends React.Component {
               component={SimpleTextField}
             />
           </div>
-          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
               name="password"
               label="Mật khẩu"
               type="password"
               validate={[required]}
-              //loading
               required
               component={SimpleTextField}
             />
+          </div>
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 forget-password">
+            <a
+              href="https://neo.vpbank.com.vn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Quên mật khẩu?
+            </a>
+          </div>
+          <div className="col-md-12 col-sm-12 pt-sm-3 pt-md-3 forget-password">
+            <p>
+              Bạn chưa có tài khoản? &nbsp;
+              <a
+                href="https://taikhoan.vpbank.com.vn/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Đăng ký ngay
+              </a>
+            </p>
           </div>
         </div>
         <div className="row">

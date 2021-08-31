@@ -2,10 +2,14 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import {
   required,
-  emailFormat,
+  email,
+  pid,
+  mobileNumber,
   normalizeNumber,
   length10,
   maxLength12,
+  minLength2,
+  maxLength100,
 } from 'utilities/validate'
 import { RELATIONSHIP_OPTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
@@ -29,7 +33,7 @@ class StepZeroForm extends React.Component {
               name="cusName"
               label="Tên khách hàng"
               type="text"
-              validate={[required]}
+              validate={[required, minLength2, maxLength100]}
               //loading
               required
               component={SimpleTextField}
@@ -40,7 +44,7 @@ class StepZeroForm extends React.Component {
               name="legalId"
               label="Số Hộ chiếu / CMND"
               type="text"
-              validate={[required, maxLength12]}
+              validate={[required, pid, maxLength12]}
               normalize={normalizeNumber}
               //loading
               required
@@ -53,7 +57,7 @@ class StepZeroForm extends React.Component {
               label="Số điện thoại"
               normalize={normalizeNumber}
               type="text"
-              validate={[required, length10]}
+              validate={[required, mobileNumber, length10]}
               //loading
               required
               component={SimpleTextField}
@@ -64,14 +68,14 @@ class StepZeroForm extends React.Component {
               name="email"
               label="Địa chỉ email"
               type="text"
-              validate={[required, emailFormat]}
+              validate={[required, email]}
               //loading
               required
               component={SimpleTextField}
             />
           </div>
         </div>
-        {initialState && initialState.target !== 'advise' && (
+        {(!initialState || initialState.target === 'register') && (
           <div className="row">
             <div className="col-md-12 col-sm-12 title-form">
               <h3>Bạn muốn mua bảo hiểm cho</h3>

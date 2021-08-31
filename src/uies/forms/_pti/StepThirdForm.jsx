@@ -9,10 +9,12 @@ import dots from 'static/img/_intro/dot.svg'
 import editIcon from 'static/img/editIcon.svg'
 import {
   required,
-  emailFormat,
+  email,
+  mobileNumber,
   normalizeDate,
   normalizeNumber,
   maxLength10,
+  pid,
 } from 'utilities/validate'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
@@ -75,7 +77,7 @@ class StepThirdForm extends React.Component {
               name="pidUserBuy"
               label="Số Hộ chiếu / CMND"
               type="text"
-              validate={[required]}
+              validate={[required, pid]}
               //loading
               required
               component={SimpleTextField}
@@ -88,7 +90,7 @@ class StepThirdForm extends React.Component {
               label="Số điện thoại"
               type="text"
               normalize={normalizeNumber}
-              validate={[required, maxLength10]}
+              validate={[required, mobileNumber, maxLength10]}
               //loading
               required
               component={SimpleTextField}
@@ -100,7 +102,7 @@ class StepThirdForm extends React.Component {
               name="emailUserBuy"
               label="Địa chỉ email"
               type="text"
-              validate={[required, emailFormat]}
+              validate={[required, email]}
               //loading
               required
               component={SimpleTextField}
@@ -171,7 +173,7 @@ class StepThirdForm extends React.Component {
               name="pidUserTarget"
               label="Số Hộ chiếu / CMND"
               type="text"
-              validate={[required]}
+              validate={[required, pid]}
               //loading
               required
               component={SimpleTextField}

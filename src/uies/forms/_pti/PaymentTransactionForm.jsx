@@ -10,7 +10,7 @@ class PaymentTransactionForm extends React.Component {
     return (
       <form
         autoComplete="off"
-        className="container mt-5 form-neo-login"
+        className="container mt-5 form-neo-pay"
         onSubmit={handleSubmit}
       >
         <div className="row">

@@ -19,6 +19,7 @@ export default function LandingPage(props) {
       const location = {
         pathname: '/pti/register/initial',
         state: { tier, target: 'register' },
+        search: props.location.search,
       }
       props.history.push(location)
     }
@@ -26,6 +27,7 @@ export default function LandingPage(props) {
     const location = {
       pathname: '/pti/register/initial',
       state: { tier, target: 'advise' },
+      search: props.location.search,
     }
     props.history.push(location)
   }

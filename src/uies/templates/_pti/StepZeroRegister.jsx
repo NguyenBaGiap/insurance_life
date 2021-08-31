@@ -6,6 +6,10 @@ import PopupWelCome from 'uies/components/_popup/PopupWelCome'
 import 'static/styles/_form.scss'
 
 export default class StepZeroRegister extends React.Component {
+  componentDidMount() {
+    sessionStorage.clear()
+  }
+
   handleGoBack = () => {
     this.props.history.goBack()
   }

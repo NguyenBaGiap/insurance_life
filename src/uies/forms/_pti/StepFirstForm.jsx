@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { normalizeDate, required } from 'utilities/validate'
+import { normalizeDate, pid, required } from 'utilities/validate'
 import { GENDER_OPTION, RELATIONSHIP_OPTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
@@ -15,10 +15,10 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="relationshipWithUserBuy"
+            name="relationship"
             label="Mối quan hệ với người yêu cầu"
             validate={[required]}
-            //loading
+            placeholder="Chọn người được bảo hiểm"
             required
             component={SimpleSelectField}
             selectableValues={RELATIONSHIP_OPTION}
@@ -26,7 +26,7 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="fullNameUserTarget"
+            name="cusName"
             label="Người Được bảo hiểm"
             type="text"
             validate={[required]}
@@ -37,7 +37,7 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="genderUserTarget"
+            name="gender"
             label="Giới tính"
             validate={[required]}
             //loading
@@ -48,7 +48,7 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="birthDateUserTarget"
+            name="birth"
             label="Ngày sinh"
             component={SimpleDateField}
             validate={[required]}
@@ -58,10 +58,10 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="pidUserTarget"
+            name="legalId"
             label="Số Hộ chiếu / CMND"
             type="text"
-            validate={[required]}
+            validate={[required, pid]}
             //loading
             required
             component={SimpleTextField}
@@ -69,7 +69,7 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
         </div>
         <div className="col-md-9 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="addressUserTarget"
+            name="address"
             label="Địa chỉ liên hệ"
             type="text"
             validate={[required]}

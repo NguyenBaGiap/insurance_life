@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { emailFormat } from 'utilities/validate'
+import { email } from 'utilities/validate'
 import 'static/styles/_mail_form.scss'
 
 const SimpleTextField = ({
@@ -40,7 +40,7 @@ function EmailFollowForm({ handleSubmit }) {
               <Field
                 name="email"
                 component={SimpleTextField}
-                validate={emailFormat}
+                validate={email}
                 type="email"
                 placeholder="Nhập email của bạn"
                 maxLength="50"

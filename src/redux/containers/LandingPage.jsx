@@ -8,7 +8,7 @@ import {
   footer,
 } from 'utilities/initialHomePage'
 
-const mapStateToProps = () => ({
+const mapStateToProps = (state) => ({
   initialValues: {
     benefit,
     customerPotential,
@@ -16,6 +16,7 @@ const mapStateToProps = () => ({
     customerComment,
     footer,
   },
+  location: state.router.location,
 })
 
 const mapDispatchToProps = () => ({

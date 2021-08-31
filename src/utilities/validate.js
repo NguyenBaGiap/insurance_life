@@ -1,6 +1,16 @@
-export const emailFormat = (value) =>
+export const email = (value) =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
     ? 'Email không hợp lệ.'
+    : undefined
+
+export const pid = (value) =>
+  value && !/^(?=(?:.{9}|.{12})$)[0-9]*$/i.test(value)
+    ? 'Chứng minh thư không hợp lệ.'
+    : undefined
+
+export const mobileNumber = (value) =>
+  value && !/^(0[98735][0-9]{8})$/.test(value)
+    ? 'Số điện thoại không hợp lệ'
     : undefined
 
 export const required = (value) =>
@@ -12,7 +22,7 @@ const maxLength = (max) => (value) =>
     : undefined
 
 export const minLength = (min) => (value) =>
-  value && value.length < min ? `Must be ${min} characters or more` : undefined
+  value && value.length < min ? `Giá trị nhập phải từ ${min} kí tự` : undefined
 
 const length = (length) => (value) =>
   value && value.length !== length
@@ -39,6 +49,8 @@ export const normalizeNumber = (value) => {
   return value.replace(/[^\d]/g, '')
 }
 
+export const minLength2 = minLength(2)
+export const maxLength100 = maxLength(100)
 export const maxLength10 = maxLength(10)
 export const maxLength12 = maxLength(12)
 export const length10 = length(10)

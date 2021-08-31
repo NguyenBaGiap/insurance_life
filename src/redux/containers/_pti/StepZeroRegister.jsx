@@ -4,7 +4,16 @@ import { showModalWelcome, closeModalWelcome } from 'redux/actions/popupActions'
 import StepZeroRegister from 'uies/templates/_pti/StepZeroRegister'
 
 const mapStateToProps = (state) => ({
-  initialValues: {},
+  initialValues: {
+    cusName: 'VU THI YEN',
+    email: 'yenvu@gmail.com',
+    legalId: '163040259',
+    phone: '0349728372',
+    productId: 1,
+    tier: null,
+    relationship: 'VC',
+    daoSale: null,
+  },
   location: state.router.location,
   isOpenPopupWelcomeCustomer: state.popupReducer.isOpenPopupWelcomeCustomer,
 })
@@ -15,6 +24,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   },
   closePopupWelcome: () => {
     dispatch(closeModalWelcome())
+    props.history.push('/')
   },
   onSubmit: (values) => {
     const params = props.location.search

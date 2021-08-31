@@ -1,3 +1,4 @@
+@import "mixin";
 h3 {
   font-size: x-large;
   color: #082854;
@@ -37,11 +38,33 @@ h3 {
     line-height: 24px;
     color: #082854;
   }
-  .custom-label-toggle {
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    color: #082854;
+  #box-btn-confirm {
+    .btn-confirm-custom {
+      width: 80px;
+      border: 2px solid #082854;
+      border-radius: 40px;
+      color: #082854;
+      background: #ffffff;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    .active {
+      background: linear-gradient(85.11deg, #1D4289 0%, #00B74F 80.53%);
+      color: #ffffff;
+    }
+  }
+}
+.form-neo-login {
+  .forget-password {
+    margin: auto 0;
+    @include MAX_768 {
+      display: flex;
+      justify-content: center;
+    }
+    a {
+      color: #00B74F;
+      text-decoration: none;
+    }
   }
 }
 

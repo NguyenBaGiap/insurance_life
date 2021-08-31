@@ -9,9 +9,11 @@ const mapStateToProps = () => ({
       value: 0,
       label: 'Gói bạc',
     },
-    dateActive: 1627804880479,
+    billExport: true,
+    effectiveDate: new Date(),
     condition: true,
     participation: true,
+    isLoadingAmount: false,
   },
 })
 

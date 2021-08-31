@@ -1,8 +1,15 @@
-const BASE_URL = process.env.REACT_APP_API_ENDPOINT
+// const BASE_URL = process.env.REACT_APP_API_ENDPOINT
+const BASE_URL = 'http://10.39.168.234:8080/insurance/api'
 
 export function CustomException(message) {
   this.message = message
 }
+export function ExceptionResponse({ data, status, timestamp }) {
+  this.data = data.toString()
+  this.status = status
+  this.timestamp = timestamp
+}
+
 export const simpleGetRequest = async (url, searchParamStr) => {
   const urlObj = new URL(`${BASE_URL}${url}`)
   if (searchParamStr) {
@@ -13,7 +20,7 @@ export const simpleGetRequest = async (url, searchParamStr) => {
     method: 'get',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+      Authorization: `Bearer ${window.sessionStorage.getItem('access_token')}`,
     },
   }).then(
     (response) => response,
@@ -27,7 +34,7 @@ export const simpleGetRequest = async (url, searchParamStr) => {
   const result = await response.json()
 
   if (!response.ok) {
-    throw result
+    throw new ExceptionResponse(result)
   }
 
   return result
@@ -38,7 +45,7 @@ export const simplePostRequest = async (url, data) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      Authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+      Authorization: `Bearer ${window.sessionStorage.getItem('access_token')}`,
     },
     body: JSON.stringify(data),
   }).then(
@@ -53,7 +60,7 @@ export const simplePostRequest = async (url, data) => {
   const result = await response.json()
 
   if (!response.ok) {
-    throw result
+    throw new ExceptionResponse(result)
   }
 
   return result
