@@ -42,7 +42,7 @@ class StepThirdForm extends React.Component {
       enableEditProtectedPerson,
       enableEditPackageIns,
     } = this.state
-    const { handleSubmit } = this.props
+    const { handleSubmit, handleGoBack } = this.props
     return (
       <form
         autoComplete="off"
@@ -259,7 +259,11 @@ class StepThirdForm extends React.Component {
         </div>
         <div className="row">
           <div className="col-md-12 col-sm-12 btn-action pb-5">
-            <button type="button" className="btn-back mr-3">
+            <button
+              type="button"
+              className="btn-back mr-3"
+              onClick={handleGoBack}
+            >
               Quay lại
             </button>
             <button type="submit" className="btn-submit">

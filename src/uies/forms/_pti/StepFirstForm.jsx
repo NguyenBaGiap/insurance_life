@@ -1,6 +1,11 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { normalizeDate, pid, required } from 'utilities/validate'
+import {
+  normalizeDate,
+  pid,
+  required,
+  normalizeNumber,
+} from 'utilities/validate'
 import { GENDER_OPTION, RELATIONSHIP_OPTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
@@ -60,9 +65,8 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
           <Field
             name="legalId"
             label="Số Hộ chiếu / CMND"
-            type="text"
             validate={[required, pid]}
-            //loading
+            normalize={normalizeNumber}
             required
             component={SimpleTextField}
           />

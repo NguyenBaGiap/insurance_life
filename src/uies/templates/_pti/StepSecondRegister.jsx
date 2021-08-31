@@ -8,12 +8,20 @@ export default class StepSecondRegister extends React.Component {
   state = {
     isLoadingAmount: false,
   }
+  componentDidMount() {
+    this.props.fetchInitialValues()
+  }
+
+  handleGoBack = () => {
+    this.props.history.goBack()
+  }
   handleLoadingAmount = () => {
     this.setState({
       isLoadingAmount: !this.state.isLoadingAmount,
     })
   }
   render() {
+    console.log(this.props.initialValues)
     return (
       <React.Fragment>
         <section>
@@ -28,6 +36,7 @@ export default class StepSecondRegister extends React.Component {
             onSubmit={this.props.onSubmit}
             isLoadingAmount={this.state.isLoadingAmount}
             handleLoadingAmount={this.handleLoadingAmount}
+            handleGoBack={this.handleGoBack}
           />
         </section>
       </React.Fragment>

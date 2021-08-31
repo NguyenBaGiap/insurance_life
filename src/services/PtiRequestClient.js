@@ -16,7 +16,13 @@ export class PtiRequestClient {
   }
   submitRegisterStepOne = async (formValues) => {
     return await simplePostRequest(
-      `/v1/web/non-life/customer/registry-insurance`,
+      `/v1/web/non-life/customer/step-2`,
+      formValues
+    )
+  }
+  submitRegisterStepSecond = async (formValues) => {
+    return await simplePostRequest(
+      `/v1/web/non-life/customer/step-3`,
       formValues
     )
   }

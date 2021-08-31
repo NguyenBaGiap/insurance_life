@@ -1,25 +1,28 @@
 import { connect } from 'react-redux'
+import { fetchInitialValuesForm } from 'redux/actions/actionCreator'
 import { submitRegisterStep2 } from 'redux/actions/registerActions'
 
 import StepSecondRegister from 'uies/templates/_pti/StepSecondRegister'
 
-const mapStateToProps = () => ({
-  initialValues: {
-    insurancePackage: {
-      value: 0,
-      label: 'Gói bạc',
-    },
-    billExport: true,
-    effectiveDate: new Date(),
-    condition: true,
-    participation: true,
-    isLoadingAmount: false,
-  },
+const mapStateToProps = (state) => ({
+  initialValues: state.formValuesReducer.initialValues,
 })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, props) => ({
+  fetchInitialValues: () => {
+    const initialState = props.location.state
+    const initialValues = {
+      ...initialState,
+      condition: true,
+      billExport: true,
+      effectiveDate: new Date().getTime(),
+      participation: true,
+    }
+    dispatch(fetchInitialValuesForm(initialValues))
+  },
   onSubmit: (values) => {
-    dispatch(submitRegisterStep2(values))
+    const initialState = props.location.state
+    dispatch(submitRegisterStep2(values, initialState))
   },
 })
 

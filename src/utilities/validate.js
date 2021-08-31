@@ -49,6 +49,13 @@ export const normalizeNumber = (value) => {
   return value.replace(/[^\d]/g, '')
 }
 
+export const normalizeMoney = (value) => {
+  if (!value) {
+    return value
+  }
+  return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' VNĐ'
+}
+
 export const minLength2 = minLength(2)
 export const maxLength100 = maxLength(100)
 export const maxLength10 = maxLength(10)

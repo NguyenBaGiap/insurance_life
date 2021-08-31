@@ -1,6 +1,9 @@
 import { connect } from 'react-redux'
 import { submitRegister, submitAdvisory } from 'redux/actions/registerActions'
-import { showModalWelcome, closeModalWelcome } from 'redux/actions/popupActions'
+import {
+  showModalWelcome,
+  closeModalWelcome,
+} from 'redux/actions/actionCreator'
 import StepZeroRegister from 'uies/templates/_pti/StepZeroRegister'
 
 const mapStateToProps = (state) => ({
@@ -11,7 +14,10 @@ const mapStateToProps = (state) => ({
     phone: '0349728372',
     productId: 1,
     tier: null,
-    relationship: 'VC',
+    relationship: {
+      label: 'Vợ / chồng',
+      value: 'VC',
+    },
     daoSale: null,
   },
   location: state.router.location,

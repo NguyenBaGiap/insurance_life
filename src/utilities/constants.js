@@ -1,6 +1,6 @@
 export const GENDER_OPTION = [
-  { label: 'Nữ', value: 'FEMALE' },
-  { label: 'Nam', value: 'MALE' },
+  { label: 'Nữ', value: 'NU' },
+  { label: 'Nam', value: 'NAM' },
 ]
 
 export const RELATIONSHIP_OPTION = [
@@ -31,9 +31,9 @@ export const RELATIONSHIP_OPTION = [
 ]
 
 export const PACKAGE_OPTION = [
-  { value: 1, label: 'Gói vàng' },
-  { value: 0, label: 'Gói bạc' },
-  { value: 2, label: 'Gói kim cương' },
+  { value: 5, label: 'Gói vàng' },
+  { value: 4, label: 'Gói bạc' },
+  { value: 6, label: 'Gói kim cương' },
 ]
 
 export const LIST_QUESTION = [

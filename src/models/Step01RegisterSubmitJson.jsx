@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export class Step01RegisterSubmitJson {
   constructor(formValues, initialState) {
     this.cusName = formValues.cusName
@@ -6,7 +8,7 @@ export class Step01RegisterSubmitJson {
     this.gender = formValues.gender.value
     this.daoSale = formValues.daoSale
     this.address = formValues.address
-    this.birth = formValues.birth
-    this.leadId = initialState.leadId
+    this.birth = moment(formValues.birth).format('DD-MM-yyyy')
+    this.leadId = initialState.id
   }
 }

@@ -62,10 +62,7 @@ body {
 }
 
 .redux-toastr {
-  .top-center {
+  .bottom-left, .top-right , .top-center{
     min-width: 40%;
-  }
-  .bottom-left {
-    min-width: 50%;
   }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 // import classNames from 'classnames'
 import { Field, reduxForm } from 'redux-form'
 import { asyncValidateStep02 } from 'utilities/asyncValidate'
-import { required, normalizeDate } from 'utilities/validate'
+import { required, normalizeDate, normalizeMoney } from 'utilities/validate'
 import { PACKAGE_OPTION, LIST_QUESTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
@@ -20,7 +20,7 @@ class StepSecondForm extends React.Component {
     })
   }
   render() {
-    const { handleSubmit, isLoadingAmount } = this.props
+    const { handleSubmit, handleGoBack, isLoadingAmount } = this.props
     return (
       <form
         autoComplete="off"
@@ -33,7 +33,7 @@ class StepSecondForm extends React.Component {
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
-              name="insurancePackage"
+              name="tierId"
               label="Gói bảo hiểm"
               validate={[required]}
               //loading
@@ -54,10 +54,10 @@ class StepSecondForm extends React.Component {
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
-              name="amount"
+              name="price"
               label="Tổng số tiền"
               type="text"
-              validate={[]}
+              normalize={normalizeMoney}
               disabled
               loading={isLoadingAmount}
               component={SimpleTextField}
@@ -164,7 +164,11 @@ class StepSecondForm extends React.Component {
         </div>
         <div className="row">
           <div className="col-md-12 col-sm-12 btn-action pb-5">
-            <button type="button" className="btn-back mr-3">
+            <button
+              type="button"
+              className="btn-back mr-3"
+              onClick={handleGoBack}
+            >
               Quay lại
             </button>
             <button type="submit" className="btn-submit">
@@ -180,5 +184,5 @@ class StepSecondForm extends React.Component {
 export default reduxForm({
   form: 'StepSecondForm',
   asyncValidate: asyncValidateStep02,
-  asyncChangeFields: ['amount', 'insurancePackage', 'effectiveDate'],
+  asyncChangeFields: ['price', 'tierId'],
 })(StepSecondForm)

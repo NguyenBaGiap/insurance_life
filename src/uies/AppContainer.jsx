@@ -95,7 +95,7 @@ class AppContainer extends React.Component {
           timeOut={5000}
           newestOnTop={false}
           preventDuplicates
-          position="top-center"
+          position="top-right"
           getState={(state) => state.toastr} // This is the default
           transitionIn="fadeIn"
           transitionOut="fadeOut"

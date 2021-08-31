@@ -5,6 +5,9 @@ import StepThirdForm from 'uies/forms/_pti/StepThirdForm'
 import 'static/styles/_form.scss'
 
 class StepThirdRegister extends React.Component {
+  handleGoBack = () => {
+    this.props.history.goBack()
+  }
   render() {
     return (
       <React.Fragment>
@@ -13,7 +16,10 @@ class StepThirdRegister extends React.Component {
           title="Bước 3: Xác nhận thông tin đơn bảo hiểm"
           activeStep={3}
         />
-        <StepThirdForm onSubmit={this.props.onSubmit} />
+        <StepThirdForm
+          onSubmit={this.props.onSubmit}
+          handleGoBack={this.handleGoBack}
+        />
       </React.Fragment>
     )
   }

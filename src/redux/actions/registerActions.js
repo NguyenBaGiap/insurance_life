@@ -1,6 +1,6 @@
-import { push, replace } from 'connected-react-router'
+import { push, replace, goBack } from 'connected-react-router'
 import * as baseActions from './baseActions'
-import { showModalWelcome } from 'redux/actions/popupActions'
+import { showModalWelcome } from 'redux/actions/actionCreator'
 import { Step00RegisterSubmitJson } from 'models/Step00RegisterSubmitJson'
 import { Step01RegisterSubmitJson } from 'models/Step01RegisterSubmitJson'
 import { Step02RegisterSubmitJson } from 'models/Step02RegisterSubmitJson'
@@ -14,41 +14,12 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-const commonHandleError = (error) => {
+export const commonHandleError = (error) => {
   if (error instanceof CustomException) {
     toastr.error('Có lỗi xảy ra', error.message)
   }
   if (error instanceof ExceptionResponse) {
     toastr.error('Có lỗi xảy ra', error.data)
-  }
-}
-
-export const submitRegister = (formValue, params) => {
-  return async (dispatch) => {
-    try {
-      dispatch(baseActions.genRequestLoadingAction())
-      const searchParams = new URLSearchParams(params)
-      const submitValues = new Step00RegisterSubmitJson(formValue, searchParams)
-      const {
-        status: { code },
-        data: { id, token },
-      } = await apiClient.submitRegisterStepInit(submitValues)
-      if (code === 'INS201') {
-        dispatch(showModalWelcome())
-      }
-      if (code === 'INS200') {
-        sessionStorage.setItem('access_token', token)
-        dispatch(
-          push(`/pti/register/step1`, {
-            leadId: id,
-          })
-        )
-      }
-    } catch (error) {
-      commonHandleError(error)
-    } finally {
-      dispatch(baseActions.genRequestFinishAction())
-    }
   }
 }
 
@@ -69,22 +40,36 @@ export const submitAdvisory = (formValue, params) => {
         'Cảm ơn Quý Khách đã quan tâm đến sản phẩm của VPBank. Chúng tôi sẽ liên hệ và tư vấn cho Quý Khách trong thời gian sớm nhất.',
         {
           timeOut: 10000,
-          position: 'bottom-left',
+          position: 'top-right',
         }
       )
-      dispatch(push('/'))
+      dispatch(goBack())
     }
   }
 }
 
-export const submitRetryRequestOTP = () => {
+export const submitRegister = (formValue, params) => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
-      await sleep(2000)
-      dispatch(baseActions.genRequestFinishAction())
+      const searchParams = new URLSearchParams(params)
+      const submitValues = new Step00RegisterSubmitJson(formValue, searchParams)
+      const {
+        status: { code },
+        data: { token, leadStep, ...rest },
+      } = await apiClient.submitRegisterStepInit(submitValues)
+      if (code === 'INS201') {
+        return dispatch(showModalWelcome())
+      }
+      sessionStorage.setItem('access_token', token)
+      const step = leadStep?.replace('STEP', '') || 1
+      dispatch(
+        push(`/pti/register/step${step}`, {
+          ...rest,
+        })
+      )
     } catch (error) {
-      console.log(error)
+      commonHandleError(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -96,8 +81,12 @@ export const submitRegisterStep1 = (formValue, initialState) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
       const submitValues = new Step01RegisterSubmitJson(formValue, initialState)
-      const response = await apiClient.submitRegisterStepOne(submitValues)
-      console.log(response)
+      const { data } = await apiClient.submitRegisterStepOne(submitValues)
+      dispatch(
+        push('/pti/register/step2', {
+          ...data,
+        })
+      )
     } catch (error) {
       commonHandleError(error)
     } finally {
@@ -106,17 +95,19 @@ export const submitRegisterStep1 = (formValue, initialState) => {
   }
 }
 
-export const submitRegisterStep2 = (formValue) => {
+export const submitRegisterStep2 = (formValue, initialState) => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
-      const submitValues = new Step02RegisterSubmitJson(formValue)
-      console.log(submitValues)
-
-      //await sleep(3000)
-      //dispatch(push('/pti/register/step3'))
+      const submitValues = new Step02RegisterSubmitJson(formValue, initialState)
+      const { data } = await apiClient.submitRegisterStepSecond(submitValues)
+      dispatch(
+        push('/pti/register/step3', {
+          ...data,
+        })
+      )
     } catch (error) {
-      console.log(error)
+      commonHandleError(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -195,6 +186,20 @@ export const submitConfirmPaymentTransaction = (formValue) => {
       await sleep(3000)
       dispatch(baseActions.genRequestFinishAction())
       dispatch(push('/register/payment/success'))
+    } catch (error) {
+      console.log(error)
+    } finally {
+      dispatch(baseActions.genRequestFinishAction())
+    }
+  }
+}
+
+export const submitRetryRequestOTP = () => {
+  return async (dispatch) => {
+    try {
+      dispatch(baseActions.genRequestLoadingAction())
+      await sleep(2000)
+      dispatch(baseActions.genRequestFinishAction())
     } catch (error) {
       console.log(error)
     } finally {

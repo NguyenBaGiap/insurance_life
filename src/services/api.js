@@ -1,5 +1,5 @@
-// const BASE_URL = process.env.REACT_APP_API_ENDPOINT
-const BASE_URL = 'http://10.39.168.234:8080/insurance/api'
+const BASE_URL = process.env.REACT_APP_API_ENDPOINT
+// const BASE_URL = 'http://10.39.168.234:8080/insurance/api'
 
 export function CustomException(message) {
   this.message = message

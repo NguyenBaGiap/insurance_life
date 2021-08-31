@@ -16,8 +16,12 @@ class AppBannerStep extends React.Component {
             <div className="row d-flex flex-grow-1">
               <div className="col-md-8">
                 <div className="content-title text-white font-weight-bold d-flex flex-column">
-                  <span>Đăng ký mua Bảo hiểm Bệnh hiểm nghèo</span>
-                  <span>PTI liên kết với VPBank</span>
+                  <span className="font-weight-bold">
+                    Đăng ký mua Bảo hiểm Bệnh hiểm nghèo
+                  </span>
+                  <span className="font-weight-bold">
+                    PTI liên kết với VPBank
+                  </span>
                 </div>
               </div>
             </div>

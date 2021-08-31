@@ -4,6 +4,7 @@ import { connectRouter } from 'connected-react-router'
 import { reducer as toastrReducer } from 'react-redux-toastr'
 import { requestStatusReducer } from 'redux/reducers/requestStatusReducer'
 import { popupReducer } from 'redux/reducers/popupReducer'
+import { formValuesReducer } from 'redux/reducers/formValuesReducer'
 
 export const rootReducer = (history) =>
   combineReducers({
@@ -12,4 +13,5 @@ export const rootReducer = (history) =>
     toastr: toastrReducer,
     requestStatusReducer,
     popupReducer,
+    formValuesReducer,
   })
