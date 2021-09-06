@@ -184,5 +184,7 @@ class StepSecondForm extends React.Component {
 export default reduxForm({
   form: 'StepSecondForm',
   asyncValidate: asyncValidateStep02,
-  asyncChangeFields: ['price', 'tierId'],
+  asyncChangeFields: ['price', 'tierId', 'priceId'],
+  destroyOnUnmount: true,
+  enableReinitialize: true,
 })(StepSecondForm)

@@ -53,7 +53,7 @@ export const normalizeMoney = (value) => {
   if (!value) {
     return value
   }
-  return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' VNĐ'
+  return `${value.replace(/(\\d)(?=(\\d{3})+(?!\\d))/g, '$1,')} VNĐ`
 }
 
 export const minLength2 = minLength(2)

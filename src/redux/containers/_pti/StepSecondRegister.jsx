@@ -1,4 +1,6 @@
 import { connect } from 'react-redux'
+import { push } from 'connected-react-router'
+import { Step02RegisterInitialValues } from 'models/Step02RegisterSubmitJson'
 import { fetchInitialValuesForm } from 'redux/actions/actionCreator'
 import { submitRegisterStep2 } from 'redux/actions/registerActions'
 
@@ -11,18 +13,15 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   fetchInitialValues: () => {
     const initialState = props.location.state
-    const initialValues = {
-      ...initialState,
-      condition: true,
-      billExport: true,
-      effectiveDate: new Date().getTime(),
-      participation: true,
+    if (initialState) {
+      const initialValues = new Step02RegisterInitialValues({ ...initialState })
+      dispatch(fetchInitialValuesForm(initialValues))
+    } else {
+      dispatch(push('/pti/register/initial'))
     }
-    dispatch(fetchInitialValuesForm(initialValues))
   },
   onSubmit: (values) => {
-    const initialState = props.location.state
-    dispatch(submitRegisterStep2(values, initialState))
+    dispatch(submitRegisterStep2(values))
   },
 })
 

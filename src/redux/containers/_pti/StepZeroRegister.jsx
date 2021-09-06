@@ -35,15 +35,15 @@ const mapDispatchToProps = (dispatch, props) => ({
   onSubmit: (values) => {
     const params = props.location.search
     const initialState = props.location.state
-    const isRegister = initialState.target === 'register'
+    const isAdvisory = initialState?.target === 'advise'
     const formValuesCustom = {
       ...values,
-      tier: initialState.tier,
+      tier: initialState?.tier,
     }
-    if (isRegister) {
-      dispatch(submitRegister(formValuesCustom, params))
-    } else {
+    if (isAdvisory) {
       dispatch(submitAdvisory(formValuesCustom, params))
+    } else {
+      dispatch(submitRegister(formValuesCustom, params))
     }
   },
 })

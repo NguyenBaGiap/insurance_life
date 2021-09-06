@@ -4,6 +4,7 @@ import { showModalWelcome } from 'redux/actions/actionCreator'
 import { Step00RegisterSubmitJson } from 'models/Step00RegisterSubmitJson'
 import { Step01RegisterSubmitJson } from 'models/Step01RegisterSubmitJson'
 import { Step02RegisterSubmitJson } from 'models/Step02RegisterSubmitJson'
+import { Step03RegisterSubmitJson } from 'models/Step03RegisterSubmitJson'
 import { PtiRequestClient } from 'services/PtiRequestClient'
 import { toastr } from 'react-redux-toastr'
 import { CustomException, ExceptionResponse } from 'services/api'
@@ -76,11 +77,11 @@ export const submitRegister = (formValue, params) => {
   }
 }
 
-export const submitRegisterStep1 = (formValue, initialState) => {
+export const submitRegisterStep1 = (formValue) => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
-      const submitValues = new Step01RegisterSubmitJson(formValue, initialState)
+      const submitValues = new Step01RegisterSubmitJson(formValue)
       const { data } = await apiClient.submitRegisterStepOne(submitValues)
       dispatch(
         push('/pti/register/step2', {
@@ -95,11 +96,11 @@ export const submitRegisterStep1 = (formValue, initialState) => {
   }
 }
 
-export const submitRegisterStep2 = (formValue, initialState) => {
+export const submitRegisterStep2 = (formValue) => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
-      const submitValues = new Step02RegisterSubmitJson(formValue, initialState)
+      const submitValues = new Step02RegisterSubmitJson(formValue)
       const { data } = await apiClient.submitRegisterStepSecond(submitValues)
       dispatch(
         push('/pti/register/step3', {
@@ -118,12 +119,15 @@ export const submitRegisterStep3 = (formValue) => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
-      console.log(JSON.stringify(formValue, 0, 2))
-      await sleep(3000)
-      dispatch(baseActions.genRequestFinishAction())
-      dispatch(push('/pti/register/payment/login'))
+      const submitValues = new Step03RegisterSubmitJson(formValue)
+      const { data } = await apiClient.submitRegisterStepSecond(submitValues)
+      dispatch(
+        push('/pti/register/payment/login', {
+          ...data,
+        })
+      )
     } catch (error) {
-      console.log(error)
+      commonHandleError(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }

@@ -23,25 +23,13 @@ import SimpleCheckBoxField from 'uies/components/_field/SimpleCheckBoxField'
 
 class StepThirdForm extends React.Component {
   state = {
-    enableEditPolicyholders: false,
-    enableEditProtectedPerson: false,
-    enableEditPackageIns: false,
+    enableEdit: false,
   }
-  handleAllowEditProtectedPerson = () => {
-    this.setState({ enableEditProtectedPerson: true })
-  }
-  handleAllowEditPackageIns = () => {
-    this.setState({ enableEditPackageIns: true })
-  }
-  handleAllowEditPolicyholders = () => {
-    this.setState({ enableEditPolicyholders: true })
+  handleAllowEdit = () => {
+    this.setState({ enableEdit: true })
   }
   render() {
-    const {
-      enableEditPolicyholders,
-      enableEditProtectedPerson,
-      enableEditPackageIns,
-    } = this.state
+    const { enableEdit } = this.state
     const { handleSubmit, handleGoBack } = this.props
     return (
       <form
@@ -50,11 +38,12 @@ class StepThirdForm extends React.Component {
         onSubmit={handleSubmit}
       >
         <div className="row">
-          <div className="col-md-12 col-sm-12 title-form d-flex">
+          <div className="col-md-12 col-sm-12 title-form d-flex justify-content-between">
             <h3 className="pr-3 ">Thông tin về Người mua bảo hiểm</h3>
             <button
               className="btn d-flex"
-              onClick={this.handleAllowEditPolicyholders}
+              type="button"
+              onClick={this.handleAllowEdit}
             >
               <img src={editIcon} alt="edit-info" className="pr-3" />
               Sửa thông tin
@@ -62,31 +51,31 @@ class StepThirdForm extends React.Component {
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="policyholdersName"
+              name="cusName"
               label="Tên khách hàng"
               type="text"
               validate={[required]}
               //loading
               required
               component={SimpleTextField}
-              disabled={!enableEditPolicyholders}
+              disabled={!enableEdit}
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="pidUserBuy"
+              name="cusLegalId"
               label="Số Hộ chiếu / CMND"
               type="text"
               validate={[required, pid]}
               //loading
               required
               component={SimpleTextField}
-              disabled={!enableEditPolicyholders}
+              disabled={!enableEdit}
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="mobileNumberUserBuy"
+              name="cusPhone"
               label="Số điện thoại"
               type="text"
               normalize={normalizeNumber}
@@ -94,142 +83,128 @@ class StepThirdForm extends React.Component {
               //loading
               required
               component={SimpleTextField}
-              disabled={!enableEditPolicyholders}
+              disabled={!enableEdit}
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="emailUserBuy"
+              name="cusEmail"
               label="Địa chỉ email"
               type="text"
               validate={[required, email]}
               //loading
               required
               component={SimpleTextField}
-              disabled={!enableEditPolicyholders}
+              disabled={!enableEdit}
             />
           </div>
         </div>
         <div className="row">
           <div className="col-md-12 col-sm-12 d-flex pt-4">
             <h3 className="pr-3">Thông tin về Người được bảo hiểm</h3>
-            <button
-              className="btn d-flex"
-              onClick={this.handleAllowEditProtectedPerson}
-            >
-              <img src={editIcon} alt="edit-info" className="pr-3" />
-              Sửa thông tin
-            </button>
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="relationshipWithUserBuy"
+              name="personRelationship"
               label="Mối quan hệ với người yêu cầu"
               validate={[required]}
               placeholder="Chọn người được bảo hiểm"
               required
               component={SimpleSelectField}
               selectableValues={RELATIONSHIP_OPTION}
-              disabled={!enableEditProtectedPerson}
+              disabled={!enableEdit}
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="fullNameUserTarget"
+              name="personName"
               label="Người Được bảo hiểm"
               type="text"
               validate={[required]}
               //loading
               required
               component={SimpleTextField}
-              disabled={!enableEditProtectedPerson}
+              disabled={!enableEdit}
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="genderUserTarget"
+              name="personGender"
               label="Giới tính"
               validate={[required]}
               //loading
               required
               component={SimpleSelectField}
               selectableValues={GENDER_OPTION}
-              disabled={!enableEditProtectedPerson}
+              disabled={!enableEdit}
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="birthDateUserTarget"
+              name="personBirth"
               label="Ngày sinh"
               component={SimpleDateField}
               validate={[required]}
               normalize={normalizeDate}
               required
-              disabled={!enableEditProtectedPerson}
+              disabled={!enableEdit}
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="pidUserTarget"
+              name="personLegalId"
               label="Số Hộ chiếu / CMND"
               type="text"
               validate={[required, pid]}
               //loading
               required
               component={SimpleTextField}
-              disabled={!enableEditProtectedPerson}
+              disabled={!enableEdit}
             />
           </div>
           <div className="col-md-9 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="addressUserTarget"
+              name="personAddress"
               label="Địa chỉ liên hệ"
               type="text"
               validate={[required]}
               //loading
               required
               component={SimpleTextField}
-              disabled={!enableEditProtectedPerson}
+              disabled={!enableEdit}
             />
           </div>
         </div>
         <div className="row">
           <div className="col-md-12 col-sm-12 d-flex pt-4">
             <h3 className="pr-3">Thông tin về gói bảo hiểm</h3>
-            <button
-              className="btn d-flex"
-              onClick={this.handleAllowEditPackageIns}
-            >
-              <img src={editIcon} alt="edit-info" className="pr-3" />
-              Sửa thông tin
-            </button>
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
-              name="insurancePackage"
+              name="tierId"
               label="Gói bảo hiểm"
               validate={[required]}
               //loading
               required
               component={SimpleSelectField}
               selectableValues={PACKAGE_OPTION}
-              disabled={!enableEditPackageIns}
+              disabled={!enableEdit}
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
-              name="dateActive"
+              name="effectiveDate"
               label="Ngày hiệu lực"
               component={SimpleDateField}
               validate={[required]}
               normalize={normalizeDate}
               required
-              disabled={!enableEditPackageIns}
+              disabled={!enableEdit}
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
-              name="mobileNumber"
+              name="price"
               label="Tổng số tiền"
               type="text"
               validate={[]}
@@ -239,9 +214,10 @@ class StepThirdForm extends React.Component {
           </div>
           <div className="col-md-12 col-sm-12">
             <Field
-              name="checkbox"
+              name="exportBill"
               component={SimpleCheckBoxField}
               label="Xuất hóa đơn VAT"
+              disabled={!enableEdit}
             />
           </div>
         </div>
@@ -277,4 +253,6 @@ class StepThirdForm extends React.Component {
 }
 export default reduxForm({
   form: 'StepThirdForm',
+  destroyOnUnmount: true,
+  enableReinitialize: true,
 })(StepThirdForm)

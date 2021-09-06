@@ -5,6 +5,10 @@ import Stepper from 'uies/components/_stepper/Stepper'
 import 'static/styles/_form.scss'
 
 export default class StepFirstRegister extends React.Component {
+  componentDidMount() {
+    this.props.fetchInitialValues()
+  }
+
   handleGoBack = () => {
     this.props.history.goBack()
   }

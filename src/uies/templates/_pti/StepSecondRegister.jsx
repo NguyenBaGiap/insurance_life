@@ -21,7 +21,6 @@ export default class StepSecondRegister extends React.Component {
     })
   }
   render() {
-    console.log(this.props.initialValues)
     return (
       <React.Fragment>
         <section>

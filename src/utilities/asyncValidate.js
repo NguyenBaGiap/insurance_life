@@ -2,6 +2,10 @@ import { change } from 'redux-form'
 import { simplePostRequest } from 'services/api'
 import { commonHandleError } from 'redux/actions/registerActions'
 
+function ErrorValidate(field, message) {
+  this[field] = message
+}
+
 export const asyncValidateStep02 = async (values, dispatch, props) => {
   if (values.tierId) {
     try {
@@ -14,13 +18,12 @@ export const asyncValidateStep02 = async (values, dispatch, props) => {
       const {
         data: { id, price },
       } = await simplePostRequest('/v1/sale/calculating-money', submitPrice)
-      const priceStr = price
-        .toString()
-        .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-      dispatch(change('StepSecondForm', 'price', `${priceStr} VNĐ`))
+      dispatch(change('StepSecondForm', 'price', price))
       dispatch(change('StepSecondForm', 'priceId', id))
     } catch (e) {
       commonHandleError(e)
+      dispatch(change('StepSecondForm', 'price', null))
+      throw new ErrorValidate('tierId', e.messages || e.data)
     } finally {
       props.handleLoadingAmount()
     }

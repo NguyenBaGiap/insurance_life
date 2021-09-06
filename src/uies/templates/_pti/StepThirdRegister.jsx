@@ -5,6 +5,10 @@ import StepThirdForm from 'uies/forms/_pti/StepThirdForm'
 import 'static/styles/_form.scss'
 
 class StepThirdRegister extends React.Component {
+  componentDidMount() {
+    this.props.fetchInitialValues()
+  }
+
   handleGoBack = () => {
     this.props.history.goBack()
   }
@@ -17,6 +21,7 @@ class StepThirdRegister extends React.Component {
           activeStep={3}
         />
         <StepThirdForm
+          initialValues={this.props.initialValues}
           onSubmit={this.props.onSubmit}
           handleGoBack={this.handleGoBack}
         />
