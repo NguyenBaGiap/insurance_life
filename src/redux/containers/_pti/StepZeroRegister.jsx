@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { submitRegister, submitAdvisory } from 'redux/actions/registerActions'
+import { fetchInitialRegister } from 'redux/actions/resourceActions'
 import {
   showModalWelcome,
   closeModalWelcome,
@@ -13,6 +14,10 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
+  fetchInitialValues: () => {
+    const params = props.location.search
+    dispatch(fetchInitialRegister(params))
+  },
   openPopupWelcome: () => {
     dispatch(showModalWelcome())
   },
@@ -21,17 +26,11 @@ const mapDispatchToProps = (dispatch, props) => ({
     props.history.push('/')
   },
   onSubmit: (values) => {
-    const params = props.location.search
-    const initialState = props.location.state
-    const isAdvisory = initialState?.target === 'advise'
-    const formValuesCustom = {
-      ...values,
-      tier: initialState?.tier,
-    }
+    const isAdvisory = props.location.state?.target === 'advise'
     if (isAdvisory) {
-      dispatch(submitAdvisory(formValuesCustom, params))
+      dispatch(submitAdvisory(values))
     } else {
-      dispatch(submitRegister(formValuesCustom, params))
+      dispatch(submitRegister(values))
     }
   },
 })

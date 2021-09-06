@@ -9,15 +9,51 @@ import {
   length10,
   maxLength12,
   minLength2,
-  maxLength100,
+  maxLength50,
 } from 'utilities/validate'
 import { RELATIONSHIP_OPTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
+import SimpleCheckBoxField from 'uies/components/_field/SimpleCheckBoxField'
+
+const RegisterOrAdvise = ({ initialState }) => {
+  if (initialState && initialState.target === 'advise') {
+    return (
+      <div className="row">
+        <div className="col-md-12 col-sm-12 pt-sm-3 pt-md-3">
+          <Field
+            name="participation"
+            component={SimpleCheckBoxField}
+            label="Bằng cách đăng ký thông tin này, tôi đồng ý nhận tư vấn bảo hiểm của VPBank"
+          />
+        </div>
+      </div>
+    )
+  }
+  return (
+    <div className="row">
+      <div className="col-md-12 col-sm-12 title-form">
+        <h3>Bạn muốn mua bảo hiểm cho</h3>
+      </div>
+      <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
+        <Field
+          name="relationship"
+          label="Mối quan hệ với người yêu cầu"
+          validate={[required]}
+          placeholder="Chọn người được bảo hiểm"
+          required
+          component={SimpleSelectField}
+          selectableValues={RELATIONSHIP_OPTION}
+        />
+      </div>
+    </div>
+  )
+}
 
 class StepZeroForm extends React.Component {
   render() {
-    const { handleSubmit, handleGoBack, initialState } = this.props
+    const { handleSubmit, handleGoBack, initialState, title, labelSubmit } =
+      this.props
     return (
       <form
         autoComplete="off"
@@ -26,14 +62,14 @@ class StepZeroForm extends React.Component {
       >
         <div className="row">
           <div className="col-md-12 col-sm-12 title-form pt-3">
-            <h3>Thông tin Người mua bảo hiểm</h3>
+            <h3>{title}</h3>
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
               name="cusName"
               label="Tên khách hàng"
               type="text"
-              validate={[required, minLength2, maxLength100]}
+              validate={[required, minLength2, maxLength50]}
               //loading
               required
               component={SimpleTextField}
@@ -41,7 +77,7 @@ class StepZeroForm extends React.Component {
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
-              name="legalId"
+              name="cusLegalId"
               label="Số Hộ chiếu / CMND"
               type="text"
               validate={[required, pid, maxLength12]}
@@ -68,31 +104,14 @@ class StepZeroForm extends React.Component {
               name="email"
               label="Địa chỉ email"
               type="text"
-              validate={[required, email]}
+              validate={[required, email, maxLength50]}
               //loading
               required
               component={SimpleTextField}
             />
           </div>
         </div>
-        {(!initialState || initialState.target === 'register') && (
-          <div className="row">
-            <div className="col-md-12 col-sm-12 title-form">
-              <h3>Bạn muốn mua bảo hiểm cho</h3>
-            </div>
-            <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
-              <Field
-                name="relationship"
-                label="Mối quan hệ với người yêu cầu"
-                validate={[required]}
-                placeholder="Chọn người được bảo hiểm"
-                required
-                component={SimpleSelectField}
-                selectableValues={RELATIONSHIP_OPTION}
-              />
-            </div>
-          </div>
-        )}
+        <RegisterOrAdvise initialState={initialState} />
         <div className="row">
           <div className="col-md-12 col-sm-12 btn-action pb-5">
             <button
@@ -103,7 +122,7 @@ class StepZeroForm extends React.Component {
               Quay lại
             </button>
             <button type="submit" className="btn-submit">
-              Tiếp tục
+              {labelSubmit}
             </button>
           </div>
         </div>
@@ -114,4 +133,6 @@ class StepZeroForm extends React.Component {
 
 export default reduxForm({
   form: 'StepZeroForm',
+  destroyOnUnmount: true,
+  enableReinitialize: true,
 })(StepZeroForm)

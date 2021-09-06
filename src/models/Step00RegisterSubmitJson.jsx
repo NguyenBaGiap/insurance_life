@@ -1,12 +1,14 @@
 export class Step00RegisterSubmitJson {
-  constructor(formValues, params) {
+  constructor(formValues) {
     this.cusName = formValues.cusName
     this.email = formValues.email
-    this.legalId = formValues.legalId
+    this.cuslegalId = formValues.cusLegalId
     this.phone = formValues.phone
-    this.productId = 1 // fix
-    this.tier = formValues.tier
+    this.participation = formValues.participation
     this.relationship = formValues.relationship?.value
-    this.daoSale = params.get('dao')
+    // get in params
+    this.productId = formValues.productId
+    this.tier = formValues.tier
+    this.daoSale = formValues.daoSale
   }
 }

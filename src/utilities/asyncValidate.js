@@ -1,28 +1,30 @@
 import { change } from 'redux-form'
 import { simplePostRequest } from 'services/api'
 import { commonHandleError } from 'redux/actions/baseActions'
+import moment from 'moment'
 
 function ErrorValidate(field, message) {
   this[field] = message
 }
 
-export const asyncValidateStep02 = async (values, dispatch, props) => {
-  if (values.tierId) {
+export const asyncValidateRegisterStep = async (values, dispatch, props) => {
+  if (values.tierId && values.effectiveDate) {
     try {
       props.handleLoadingAmount()
       const submitPrice = {
         productId: values.productId,
-        birth: values.birth,
+        birth: moment(values.personBirth).format('DD-MM-yyyy'),
+        effectiveDate: moment(values.effectiveDate).format('DD-MM-yyyy'),
         tierId: values.tierId.value,
       }
       const {
         data: { id, price },
       } = await simplePostRequest('/v1/sale/calculating-money', submitPrice)
-      dispatch(change('StepSecondForm', 'price', price))
-      dispatch(change('StepSecondForm', 'priceId', id))
+      dispatch(change(props.form, 'price', price))
+      dispatch(change(props.form, 'priceId', id))
     } catch (e) {
       commonHandleError(e)
-      dispatch(change('StepSecondForm', 'price', null))
+      dispatch(change(props.form, 'price', null))
       throw new ErrorValidate('tierId', e.messages || e.data)
     } finally {
       props.handleLoadingAmount()

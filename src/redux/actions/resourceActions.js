@@ -3,6 +3,18 @@ import { LeadSessionResultJson } from 'models/LeadSessionResultJson'
 import { fetchInitialValuesForm } from 'redux/actions/actionCreator'
 import { simpleGetRequest } from 'services/api'
 
+export const fetchInitialRegister = (params) => {
+  return async (dispatch) => {
+    const searchParams = new URLSearchParams(params)
+    const initialValues = {
+      productId: searchParams.get('product'),
+      daoSale: searchParams.get('dao'),
+      tier: searchParams.get('tier'),
+    }
+    dispatch(fetchInitialValuesForm(initialValues))
+  }
+}
+
 export const fetchLeadSessionRequest = () => {
   return async (dispatch) => {
     try {
@@ -10,7 +22,7 @@ export const fetchLeadSessionRequest = () => {
       const response = await simpleGetRequest(
         `/v1/web/non-life/customer/get-lead`
       )
-      const initialValues = new LeadSessionResultJson(response)
+      const initialValues = new LeadSessionResultJson(response.data)
       dispatch(fetchInitialValuesForm(initialValues))
     } catch (error) {
       baseActions.commonHandleError(error)

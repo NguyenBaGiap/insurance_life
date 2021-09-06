@@ -31,7 +31,7 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="cusName"
+            name="personName"
             label="Người Được bảo hiểm"
             type="text"
             validate={[required]}
@@ -53,7 +53,7 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="birth"
+            name="personBirth"
             label="Ngày sinh"
             component={SimpleDateField}
             validate={[required]}
@@ -63,7 +63,7 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="legalId"
+            name="personLegalId"
             label="Số Hộ chiếu / CMND"
             validate={[required, pid]}
             normalize={normalizeNumber}
@@ -73,7 +73,7 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
         </div>
         <div className="col-md-9 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="address"
+            name="personAddress"
             label="Địa chỉ liên hệ"
             type="text"
             validate={[required]}
@@ -113,4 +113,6 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
 }
 export default reduxForm({
   form: 'StepFirstForm',
+  destroyOnUnmount: true,
+  enableReinitialize: true,
 })(StepFirstForm)

@@ -15,7 +15,9 @@ import {
   normalizeNumber,
   maxLength10,
   pid,
+  normalizeMoney,
 } from 'utilities/validate'
+import { asyncValidateRegisterStep } from 'utilities/asyncValidate'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
@@ -30,7 +32,7 @@ class StepThirdForm extends React.Component {
   }
   render() {
     const { enableEdit } = this.state
-    const { handleSubmit, handleGoBack } = this.props
+    const { handleSubmit, handleGoBack, isLoadingAmount } = this.props
     return (
       <form
         autoComplete="off"
@@ -58,7 +60,7 @@ class StepThirdForm extends React.Component {
               //loading
               required
               component={SimpleTextField}
-              disabled={!enableEdit}
+              disabled
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
@@ -70,7 +72,7 @@ class StepThirdForm extends React.Component {
               //loading
               required
               component={SimpleTextField}
-              disabled={!enableEdit}
+              disabled
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
@@ -83,7 +85,7 @@ class StepThirdForm extends React.Component {
               //loading
               required
               component={SimpleTextField}
-              disabled={!enableEdit}
+              disabled
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
@@ -95,7 +97,7 @@ class StepThirdForm extends React.Component {
               //loading
               required
               component={SimpleTextField}
-              disabled={!enableEdit}
+              disabled
             />
           </div>
         </div>
@@ -105,7 +107,7 @@ class StepThirdForm extends React.Component {
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="personRelationship"
+              name="relationship"
               label="Mối quan hệ với người yêu cầu"
               validate={[required]}
               placeholder="Chọn người được bảo hiểm"
@@ -202,12 +204,13 @@ class StepThirdForm extends React.Component {
               disabled={!enableEdit}
             />
           </div>
-          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 price-field">
             <Field
               name="price"
               label="Tổng số tiền"
               type="text"
-              validate={[]}
+              loading={isLoadingAmount}
+              normalize={normalizeMoney}
               disabled
               component={SimpleTextField}
             />
@@ -253,6 +256,8 @@ class StepThirdForm extends React.Component {
 }
 export default reduxForm({
   form: 'StepThirdForm',
+  asyncValidate: asyncValidateRegisterStep,
+  asyncChangeFields: ['price', 'tierId', 'priceId', 'effectiveDate'],
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(StepThirdForm)

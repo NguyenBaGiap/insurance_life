@@ -1,6 +1,11 @@
 import { SET_INITIAL_VALUES_FORM_REQUEST } from '../actions/actionTypes'
 
-const initialState = {} // initialValues in form
+const initialState = {
+  initialValues: {
+    participation: true,
+    condition: true,
+  },
+} // initialValues in form
 
 export const formValuesReducer = (state = initialState, action) => {
   switch (action.type) {

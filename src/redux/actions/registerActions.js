@@ -7,20 +7,21 @@ import { Step02RegisterSubmitJson } from 'models/Step02RegisterSubmitJson'
 import { Step03RegisterSubmitJson } from 'models/Step03RegisterSubmitJson'
 import { PtiRequestClient } from 'services/PtiRequestClient'
 import { toastr } from 'react-redux-toastr'
-import { simplePostRequest } from '../../services/api'
+import { simplePostRequest } from 'services/api'
+import { PaymentRequestClient } from 'services/PaymentRequestClient'
 
 const apiClient = new PtiRequestClient()
+const payClient = new PaymentRequestClient()
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-export const submitAdvisory = (formValue, params) => {
+export const submitAdvisory = (formValue) => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
-      const searchParams = new URLSearchParams(params)
-      const submitValues = new Step00RegisterSubmitJson(formValue, searchParams)
+      const submitValues = new Step00RegisterSubmitJson(formValue)
       await apiClient.submitAdvisoryStepOne(submitValues)
     } catch (error) {
       console.log(error)
@@ -48,18 +49,18 @@ export const submitRegister = (formValue, params) => {
       const submitValues = new Step00RegisterSubmitJson(formValue, searchParams)
       const {
         status: { code },
-        data: { token, leadStep, ...rest },
+        data: { token, leadStep },
       } = await apiClient.submitRegisterStepInit(submitValues)
       if (code === 'INS201') {
         return dispatch(showModalWelcome())
       }
       sessionStorage.setItem('access_token', token)
       const step = leadStep?.replace('STEP', '') || 1
-      dispatch(
-        push(`/pti/register/step${step}`, {
-          ...rest,
-        })
-      )
+      if (step === '4') {
+        dispatch(push(`/register/payment/login`))
+      } else {
+        dispatch(push(`/pti/register/step${step}`))
+      }
     } catch (error) {
       baseActions.commonHandleError(error)
     } finally {
@@ -73,12 +74,8 @@ export const submitRegisterStep1 = (formValue) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
       const submitValues = new Step01RegisterSubmitJson(formValue)
-      const { data } = await apiClient.submitRegisterStepOne(submitValues)
-      dispatch(
-        push('/pti/register/step2', {
-          ...data,
-        })
-      )
+      await apiClient.submitRegisterStepOne(submitValues)
+      dispatch(push('/pti/register/step2'))
     } catch (error) {
       baseActions.commonHandleError(error)
     } finally {
@@ -92,12 +89,8 @@ export const submitRegisterStep2 = (formValue) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
       const submitValues = new Step02RegisterSubmitJson(formValue)
-      const { data } = await apiClient.submitRegisterStepSecond(submitValues)
-      dispatch(
-        push('/pti/register/step3', {
-          ...data,
-        })
-      )
+      await apiClient.submitRegisterStepSecond(submitValues)
+      dispatch(push('/pti/register/step3'))
     } catch (error) {
       baseActions.commonHandleError(error)
     } finally {
@@ -111,12 +104,8 @@ export const submitRegisterStep3 = (formValue) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
       const submitValues = new Step03RegisterSubmitJson(formValue)
-      const { data } = await apiClient.submitRegisterStepSecond(submitValues)
-      dispatch(
-        push('/register/payment/login', {
-          ...data,
-        })
-      )
+      await apiClient.submitRegisterStepThird(submitValues)
+      dispatch(push('/register/payment/login'))
     } catch (error) {
       baseActions.commonHandleError(error)
     } finally {
@@ -130,27 +119,11 @@ export const submitLoginVPBankNEO = (formValue) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
       console.log(JSON.stringify(formValue, 0, 2))
-      await sleep(3000)
-      dispatch(baseActions.genRequestFinishAction())
-      dispatch(replace('/register/payment/login-confirm'))
+      const response = await payClient.submitLoginNEO(formValue)
+      console.log(response)
+      dispatch(replace('/register/payment/transaction'))
     } catch (error) {
-      console.log(error)
-    } finally {
-      dispatch(baseActions.genRequestFinishAction())
-    }
-  }
-}
-
-export const submitConfirmLoginVPBankNEO = (formValue) => {
-  return async (dispatch) => {
-    try {
-      dispatch(baseActions.genRequestLoadingAction())
-      console.log(JSON.stringify(formValue, 0, 2))
-      await sleep(3000)
-      dispatch(baseActions.genRequestFinishAction())
-      dispatch(push('/register/payment/transaction'))
-    } catch (error) {
-      console.log(error)
+      baseActions.commonHandleError(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -163,10 +136,9 @@ export const submitInformationPaymentTransaction = (formValue) => {
       dispatch(baseActions.genRequestLoadingAction())
       console.log(JSON.stringify(formValue, 0, 2))
       await sleep(3000)
-      dispatch(baseActions.genRequestFinishAction())
       dispatch(push('/register/payment/transaction-confirm'))
     } catch (error) {
-      console.log(error)
+      baseActions.commonHandleError(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -179,10 +151,9 @@ export const submitConfirmPaymentTransaction = (formValue) => {
       dispatch(baseActions.genRequestLoadingAction())
       console.log(JSON.stringify(formValue, 0, 2))
       await sleep(3000)
-      dispatch(baseActions.genRequestFinishAction())
       dispatch(push('/register/payment/success'))
     } catch (error) {
-      console.log(error)
+      baseActions.commonHandleError(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -196,7 +167,7 @@ export const submitRetryRequestOTP = () => {
       await sleep(2000)
       dispatch(baseActions.genRequestFinishAction())
     } catch (error) {
-      console.log(error)
+      baseActions.commonHandleError(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -215,7 +186,7 @@ export const submitEmailSubscribe = (formValues) => {
         null
       )
     } catch (error) {
-      console.log(error)
+      baseActions.commonHandleError(error)
     } finally {
       toastr.success(
         'Chào mừng Quý Khách',

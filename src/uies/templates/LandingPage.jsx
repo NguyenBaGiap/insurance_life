@@ -19,18 +19,28 @@ class LandingPage extends React.Component {
   handleRedirectRegister =
     (tier = null) =>
     () => {
+      const searchParams = new URLSearchParams(this.props.location.search)
+      searchParams.set('product', '1')
+      if (tier) {
+        searchParams.set('tier', tier)
+      }
       const location = {
         pathname: '/pti/register/step0',
-        state: { tier, target: 'register' },
-        search: this.props.location.search,
+        state: { target: 'register' },
+        search: searchParams.toString(),
       }
       this.props.history.push(location)
     }
   handleRedirectAdvise = (tier) => () => {
+    const searchParams = new URLSearchParams(this.props.location.search)
+    searchParams.set('product', '1')
+    if (tier) {
+      searchParams.set('tier', tier)
+    }
     const location = {
       pathname: '/pti/register/step0',
       state: { tier, target: 'advise' },
-      search: this.props.location.search,
+      search: searchParams.toString(),
     }
     this.props.history.push(location)
   }

@@ -1,7 +1,6 @@
 import React from 'react'
-// import classNames from 'classnames'
 import { Field, reduxForm } from 'redux-form'
-import { asyncValidateStep02 } from 'utilities/asyncValidate'
+import { asyncValidateRegisterStep } from 'utilities/asyncValidate'
 import { required, normalizeDate, normalizeMoney } from 'utilities/validate'
 import { PACKAGE_OPTION, LIST_QUESTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
@@ -65,7 +64,7 @@ class StepSecondForm extends React.Component {
           </div>
           <div className="col-md-12 col-sm-12 pt-sm-3 pt-md-3">
             <Field
-              name="billExport"
+              name="exportBill"
               component={SimpleCheckBoxField}
               label="Xuất hóa đơn VAT"
             />
@@ -137,7 +136,11 @@ class StepSecondForm extends React.Component {
         <div className="row">
           <div className="col-md-12 col-sm-12 pt-3 d-flex justify-content-md-start align-items-baseline">
             <div className="field-participation">
-              <Field name="participation" component={SimpleCheckBoxField} />
+              <Field
+                name="participation"
+                component={SimpleCheckBoxField}
+                validate={[required]}
+              />
             </div>
             <div className="participation-confirm">
               <p>
@@ -183,8 +186,8 @@ class StepSecondForm extends React.Component {
 
 export default reduxForm({
   form: 'StepSecondForm',
-  asyncValidate: asyncValidateStep02,
-  asyncChangeFields: ['price', 'tierId', 'priceId'],
+  asyncValidate: asyncValidateRegisterStep,
+  asyncChangeFields: ['price', 'tierId', 'priceId', 'effectiveDate'],
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(StepSecondForm)

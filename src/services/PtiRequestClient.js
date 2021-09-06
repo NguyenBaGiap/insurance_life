@@ -26,4 +26,11 @@ export class PtiRequestClient {
       formValues
     )
   }
+
+  submitRegisterStepThird = async (formValues) => {
+    return await simplePostRequest(
+      `/v1/web/non-life/customer/send-contract`,
+      formValues
+    )
+  }
 }

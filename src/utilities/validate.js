@@ -1,3 +1,5 @@
+// import moment from 'moment'
+
 export const email = (value) =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
     ? 'Email không hợp lệ.'
@@ -40,6 +42,7 @@ export const normalizeDate = (value) => {
     return value
   }
   return new Date(value).getTime()
+  //return moment(new Date(value)).format('DD-MM-YYYY')
 }
 
 export const normalizeNumber = (value) => {
@@ -58,6 +61,8 @@ export const normalizeMoney = (value) => {
 
 export const minLength2 = minLength(2)
 export const maxLength100 = maxLength(100)
+export const maxLength50 = maxLength(50)
+
 export const maxLength10 = maxLength(10)
 export const maxLength12 = maxLength(12)
 export const length10 = length(10)
