@@ -1,7 +1,5 @@
 import { connect } from 'react-redux'
-import { push } from 'connected-react-router'
-import { Step01RegisterInitialValues } from 'models/Step01RegisterSubmitJson'
-import { fetchInitialValuesForm } from 'redux/actions/actionCreator'
+import { fetchLeadSessionRequest } from 'redux/actions/resourceActions'
 import { submitRegisterStep1 } from 'redux/actions/registerActions'
 import StepFirstRegister from 'uies/templates/_pti/StepFirstRegister'
 
@@ -9,15 +7,9 @@ const mapStateToProps = (state) => ({
   initialValues: state.formValuesReducer.initialValues,
 })
 
-const mapDispatchToProps = (dispatch, props) => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchInitialValues: () => {
-    const initialState = props.location.state
-    if (initialState) {
-      const initialValues = new Step01RegisterInitialValues(initialState)
-      dispatch(fetchInitialValuesForm({ ...initialValues }))
-    } else {
-      dispatch(push('/pti/register/initial'))
-    }
+    dispatch(fetchLeadSessionRequest())
   },
   onSubmit: (values) => {
     dispatch(submitRegisterStep1(values))

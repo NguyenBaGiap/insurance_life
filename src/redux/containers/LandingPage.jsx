@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { submitEmailSubscribe } from 'redux/actions/registerActions'
 import LandingPage from 'uies/templates/LandingPage'
 import {
   benefit,
@@ -19,9 +20,9 @@ const mapStateToProps = (state) => ({
   location: state.router.location,
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
   onSubmitEmail: (values) => {
-    window.alert(JSON.stringify(values, 0, 2))
+    dispatch(submitEmailSubscribe(values))
   },
 })
 

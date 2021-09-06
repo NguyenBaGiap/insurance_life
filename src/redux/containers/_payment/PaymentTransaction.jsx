@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { submitInformationPaymentTransaction } from 'redux/actions/registerActions'
-import PaymentTransaction from 'uies/templates/_pti/_payment/PaymentTransaction'
+import PaymentTransaction from 'uies/templates/_payment/PaymentTransaction'
 
 const mapStateToProps = (state) => ({
   requestStatus: state.requestStatusReducer,

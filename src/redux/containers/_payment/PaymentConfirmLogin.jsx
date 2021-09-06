@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { submitConfirmLoginVPBankNEO } from 'redux/actions/registerActions'
-import PaymentConfirmLogin from 'uies/templates/_pti/_payment/PaymentConfirmLogin'
+import PaymentConfirmLogin from 'uies/templates/_payment/PaymentConfirmLogin'
 
 const mapStateToProps = (state) => ({
   requestStatus: state.requestStatusReducer,

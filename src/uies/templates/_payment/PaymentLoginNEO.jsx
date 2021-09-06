@@ -1,5 +1,5 @@
 import React from 'react'
-import PaymentTemplate from 'uies/templates/_pti/_payment/PaymentTemplate'
+import PaymentTemplate from 'uies/templates/_payment/PaymentTemplate'
 import VPBankNeoLoginForm from 'uies/forms/VPBankNeoLoginForm'
 
 class PaymentLoginNEO extends React.Component {

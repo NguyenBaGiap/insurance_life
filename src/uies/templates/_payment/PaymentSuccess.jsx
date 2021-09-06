@@ -1,5 +1,5 @@
 import React from 'react'
-import PaymentTemplate from 'uies/templates/_pti/_payment/PaymentTemplate'
+import PaymentTemplate from 'uies/templates/_payment/PaymentTemplate'
 import paymentSuccess from 'static/img/paymentSuccess.svg'
 
 class PaymentSuccess extends React.Component {

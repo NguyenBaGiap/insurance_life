@@ -20,7 +20,7 @@ class LandingPage extends React.Component {
     (tier = null) =>
     () => {
       const location = {
-        pathname: '/pti/register/initial',
+        pathname: '/pti/register/step0',
         state: { tier, target: 'register' },
         search: this.props.location.search,
       }
@@ -28,7 +28,7 @@ class LandingPage extends React.Component {
     }
   handleRedirectAdvise = (tier) => () => {
     const location = {
-      pathname: '/pti/register/initial',
+      pathname: '/pti/register/step0',
       state: { tier, target: 'advise' },
       search: this.props.location.search,
     }

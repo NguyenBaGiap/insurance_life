@@ -28,23 +28,23 @@ const StepThirdRegister = React.lazy(() =>
 )
 
 const PaymentLoginNEO = React.lazy(() =>
-  import('redux/containers/_pti/PaymentLoginNEO')
+  import('redux/containers/_payment/PaymentLoginNEO')
 )
 
-const PaymentConfirmLogin = React.lazy(() =>
-  import('redux/containers/_pti/PaymentConfirmLogin')
-)
+// const PaymentConfirmLogin = React.lazy(() =>
+//   import('redux/containers/_payment/PaymentConfirmLogin')
+// )
 
 const PaymentTransaction = React.lazy(() =>
-  import('redux/containers/_pti/PaymentTransaction')
+  import('redux/containers/_payment/PaymentTransaction')
 )
 
 const PaymentConfirmTransaction = React.lazy(() =>
-  import('redux/containers/_pti/PaymentConfirmTransaction')
+  import('redux/containers/_payment/PaymentConfirmTransaction')
 )
 
 const PaymentSuccess = React.lazy(() =>
-  import('uies/templates/_pti/_payment/PaymentSuccess')
+  import('uies/templates/_payment/PaymentSuccess')
 )
 class AppContainer extends React.Component {
   componentDidMount() {
@@ -66,16 +66,16 @@ class AppContainer extends React.Component {
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path="/" component={LandingPage} />
-          <Route path="/pti/register/initial" component={StepZeroRegister} />
+          <Route path="/pti/register/step0" component={StepZeroRegister} />
           {/*<Route path="/register/initial/otp" component={InitialConfirmOTP} />*/}
           <Route path="/pti/register/step1" component={StepOneRegister} />
           <Route path="/pti/register/step2" component={StepTwoRegister} />
           <Route path="/pti/register/step3" component={StepThirdRegister} />
           <Route path="/register/payment/login" component={PaymentLoginNEO} />
-          <Route
-            path="/register/payment/login-confirm"
-            component={PaymentConfirmLogin}
-          />
+          {/*<Route*/}
+          {/*  path="/register/payment/login-confirm"*/}
+          {/*  component={PaymentConfirmLogin}*/}
+          {/*/>*/}
           <Route
             path="/register/payment/transaction"
             component={PaymentTransaction}

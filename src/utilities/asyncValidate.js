@@ -1,6 +1,6 @@
 import { change } from 'redux-form'
 import { simplePostRequest } from 'services/api'
-import { commonHandleError } from 'redux/actions/registerActions'
+import { commonHandleError } from 'redux/actions/baseActions'
 
 function ErrorValidate(field, message) {
   this[field] = message

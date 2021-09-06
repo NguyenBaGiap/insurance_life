@@ -7,21 +7,12 @@ import { Step02RegisterSubmitJson } from 'models/Step02RegisterSubmitJson'
 import { Step03RegisterSubmitJson } from 'models/Step03RegisterSubmitJson'
 import { PtiRequestClient } from 'services/PtiRequestClient'
 import { toastr } from 'react-redux-toastr'
-import { CustomException, ExceptionResponse } from 'services/api'
+import { simplePostRequest } from '../../services/api'
 
 const apiClient = new PtiRequestClient()
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
-export const commonHandleError = (error) => {
-  if (error instanceof CustomException) {
-    toastr.error('Có lỗi xảy ra', error.message)
-  }
-  if (error instanceof ExceptionResponse) {
-    toastr.error('Có lỗi xảy ra', error.data)
-  }
 }
 
 export const submitAdvisory = (formValue, params) => {
@@ -70,7 +61,7 @@ export const submitRegister = (formValue, params) => {
         })
       )
     } catch (error) {
-      commonHandleError(error)
+      baseActions.commonHandleError(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -89,7 +80,7 @@ export const submitRegisterStep1 = (formValue) => {
         })
       )
     } catch (error) {
-      commonHandleError(error)
+      baseActions.commonHandleError(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -108,7 +99,7 @@ export const submitRegisterStep2 = (formValue) => {
         })
       )
     } catch (error) {
-      commonHandleError(error)
+      baseActions.commonHandleError(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -127,7 +118,7 @@ export const submitRegisterStep3 = (formValue) => {
         })
       )
     } catch (error) {
-      commonHandleError(error)
+      baseActions.commonHandleError(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -207,6 +198,33 @@ export const submitRetryRequestOTP = () => {
     } catch (error) {
       console.log(error)
     } finally {
+      dispatch(baseActions.genRequestFinishAction())
+    }
+  }
+}
+
+export const submitEmailSubscribe = (formValues) => {
+  return async (dispatch) => {
+    try {
+      dispatch(baseActions.genRequestLoadingAction())
+      // create param
+      const urlSearchParams = new URLSearchParams()
+      urlSearchParams.append('email', formValues.email)
+      await simplePostRequest(
+        `/v1/web/non-life/customer/subscribe?${urlSearchParams.toString()}`,
+        null
+      )
+    } catch (error) {
+      console.log(error)
+    } finally {
+      toastr.success(
+        'Chào mừng Quý Khách',
+        'Cảm ơn Quý Khách đã quan tâm đến sản phẩm của VPBank. Chúng tôi sẽ liên hệ và tư vấn cho Quý Khách trong thời gian sớm nhất.',
+        {
+          timeOut: 10000,
+          position: 'top-right',
+        }
+      )
       dispatch(baseActions.genRequestFinishAction())
     }
   }

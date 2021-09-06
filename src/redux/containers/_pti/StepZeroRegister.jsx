@@ -7,19 +7,7 @@ import {
 import StepZeroRegister from 'uies/templates/_pti/StepZeroRegister'
 
 const mapStateToProps = (state) => ({
-  initialValues: {
-    cusName: 'VU THI YEN',
-    email: 'yenvu@gmail.com',
-    legalId: '163040259',
-    phone: '0349728372',
-    productId: 1,
-    tier: null,
-    relationship: {
-      label: 'Vợ / chồng',
-      value: 'VC',
-    },
-    daoSale: null,
-  },
+  initialValues: state.formValuesReducer.initialValues,
   location: state.router.location,
   isOpenPopupWelcomeCustomer: state.popupReducer.isOpenPopupWelcomeCustomer,
 })
