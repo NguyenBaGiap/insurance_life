@@ -122,7 +122,7 @@ export const submitRegisterStep3 = (formValue) => {
       const submitValues = new Step03RegisterSubmitJson(formValue)
       const { data } = await apiClient.submitRegisterStepSecond(submitValues)
       dispatch(
-        push('/pti/register/payment/login', {
+        push('/register/payment/login', {
           ...data,
         })
       )
@@ -141,7 +141,7 @@ export const submitLoginVPBankNEO = (formValue) => {
       console.log(JSON.stringify(formValue, 0, 2))
       await sleep(3000)
       dispatch(baseActions.genRequestFinishAction())
-      dispatch(replace('/pti/register/payment/login-confirm'))
+      dispatch(replace('/register/payment/login-confirm'))
     } catch (error) {
       console.log(error)
     } finally {
@@ -157,7 +157,7 @@ export const submitConfirmLoginVPBankNEO = (formValue) => {
       console.log(JSON.stringify(formValue, 0, 2))
       await sleep(3000)
       dispatch(baseActions.genRequestFinishAction())
-      dispatch(push('/pti/register/payment/transaction'))
+      dispatch(push('/register/payment/transaction'))
     } catch (error) {
       console.log(error)
     } finally {
@@ -173,7 +173,7 @@ export const submitInformationPaymentTransaction = (formValue) => {
       console.log(JSON.stringify(formValue, 0, 2))
       await sleep(3000)
       dispatch(baseActions.genRequestFinishAction())
-      dispatch(push('/pti/register/payment/transaction-confirm'))
+      dispatch(push('/register/payment/transaction-confirm'))
     } catch (error) {
       console.log(error)
     } finally {

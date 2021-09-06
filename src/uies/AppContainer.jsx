@@ -71,20 +71,17 @@ class AppContainer extends React.Component {
           <Route path="/pti/register/step1" component={StepOneRegister} />
           <Route path="/pti/register/step2" component={StepTwoRegister} />
           <Route path="/pti/register/step3" component={StepThirdRegister} />
+          <Route path="/register/payment/login" component={PaymentLoginNEO} />
           <Route
-            path="/pti/register/payment/login"
-            component={PaymentLoginNEO}
-          />
-          <Route
-            path="/pti/register/payment/login-confirm"
+            path="/register/payment/login-confirm"
             component={PaymentConfirmLogin}
           />
           <Route
-            path="/pti/register/payment/transaction"
+            path="/register/payment/transaction"
             component={PaymentTransaction}
           />
           <Route
-            path="/pti/register/payment/transaction-confirm"
+            path="/register/payment/transaction-confirm"
             component={PaymentConfirmTransaction}
           />
           <Route path="/register/payment/success" component={PaymentSuccess} />
