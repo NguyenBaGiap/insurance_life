@@ -7,8 +7,10 @@ import moment from 'moment'
 
 export class LeadSessionResultJson {
   constructor(initialValue) {
-    const { productId, customerDto, personDto, packageDto } = initialValue
+    const { productId, staffCode, customerDto, personDto, packageDto } =
+      initialValue
     //customerDto
+    this.daoSale = staffCode
     this.productId = productId
     this.cusName = customerDto.name
     this.cusLegalId = customerDto.legalId

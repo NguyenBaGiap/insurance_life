@@ -2,17 +2,7 @@ import React from 'react'
 import 'static/styles/_package.scss'
 
 const PackageCard = ({
-  data: {
-    image,
-    name,
-    description,
-    moneyTotal,
-    forMonth,
-    moneyMonth,
-    register,
-    advisory,
-    tier,
-  },
+  data: { image, name, moneyTotal, moneyMonth, id },
   handleRedirectRegister,
   handleRedirectAdvise,
 }) => (
@@ -24,10 +14,10 @@ const PackageCard = ({
           <p className="text-center font-weight-bold pt-2 package-name">
             {name}
           </p>
-          <p className="sub-title text-center pt-3">{description}</p>
+          <p className="sub-title text-center pt-3">Số tiền bảo hiểm</p>
           <p className="package-total">{moneyTotal}</p>
           <p className="package-min sub-title text-center">
-            {forMonth} &nbsp;
+            Mức phí chỉ từ &nbsp;
             <span className="font-weight-bold">{moneyMonth}</span>
           </p>
         </div>
@@ -35,15 +25,15 @@ const PackageCard = ({
       <div className="action p-4 justify-content-center">
         <button
           className="btn register border-0 mr-3"
-          onClick={handleRedirectRegister(tier)}
+          onClick={handleRedirectRegister(id)}
         >
-          {register}
+          Đăng ký ngay
         </button>
         <button
           className="btn advisory bg-white"
-          onClick={handleRedirectAdvise(tier)}
+          onClick={handleRedirectAdvise(id)}
         >
-          {advisory}
+          Tư vấn
         </button>
       </div>
     </div>

@@ -11,7 +11,7 @@ import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
 
-function StepFirstForm({ handleGoBack, handleSubmit }) {
+function StepFirstForm({ handleGoBack, handleSubmit, hasDaoSale }) {
   return (
     <form autoComplete="off" className="container mt-3" onSubmit={handleSubmit}>
       <div className="row">
@@ -92,6 +92,7 @@ function StepFirstForm({ handleGoBack, handleSubmit }) {
             type="text"
             validate={[]}
             //loading
+            disabled={!!hasDaoSale}
             component={SimpleTextField}
           />
         </div>

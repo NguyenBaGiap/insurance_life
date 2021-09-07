@@ -17,12 +17,12 @@ class LandingPage extends React.Component {
   }
 
   handleRedirectRegister =
-    (tier = null) =>
+    (id = null) =>
     () => {
       const searchParams = new URLSearchParams(this.props.location.search)
       searchParams.set('product', '1')
-      if (tier) {
-        searchParams.set('tier', tier)
+      if (id) {
+        searchParams.set('tier', id)
       }
       const location = {
         pathname: '/pti/register/step0',
@@ -31,15 +31,15 @@ class LandingPage extends React.Component {
       }
       this.props.history.push(location)
     }
-  handleRedirectAdvise = (tier) => () => {
+  handleRedirectAdvise = (id) => () => {
     const searchParams = new URLSearchParams(this.props.location.search)
     searchParams.set('product', '1')
-    if (tier) {
-      searchParams.set('tier', tier)
+    if (id) {
+      searchParams.set('tier', id)
     }
     const location = {
       pathname: '/pti/register/step0',
-      state: { tier, target: 'advise' },
+      state: { id, target: 'advise' },
       search: searchParams.toString(),
     }
     this.props.history.push(location)
