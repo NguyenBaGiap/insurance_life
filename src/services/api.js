@@ -1,5 +1,7 @@
-const BASE_URL = process.env.REACT_APP_API_ENDPOINT
-//const BASE_URL = 'http://10.9.2.48:8080/insurance/api'
+const BASE_URL =
+  process.env.REACT_APP_ENV === 'production'
+    ? `${window.location.origin}${process.env.REACT_APP_API_ENDPOINT}`
+    : process.env.REACT_APP_API_ENDPOINT
 
 export function CustomException(message) {
   this.message = message
@@ -8,6 +10,22 @@ export function ExceptionResponse({ data, status, timestamp }) {
   this.data = data.toString()
   this.status = status
   this.timestamp = timestamp
+}
+export const validateCaptcha = () => {
+  return new Promise((res) => {
+    window.grecaptcha.ready(function () {
+      window.grecaptcha
+        .execute(process.env.REACT_APP_CAPTCHA_SITE_KEY, {
+          action: 'post',
+        })
+        .then(function (captcha) {
+          return res(captcha)
+        })
+        .catch(function (error) {
+          console.log('Captcha xảy ra lỗi', error)
+        })
+    })
+  })
 }
 
 export const simpleGetRequest = async (url, searchParamStr) => {
@@ -40,13 +58,17 @@ export const simpleGetRequest = async (url, searchParamStr) => {
 }
 
 export const simplePostRequest = async (url, data) => {
+  const captcha = await validateCaptcha()
   const response = await fetch(`${BASE_URL}${url}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
       Authorization: `Bearer ${window.sessionStorage.getItem('access_token')}`,
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+      ...data,
+      captcha,
+    }),
   }).then(
     (response) => response,
     () => {
