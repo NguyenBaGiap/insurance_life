@@ -1,5 +1,5 @@
 const BASE_URL = process.env.REACT_APP_API_ENDPOINT
-// const BASE_URL = 'http://10.39.170.154:8080/insurance/api'
+//const BASE_URL = 'http://10.9.2.48:8080/insurance/api'
 
 export function CustomException(message) {
   this.message = message
@@ -15,7 +15,6 @@ export const simpleGetRequest = async (url, searchParamStr) => {
   if (searchParamStr) {
     urlObj.search = searchParamStr
   }
-
   const response = await fetch(urlObj.toString(), {
     method: 'get',
     headers: {

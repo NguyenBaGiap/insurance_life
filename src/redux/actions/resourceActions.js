@@ -20,11 +20,13 @@ export const fetchLeadSessionRequest = () => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
       const response = await simpleGetRequest(
-        `/v1/web/non-life/customer/get-lead`
+        `/v1/web/non-life/customer/get-lead`,
+        null
       )
       const initialValues = new LeadSessionResultJson(response.data)
       dispatch(fetchInitialValuesForm(initialValues))
     } catch (error) {
+      console.log(error)
       baseActions.commonHandleError(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
