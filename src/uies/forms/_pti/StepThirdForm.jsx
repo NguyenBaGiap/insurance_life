@@ -108,7 +108,7 @@ class StepThirdForm extends React.Component {
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
               name="relationship"
-              label="Mối quan hệ với người yêu cầu"
+              label="Mối quan hệ với Người mua bảo hiểm"
               validate={[required]}
               placeholder="Chọn người được bảo hiểm"
               required

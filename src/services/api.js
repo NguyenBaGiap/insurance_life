@@ -7,7 +7,7 @@ export function CustomException(message) {
   this.message = message
 }
 export function ExceptionResponse({ data, status, timestamp }) {
-  this.data = data.toString()
+  this.data = data.toString() || 'Internal Server Error'
   this.status = status
   this.timestamp = timestamp
 }
@@ -47,7 +47,6 @@ export const simpleGetRequest = async (url, searchParamStr) => {
       )
     }
   )
-
   const result = await response.json()
 
   if (!response.ok) {

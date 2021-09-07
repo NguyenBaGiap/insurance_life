@@ -13,13 +13,15 @@ export default class StepZeroRegister extends React.Component {
     } = props
     if (state && state.target === 'advise') {
       this.state = {
-        titleForm: 'Thông tin người yêu cầu tư vấn',
-        titleStep: 'Thông tin yêu cầu tư vấn',
+        titleBanner: 'Đăng ký tư vấn Bảo hiểm Bệnh hiểm nghèo',
+        titleForm: 'Thông tin Người đăng ký tư vấn',
+        titleStep: 'Thông tin đăng ký tư vấn',
         labelSubmit: 'Tư vấn',
         isShowStep: false,
       }
     } else {
       this.state = {
+        titleBanner: 'Đăng ký mua Bảo hiểm Bệnh hiểm nghèo',
         titleForm: 'Thông tin Người mua bảo hiểm',
         titleStep: 'Bước 1: Thông tin yêu cầu bảo hiểm',
         labelSubmit: 'Tiếp tục',
@@ -41,11 +43,12 @@ export default class StepZeroRegister extends React.Component {
       onSubmit,
       location: { state },
     } = this.props
-    const { titleForm, titleStep, labelSubmit, isShowStep } = this.state
+    const { titleBanner, titleForm, titleStep, labelSubmit, isShowStep } =
+      this.state
     return (
       <React.Fragment>
         <section className="initial-step-banner">
-          <AppBannerStep />
+          <AppBannerStep title={titleBanner} />
         </section>
         <section className="step-1">
           <Stepper title={titleStep} activeStep={1} isShowStep={isShowStep} />

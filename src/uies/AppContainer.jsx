@@ -11,10 +11,6 @@ const StepZeroRegister = React.lazy(() =>
   import('redux/containers/_pti/StepZeroRegister')
 )
 
-// const InitialConfirmOTP = React.lazy(() =>
-//   import('redux/containers/_pti/InitialConfirmOTP')
-// )
-
 const StepOneRegister = React.lazy(() =>
   import('redux/containers/_pti/StepFirstRegister')
 )
@@ -30,10 +26,6 @@ const StepThirdRegister = React.lazy(() =>
 const PaymentLoginNEO = React.lazy(() =>
   import('redux/containers/_payment/PaymentLoginNEO')
 )
-
-// const PaymentConfirmLogin = React.lazy(() =>
-//   import('redux/containers/_payment/PaymentConfirmLogin')
-// )
 
 const PaymentTransaction = React.lazy(() =>
   import('redux/containers/_payment/PaymentTransaction')
@@ -52,9 +44,6 @@ class AppContainer extends React.Component {
       easing: 'ease',
       duration: 1000,
       delay: 200,
-      // disable() {
-      //   return window.innerWidth < 621
-      // },
     })
     window.onload = function () {
       AOS.refresh()
@@ -67,15 +56,10 @@ class AppContainer extends React.Component {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route path="/pti/register/step0" component={StepZeroRegister} />
-          {/*<Route path="/register/initial/otp" component={InitialConfirmOTP} />*/}
           <Route path="/pti/register/step1" component={StepOneRegister} />
           <Route path="/pti/register/step2" component={StepTwoRegister} />
           <Route path="/pti/register/step3" component={StepThirdRegister} />
           <Route path="/register/payment/login" component={PaymentLoginNEO} />
-          {/*<Route*/}
-          {/*  path="/register/payment/login-confirm"*/}
-          {/*  component={PaymentConfirmLogin}*/}
-          {/*/>*/}
           <Route
             path="/register/payment/transaction"
             component={PaymentTransaction}

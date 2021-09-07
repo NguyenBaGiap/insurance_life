@@ -1,7 +1,12 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { asyncValidateRegisterStep } from 'utilities/asyncValidate'
-import { required, normalizeDate, normalizeMoney } from 'utilities/validate'
+import {
+  required,
+  normalizeDate,
+  normalizeMoney,
+  requiredCheckbox,
+} from 'utilities/validate'
 import { PACKAGE_OPTION, LIST_QUESTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
@@ -139,7 +144,7 @@ class StepSecondForm extends React.Component {
               <Field
                 name="participation"
                 component={SimpleCheckBoxField}
-                validate={[required]}
+                validate={[requiredCheckbox]}
               />
             </div>
             <div className="participation-confirm">

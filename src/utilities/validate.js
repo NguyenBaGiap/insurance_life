@@ -18,6 +18,9 @@ export const mobileNumber = (value) =>
 export const required = (value) =>
   value || typeof value === 'number' ? undefined : 'Vui lòng nhập thông tin'
 
+export const requiredCheckbox = (value) =>
+  value && value === true ? undefined : 'Yêu cầu xác nhận'
+
 const maxLength = (max) => (value) =>
   value && value.length > max
     ? `Giá trị nhập có tối đa ${max} kí tự`

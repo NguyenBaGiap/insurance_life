@@ -10,6 +10,7 @@ export const fetchInitialRegister = (params) => {
       productId: searchParams.get('product'),
       daoSale: searchParams.get('dao'),
       tier: searchParams.get('tier'),
+      participation: true,
     }
     dispatch(fetchInitialValuesForm(initialValues))
   }

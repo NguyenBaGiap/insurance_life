@@ -7,7 +7,7 @@ export class Step03RegisterSubmitJson {
     this.cusPhone = formValues.cusPhone
     this.cusEmail = formValues.cusEmail
     this.personId = formValues.personId
-    this.personRelationship = formValues.personRelationship.value
+    this.relationship = formValues.relationship.value
     this.personName = formValues.personName
     this.personGender = formValues.personGender.value
     this.personBirth = moment(formValues.personBirth).format('DD-MM-yyyy')

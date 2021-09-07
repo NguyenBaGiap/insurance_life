@@ -107,6 +107,7 @@ export const submitRegisterStep3 = (formValue) => {
       await apiClient.submitRegisterStepThird(submitValues)
       dispatch(push('/register/payment/login'))
     } catch (error) {
+      console.log(error)
       baseActions.commonHandleError(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
