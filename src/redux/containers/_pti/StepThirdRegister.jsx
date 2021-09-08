@@ -6,6 +6,7 @@ import StepThirdRegister from 'uies/templates/_pti/StepThirdRegister'
 const mapStateToProps = (state) => ({
   requestStatus: state.requestStatusReducer,
   initialValues: state.formValuesReducer.initialValues,
+  insurancePackage: state.ptiPackageReducer.options,
 })
 
 const mapDispatchToProps = (dispatch) => ({

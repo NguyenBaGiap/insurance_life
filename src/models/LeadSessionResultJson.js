@@ -1,12 +1,9 @@
-import {
-  GENDER_OPTION,
-  PACKAGE_OPTION,
-  RELATIONSHIP_OPTION,
-} from 'utilities/constants'
+import { GENDER_OPTION, RELATIONSHIP_OPTION } from 'utilities/constants'
 import moment from 'moment'
+import _ from 'lodash'
 
 export class LeadSessionResultJson {
-  constructor(initialValue) {
+  constructor(initialValue, insurancePackage) {
     const { productId, staffCode, customerDto, personDto, packageDto } =
       initialValue
     //customerDto
@@ -31,22 +28,20 @@ export class LeadSessionResultJson {
     this.priceId = packageDto.priceId
     this.price = packageDto.price
     this.exportBill = packageDto.exportBill
-    // this.effectiveDate = new Date().getTime()
     if (packageDto.effectiveDate) {
       this.effectiveDate = moment(packageDto.effectiveDate, 'DD-MM-YYYY')
     } else {
       this.effectiveDate = new Date().getTime()
     }
     this.tierId = packageDto.tierId
-      ? PACKAGE_OPTION.filter((pack) => pack.value === packageDto.tierId)[0]
+      ? _.find(insurancePackage, { value: packageDto.tierId })
       : {}
     this.personGender = personDto.gender
-      ? GENDER_OPTION.filter((gen) => gen.value === personDto.gender)[0]
+      ? _.find(GENDER_OPTION, { value: personDto.gender })
       : {}
+
     this.relationship = personDto.relationship
-      ? RELATIONSHIP_OPTION.filter(
-          (rel) => rel.value === personDto.relationship
-        )[0]
+      ? _.find(RELATIONSHIP_OPTION, { value: personDto.relationship })
       : {}
     // commit
     this.condition = true

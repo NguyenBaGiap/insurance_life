@@ -1,10 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import {
-  GENDER_OPTION,
-  PACKAGE_OPTION,
-  RELATIONSHIP_OPTION,
-} from 'utilities/constants'
+import { GENDER_OPTION, RELATIONSHIP_OPTION } from 'utilities/constants'
 import dots from 'static/img/_intro/dot.svg'
 import editIcon from 'static/img/editIcon.svg'
 import {
@@ -32,7 +28,8 @@ class StepThirdForm extends React.Component {
   }
   render() {
     const { enableEdit } = this.state
-    const { handleSubmit, handleGoBack, isLoadingAmount } = this.props
+    const { handleSubmit, handleGoBack, isLoadingAmount, insurancePackage } =
+      this.props
     return (
       <form
         autoComplete="off"
@@ -189,7 +186,7 @@ class StepThirdForm extends React.Component {
               //loading
               required
               component={SimpleSelectField}
-              selectableValues={PACKAGE_OPTION}
+              selectableValues={insurancePackage}
               disabled={!enableEdit}
             />
           </div>

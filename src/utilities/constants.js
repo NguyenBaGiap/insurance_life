@@ -30,12 +30,6 @@ export const RELATIONSHIP_OPTION = [
   },
 ]
 
-export const PACKAGE_OPTION = [
-  { value: 5, label: 'Gói vàng' },
-  { value: 4, label: 'Gói bạc' },
-  { value: 6, label: 'Gói kim cương' },
-]
-
 export const LIST_QUESTION = [
   {
     label:

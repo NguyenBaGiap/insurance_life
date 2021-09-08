@@ -8,6 +8,7 @@ const selector = formValueSelector('StepSecondForm')
 
 const mapStateToProps = (state) => ({
   initialValues: state.formValuesReducer.initialValues,
+  insurancePackage: state.ptiPackageReducer.options,
   isParticipation: selector(state, 'participation'),
 })
 

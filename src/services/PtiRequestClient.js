@@ -1,6 +1,12 @@
-import { simplePostRequest } from './api'
+import { simpleGetRequest, simplePostRequest } from './api'
 
 export class PtiRequestClient {
+  fetchPackages = async () => {
+    return await simpleGetRequest(
+      `/v1/web/non-life/type-insurance/tier-by-product?productId=1`,
+      null
+    )
+  }
   submitAdvisoryStepOne = async (formValues) => {
     return await simplePostRequest(
       `/v1/web/non-life/customer/registry-advisory`,

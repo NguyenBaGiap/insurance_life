@@ -22,6 +22,7 @@ class StepThirdRegister extends React.Component {
     })
   }
   render() {
+    const { initialValues, insurancePackage, onSubmit } = this.props
     return (
       <React.Fragment>
         <AppBannerStep />
@@ -30,8 +31,9 @@ class StepThirdRegister extends React.Component {
           activeStep={3}
         />
         <StepThirdForm
-          initialValues={this.props.initialValues}
-          onSubmit={this.props.onSubmit}
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+          insurancePackage={insurancePackage}
           handleGoBack={this.handleGoBack}
           isLoadingAmount={this.state.isLoadingAmount}
           handleLoadingAmount={this.handleLoadingAmount}

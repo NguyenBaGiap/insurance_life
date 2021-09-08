@@ -5,6 +5,8 @@ import { reducer as toastrReducer } from 'react-redux-toastr'
 import { requestStatusReducer } from 'redux/reducers/requestStatusReducer'
 import { popupReducer } from 'redux/reducers/popupReducer'
 import { formValuesReducer } from 'redux/reducers/formValuesReducer'
+import { ptiPackageReducer } from 'redux/reducers/ptiPackageReducer'
+import { paymentReducer } from 'redux/reducers/paymentReducer'
 
 export const rootReducer = (history) =>
   combineReducers({
@@ -14,4 +16,6 @@ export const rootReducer = (history) =>
     requestStatusReducer,
     popupReducer,
     formValuesReducer,
+    ptiPackageReducer,
+    paymentReducer,
   })

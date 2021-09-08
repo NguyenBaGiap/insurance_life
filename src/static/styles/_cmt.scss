@@ -2,6 +2,7 @@
 
 .insurance-comment {
   @include MAX_768 {
+    margin-top: 2rem;
     .user-item {
       display: none;
     }

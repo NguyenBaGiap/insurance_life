@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { asyncValidateRegisterStep } from 'utilities/asyncValidate'
 import { required, normalizeDate, normalizeMoney } from 'utilities/validate'
-import { PACKAGE_OPTION, LIST_QUESTION } from 'utilities/constants'
+import { LIST_QUESTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
@@ -19,8 +19,13 @@ class StepSecondForm extends React.Component {
     })
   }
   render() {
-    const { handleSubmit, handleGoBack, isLoadingAmount, isParticipation } =
-      this.props
+    const {
+      handleSubmit,
+      handleGoBack,
+      isLoadingAmount,
+      isParticipation,
+      insurancePackage,
+    } = this.props
     return (
       <form
         autoComplete="off"
@@ -39,7 +44,7 @@ class StepSecondForm extends React.Component {
               //loading
               required
               component={SimpleSelectField}
-              selectableValues={PACKAGE_OPTION}
+              selectableValues={insurancePackage}
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
@@ -137,9 +142,7 @@ class StepSecondForm extends React.Component {
         <div className="row">
           <div className="col-md-12 col-sm-12 pt-3">
             {!isParticipation && (
-              <span className="text-danger">
-                Khách hàng phải cam kết các điều khoản bên dưới.
-              </span>
+              <span className="text-danger">Vui lòng tích chọn cam kết.</span>
             )}
           </div>
         </div>

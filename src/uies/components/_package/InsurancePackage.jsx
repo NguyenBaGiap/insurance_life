@@ -2,17 +2,17 @@ import React from 'react'
 import 'static/styles/_package.scss'
 
 const PackageCard = ({
-  data: { image, name, moneyTotal, moneyMonth, id },
+  data: { image, label, moneyTotal, moneyMonth, id },
   handleRedirectRegister,
   handleRedirectAdvise,
 }) => (
-  <div className="col-sm-12 col-md-4 px-2 ps-md-0 pb-5 pt-5 pb-md-0 d-flex justify-content-center">
+  <div className="col-sm-12 col-md-4 px-2 ps-md-0 pb-3 pt-3 pb-md-0 d-flex justify-content-center">
     <div className=" package-item">
       <div className="content p-4">
         <div data-aos="fade-up">
           <img src={image} alt="silver" className="d-flex" />
           <p className="text-center font-weight-bold pt-2 package-name">
-            {name}
+            {label}
           </p>
           <p className="sub-title text-center pt-3">Số tiền bảo hiểm</p>
           <p className="package-total">{moneyTotal}</p>
@@ -49,7 +49,7 @@ export default function InsurancePackage({
     <div className="insurance-package">
       <div className="container">
         <div className="row align-items-start">
-          <div className="col-md-12 pb-5 text-center">
+          <div className="col-md-12 text-center">
             <div data-aos="zoom-in">
               <p className="title-gradient">Lựa chọn gói bảo hiểm</p>
               <p className="sub-title">Số tiền bảo hiểm: VNĐ/người/năm</p>

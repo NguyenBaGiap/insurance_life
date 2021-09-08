@@ -80,15 +80,13 @@ export const footer = {
     },
   ],
 }
-
 export const benefit = {
   title:
     'Lợi ích của Người được bảo hiểm khi tham gia sản phẩm Bảo hiểm Bệnh hiểm nghèo',
   contents: [
     {
       image: secure,
-      content:
-        'Bảo vệ trước các bệnh các bệnh hiểm nghèo ngay từ giai đoạn đầu.',
+      content: 'Bảo vệ trước các bệnh hiểm nghèo ngay từ giai đoạn đầu.',
     },
     {
       image: secure,
@@ -126,21 +124,21 @@ export const insurancePackage = {
   contents: [
     {
       image: silver,
-      name: 'Gói Bạc',
+      label: 'Gói Bạc',
       moneyTotal: '110.000.000',
       moneyMonth: '220.000',
       id: 4,
     },
     {
       image: gold,
-      name: 'Gói Vàng',
+      label: 'Gói Vàng',
       moneyTotal: '220.000.000',
       moneyMonth: '330.000',
       id: 5,
     },
     {
       image: diamond,
-      name: 'Gói Kim Cương',
+      label: 'Gói Kim Cương',
       moneyTotal: '330.000.000',
       moneyMonth: '483.000',
       id: 6,

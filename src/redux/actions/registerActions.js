@@ -122,9 +122,7 @@ export const submitLoginVPBankNEO = (formValue) => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
-      console.log(JSON.stringify(formValue, 0, 2))
-      const response = await payClient.submitLoginNEO(formValue)
-      console.log(response)
+      await payClient.submitLoginNEO(formValue)
       dispatch(replace('/register/payment/transaction'))
     } catch (error) {
       baseActions.commonHandleError(error)

@@ -6,7 +6,8 @@ import SimpleTextField from 'uies/components/_field/SimpleTextField'
 
 class PaymentTransactionForm extends React.Component {
   render() {
-    const { handleSubmit } = this.props
+    const { initialValues, handleSubmit } = this.props
+    console.log(initialValues)
     return (
       <form
         autoComplete="off"
@@ -19,24 +20,26 @@ class PaymentTransactionForm extends React.Component {
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="accountNumber"
+              name="accountPayment"
               label="Chọn tài khoản nguồn"
+              placeholder="Chọn tài khoản nguồn"
               validate={[required]}
               //loading
               required
               component={SimpleSelectField}
-              selectableValues={[{ label: '1', value: '1' }]}
+              selectableValues={initialValues.optionPayment}
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
               name="accountName"
-              label="Tên tài khoản"
+              label="Tên chủ tài khoản"
               type="text"
               validate={[required]}
               //loading
               required
               component={SimpleTextField}
+              disabled
             />
           </div>
         </div>
@@ -46,32 +49,32 @@ class PaymentTransactionForm extends React.Component {
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="totalMoney"
+              name="price"
               label="Tổng số tiền"
               type="text"
               validate={[required]}
               //loading
-              required
+              disabled
               component={SimpleTextField}
             />
           </div>
           <div className="col-md-9 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="totalMoneyText"
-              label="Tổng số tiền (Bằng chữ)"
+              name="numberContract"
+              label="Số tham chiếu"
               type="text"
               validate={[required]}
-              //loading
+              disabled
               component={SimpleTextField}
             />
           </div>
           <div className="col-md-12 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="contentTransaction"
+              name="remark"
               label="Nội dung thanh toán"
               type="text"
               validate={[required]}
-              //loading
+              disabled
               component={SimpleTextField}
             />
           </div>
@@ -93,4 +96,5 @@ class PaymentTransactionForm extends React.Component {
 
 export default reduxForm({
   form: 'PaymentTransactionForm',
+  enableReinitialize: true,
 })(PaymentTransactionForm)
