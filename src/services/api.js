@@ -7,7 +7,7 @@ export function CustomException(message) {
   this.message = message
 }
 export function ExceptionResponse({ data, status, timestamp }) {
-  this.data = data.toString() || 'Internal Server Error'
+  this.data = data?.toString() || 'Internal Server Error'
   this.status = status
   this.timestamp = timestamp
 }

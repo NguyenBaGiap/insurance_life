@@ -1,11 +1,13 @@
 import * as actionTypes from './actionTypes'
 
-export const showModalWelcome = () => ({
+export const showModalWelcome = (data) => ({
   type: actionTypes.SHOW_MODAL_WELCOME_CUSTOMER,
+  payload: { ...data },
 })
 
-export const closeModalWelcome = () => ({
+export const closeModalWelcome = (data) => ({
   type: actionTypes.CLOSE_MODAL_WELCOME_CUSTOMER,
+  payload: { ...data },
 })
 
 // form

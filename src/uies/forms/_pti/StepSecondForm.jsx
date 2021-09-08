@@ -1,12 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { asyncValidateRegisterStep } from 'utilities/asyncValidate'
-import {
-  required,
-  normalizeDate,
-  normalizeMoney,
-  requiredCheckbox,
-} from 'utilities/validate'
+import { required, normalizeDate, normalizeMoney } from 'utilities/validate'
 import { PACKAGE_OPTION, LIST_QUESTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
@@ -24,7 +19,8 @@ class StepSecondForm extends React.Component {
     })
   }
   render() {
-    const { handleSubmit, handleGoBack, isLoadingAmount } = this.props
+    const { handleSubmit, handleGoBack, isLoadingAmount, isParticipation } =
+      this.props
     return (
       <form
         autoComplete="off"
@@ -139,13 +135,18 @@ class StepSecondForm extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-12 col-sm-12 pt-3 d-flex justify-content-md-start align-items-baseline">
+          <div className="col-md-12 col-sm-12 pt-3">
+            {!isParticipation && (
+              <span className="text-danger">
+                Khách hàng phải cam kết các điều khoản bên dưới.
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12 col-sm-12 d-flex justify-content-md-start align-items-baseline">
             <div className="field-participation">
-              <Field
-                name="participation"
-                component={SimpleCheckBoxField}
-                validate={[requiredCheckbox]}
-              />
+              <Field name="participation" component={SimpleCheckBoxField} />
             </div>
             <div className="participation-confirm">
               <p>
@@ -167,6 +168,10 @@ class StepSecondForm extends React.Component {
                 Tôi đại diện cho người có tên ở trên đồng ý cho việc cung cấp
                 những thông tin trên.
               </p>
+              <p>
+                Tôi đồng ý chia sẻ các thông tin kê khai trên đây từ VPBank cho
+                Công ty bảo hiểm PTI để đăng ký tham gia bảo hiểm.
+              </p>
             </div>
           </div>
         </div>
@@ -179,7 +184,11 @@ class StepSecondForm extends React.Component {
             >
               Quay lại
             </button>
-            <button type="submit" className="btn-submit">
+            <button
+              type="submit"
+              className="btn-submit"
+              disabled={!isParticipation}
+            >
               Tiếp tục
             </button>
           </div>

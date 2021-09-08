@@ -38,10 +38,11 @@ export default class StepZeroRegister extends React.Component {
   }
   render() {
     const {
-      isOpenPopupWelcomeCustomer,
+      popupWelcomeCustomer: { isOpen, title, description },
       initialValues,
       onSubmit,
       location: { state },
+      isParticipation,
     } = this.props
     const { titleBanner, titleForm, titleStep, labelSubmit, isShowStep } =
       this.state
@@ -61,11 +62,14 @@ export default class StepZeroRegister extends React.Component {
             handleGoBack={this.handleGoBack}
             title={titleForm}
             labelSubmit={labelSubmit}
+            isParticipation={isParticipation}
           />
         </section>
         <section className="popup-welcome">
           <PopupWelCome
-            isOpen={isOpenPopupWelcomeCustomer}
+            isOpen={isOpen}
+            title={title}
+            description={description}
             handleCloseModal={this.props.closePopupWelcome}
           />
         </section>

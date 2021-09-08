@@ -16,7 +16,7 @@ import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleCheckBoxField from 'uies/components/_field/SimpleCheckBoxField'
 
-const RegisterOrAdvise = ({ initialState }) => {
+const RegisterOrAdvise = ({ initialState, isParticipation }) => {
   if (initialState && initialState.target === 'advise') {
     return (
       <div className="row">
@@ -26,6 +26,9 @@ const RegisterOrAdvise = ({ initialState }) => {
             component={SimpleCheckBoxField}
             label="Bằng cách đăng ký thông tin này, tôi đồng ý nhận tư vấn bảo hiểm của VPBank."
           />
+        </div>
+        <div className="col-md-12 col-sm-12 text-danger">
+          {!isParticipation && 'Vui lòng xác nhận '}
         </div>
       </div>
     )
@@ -52,8 +55,14 @@ const RegisterOrAdvise = ({ initialState }) => {
 
 class StepZeroForm extends React.Component {
   render() {
-    const { handleSubmit, handleGoBack, initialState, title, labelSubmit } =
-      this.props
+    const {
+      handleSubmit,
+      handleGoBack,
+      initialState,
+      title,
+      labelSubmit,
+      isParticipation,
+    } = this.props
     return (
       <form
         autoComplete="off"
@@ -111,7 +120,10 @@ class StepZeroForm extends React.Component {
             />
           </div>
         </div>
-        <RegisterOrAdvise initialState={initialState} />
+        <RegisterOrAdvise
+          initialState={initialState}
+          isParticipation={isParticipation}
+        />
         <div className="row">
           <div className="col-md-12 col-sm-12 btn-action pb-5">
             <button
@@ -121,7 +133,11 @@ class StepZeroForm extends React.Component {
             >
               Quay lại
             </button>
-            <button type="submit" className="btn-submit">
+            <button
+              type="submit"
+              className="btn-submit"
+              disabled={!isParticipation}
+            >
               {labelSubmit}
             </button>
           </div>

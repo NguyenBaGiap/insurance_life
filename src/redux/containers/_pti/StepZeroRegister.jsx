@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { formValueSelector } from 'redux-form'
 import { submitRegister, submitAdvisory } from 'redux/actions/registerActions'
 import { fetchInitialRegister } from 'redux/actions/resourceActions'
 import {
@@ -7,10 +8,13 @@ import {
 } from 'redux/actions/actionCreator'
 import StepZeroRegister from 'uies/templates/_pti/StepZeroRegister'
 
+const selector = formValueSelector('StepZeroForm')
+
 const mapStateToProps = (state) => ({
   initialValues: state.formValuesReducer.initialValues,
   location: state.router.location,
-  isOpenPopupWelcomeCustomer: state.popupReducer.isOpenPopupWelcomeCustomer,
+  popupWelcomeCustomer: state.popupReducer.popupWelcomeCustomer,
+  isParticipation: selector(state, 'participation'),
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
@@ -23,7 +27,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   },
   closePopupWelcome: () => {
     dispatch(closeModalWelcome())
-    props.history.push('/')
+    props.history.goBack()
   },
   onSubmit: (values) => {
     const isAdvisory = props.location.state?.target === 'advise'

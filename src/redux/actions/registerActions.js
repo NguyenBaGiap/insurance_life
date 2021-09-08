@@ -1,4 +1,4 @@
-import { push, replace, goBack } from 'connected-react-router'
+import { push, replace } from 'connected-react-router'
 import * as baseActions from './baseActions'
 import { showModalWelcome } from 'redux/actions/actionCreator'
 import { Step00RegisterSubmitJson } from 'models/Step00RegisterSubmitJson'
@@ -27,16 +27,13 @@ export const submitAdvisory = (formValue) => {
       console.log(error)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
-      // open notice
-      toastr.success(
-        'Chào mừng Quý Khách',
-        'Cảm ơn Quý Khách đã quan tâm đến sản phẩm của VPBank. Chúng tôi sẽ liên hệ và tư vấn cho Quý Khách trong thời gian sớm nhất.',
-        {
-          timeOut: 10000,
-          position: 'top-right',
-        }
+      dispatch(
+        showModalWelcome({
+          title: 'Đăng ký thành công.',
+          description:
+            'Yêu cầu đã được hệ thống VPBank ghi nhận. Chúng tôi sẽ liên hệ và tư vấn Khách hàng trong thời gian sớm nhất. Cảm ơn Quý khách.',
+        })
       )
-      dispatch(goBack())
     }
   }
 }
@@ -52,7 +49,13 @@ export const submitRegister = (formValue, params) => {
         data: { token, leadStep },
       } = await apiClient.submitRegisterStepInit(submitValues)
       if (code === 'INS201') {
-        return dispatch(showModalWelcome())
+        return dispatch(
+          showModalWelcome({
+            title: 'Chào mừng Quý Khách',
+            description:
+              'Cảm ơn Quý Khách đã quan tâm đến sản phẩm của VPBank. Chúng tôi sẽ liên hệ và tư vấn cho Quý Khách trong thời gian sớm nhất.',
+          })
+        )
       }
       sessionStorage.setItem('access_token', token)
       const step = leadStep?.replace('STEP', '') || 1

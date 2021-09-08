@@ -21,6 +21,8 @@ export default class StepSecondRegister extends React.Component {
     })
   }
   render() {
+    const { isParticipation, initialValues, onSubmit } = this.props
+    const { isLoadingAmount } = this.state
     return (
       <React.Fragment>
         <section>
@@ -31,9 +33,10 @@ export default class StepSecondRegister extends React.Component {
         </section>
         <section>
           <StepSecondForm
-            initialValues={this.props.initialValues}
-            onSubmit={this.props.onSubmit}
-            isLoadingAmount={this.state.isLoadingAmount}
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            isLoadingAmount={isLoadingAmount}
+            isParticipation={isParticipation}
             handleLoadingAmount={this.handleLoadingAmount}
             handleGoBack={this.handleGoBack}
           />
