@@ -10,10 +10,53 @@ import CustomerComment from 'uies/components/_comment/CustomerComment'
 import EmailFollowForm from 'uies/forms/EmailFollowForm'
 import InsuranceList from 'uies/components/_intro/InsuranceList'
 import 'static/styles/_landing_page.scss'
+//
+// import { insurancePackage } from 'utilities/initialHomePage'
+// import _ from 'lodash'
+//
+// const response = [
+//   {
+//     createdTimestamp: '2021-08-26T16:11:09.199+07:00',
+//     updatedTimestamp: '2021-08-26T16:11:09.199+07:00',
+//     createdBy: 'khanhdq10',
+//     updatedBy: 'khanhdq10',
+//     id: 4,
+//     tierName: 'GÓI BẠC',
+//     description: 'GÓI BẠC',
+//     code: '01',
+//   },
+//   {
+//     createdTimestamp: '2021-08-26T16:11:35.997+07:00',
+//     updatedTimestamp: '2021-08-26T16:11:35.997+07:00',
+//     createdBy: 'khanhdq10',
+//     updatedBy: 'khanhdq10',
+//     id: 5,
+//     tierName: 'GÓI VÀNG',
+//     description: 'GÓI VÀNG',
+//     code: '02',
+//   },
+//   {
+//     createdTimestamp: '2021-08-26T16:11:53.459+07:00',
+//     updatedTimestamp: '2021-08-26T16:11:53.459+07:00',
+//     createdBy: 'khanhdq10',
+//     updatedBy: 'khanhdq10',
+//     id: 6,
+//     tierName: 'GÓI KIM CƯƠNG',
+//     description: 'GÓI KIM CƯƠNG',
+//     code: '03',
+//   },
+// ]
+// const merged = _.merge(
+//   _.keyBy(insurancePackage, 'code'),
+//   _.keyBy(response, 'code')
+// )
+// const values = _.values(merged)
+// console.log(values)
 
 class LandingPage extends React.Component {
   componentDidMount() {
     sessionStorage.clear()
+    this.props.fetchInitialData()
   }
 
   handleRedirectRegister =
@@ -45,7 +88,8 @@ class LandingPage extends React.Component {
     this.props.history.push(location)
   }
   render() {
-    const { initialValues, onSubmitEmail } = this.props
+    const { initialValues, onSubmitEmail, insurancePackage } = this.props
+    console.log(insurancePackage)
     return (
       <React.Fragment>
         <section id="section-header">

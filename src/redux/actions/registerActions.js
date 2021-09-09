@@ -138,8 +138,13 @@ export const submitInformationPaymentTransaction = (formValue) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
       const submitValues = new PaymentSubmitJson(formValue)
-      await payClient.submitPaymentTransaction(submitValues)
-      dispatch(push('/register/payment/transaction-confirm'))
+      const response = await payClient.submitPaymentTransaction(submitValues)
+      console.log(response.data)
+      dispatch(
+        push('/register/payment/transaction-confirm', {
+          uuid: response.data,
+        })
+      )
     } catch (error) {
       baseActions.commonHandleError(error)
     } finally {
@@ -152,8 +157,11 @@ export const submitConfirmPaymentTransaction = (formValue) => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
-      console.log(JSON.stringify(formValue, 0, 2))
-      await sleep(3000)
+      const submitValues = {
+        uuid: formValue.uuid,
+        otp: formValue.items.toString().replaceAll(',', ''),
+      }
+      await payClient.submitPaymentByOTP(submitValues)
       dispatch(push('/register/payment/success'))
     } catch (error) {
       baseActions.commonHandleError(error)

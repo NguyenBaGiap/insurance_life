@@ -20,8 +20,8 @@ export const asyncValidateRegisterStep = async (values, dispatch, props) => {
       const {
         data: { id, price },
       } = await simplePostRequest('/v1/sale/calculating-money', submitPrice)
-      dispatch(change(props.form, 'price', price))
       dispatch(change(props.form, 'priceId', id))
+      dispatch(change(props.form, 'price', price))
     } catch (e) {
       commonHandleError(e)
       dispatch(change(props.form, 'price', null))

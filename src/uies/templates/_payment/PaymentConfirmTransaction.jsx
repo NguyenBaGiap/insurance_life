@@ -3,6 +3,14 @@ import CustomerConfirmOtp from 'uies/templates/_otp/CustomerConfirmOtp'
 import PaymentTemplate from 'uies/templates/_payment/PaymentTemplate'
 
 class PaymentConfirmTransaction extends React.Component {
+  componentDidMount() {
+    const {
+      location: { state },
+      fetchInitialValues,
+    } = this.props
+    fetchInitialValues(state)
+  }
+
   render() {
     const { initialValues, onSubmit, retrySendOTP } = this.props
     return (

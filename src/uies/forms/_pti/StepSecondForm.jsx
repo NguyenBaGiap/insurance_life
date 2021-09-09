@@ -32,8 +32,8 @@ class StepSecondForm extends React.Component {
             <Field
               name="tierId"
               label="Gói bảo hiểm"
+              placeholder="Chọn gói bảo hiểm"
               validate={[required]}
-              //loading
               required
               component={SimpleSelectField}
               selectableValues={insurancePackage}

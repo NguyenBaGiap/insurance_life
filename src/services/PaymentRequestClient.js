@@ -19,4 +19,10 @@ export class PaymentRequestClient {
       formValues
     )
   }
+  submitPaymentByOTP = async (formValues) => {
+    return await simplePostRequest(
+      `/v1/web/non-life/customer/submit-payment`,
+      formValues
+    )
+  }
 }

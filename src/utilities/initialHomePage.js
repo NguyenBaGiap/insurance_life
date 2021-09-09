@@ -128,6 +128,7 @@ export const insurancePackage = {
       moneyTotal: '110.000.000',
       moneyMonth: '220.000',
       id: 4,
+      code: '01',
     },
     {
       image: gold,
@@ -135,6 +136,7 @@ export const insurancePackage = {
       moneyTotal: '220.000.000',
       moneyMonth: '330.000',
       id: 5,
+      code: '02',
     },
     {
       image: diamond,
@@ -142,6 +144,7 @@ export const insurancePackage = {
       moneyTotal: '330.000.000',
       moneyMonth: '483.000',
       id: 6,
+      code: '03',
     },
   ],
 }
