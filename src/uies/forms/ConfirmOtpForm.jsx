@@ -62,7 +62,7 @@ class ConfirmOtpForm extends React.Component {
     now: Date.now(),
   }
   handleRetrySendOTP = async () => {
-    this.props.retrySendOTP()
+    await this.props.retrySendOTP()
     this.setState({ now: Date.now() })
   }
   render() {

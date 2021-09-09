@@ -13,7 +13,7 @@ export default class StepSecondRegister extends React.Component {
   }
 
   handleGoBack = () => {
-    this.props.history.goBack()
+    this.props.history.push('/pti/register/step1')
   }
   handleLoadingAmount = () => {
     this.setState({

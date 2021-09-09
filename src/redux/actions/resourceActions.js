@@ -21,7 +21,9 @@ export const fetchInitialRegister = (params) => {
     const initialValues = {
       productId: searchParams.get('product'),
       daoSale: searchParams.get('dao'),
-      tier: searchParams.get('tier'),
+      tierId: {
+        value: searchParams.get('tier'),
+      },
       participation: true,
     }
     dispatch(fetchInitialValuesForm(initialValues))

@@ -10,7 +10,7 @@ export default class StepFirstRegister extends React.Component {
   }
 
   handleGoBack = () => {
-    this.props.history.goBack()
+    this.props.history.push('/pti/register/step0')
   }
   render() {
     return (

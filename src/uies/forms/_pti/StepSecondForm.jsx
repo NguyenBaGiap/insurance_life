@@ -49,7 +49,7 @@ class StepSecondForm extends React.Component {
               required
             />
           </div>
-          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 step-2-money">
             <Field
               name="price"
               label="Tổng số tiền"

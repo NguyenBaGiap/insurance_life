@@ -98,7 +98,7 @@ class StepZeroForm extends React.Component {
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
-              name="phone"
+              name="cusPhone"
               label="Số điện thoại"
               normalize={normalizeNumber}
               type="text"
@@ -110,7 +110,7 @@ class StepZeroForm extends React.Component {
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
-              name="email"
+              name="cusEmail"
               label="Địa chỉ email"
               type="text"
               validate={[required, email, maxLength50]}

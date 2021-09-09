@@ -1,5 +1,8 @@
 import { connect } from 'react-redux'
-import { submitConfirmPaymentTransaction } from 'redux/actions/registerActions'
+import {
+  submitConfirmPaymentTransaction,
+  submitRetryRequestOTP,
+} from 'redux/actions/registerActions'
 import PaymentConfirmTransaction from 'uies/templates/_payment/PaymentConfirmTransaction'
 
 const mapStateToProps = (state) => ({
@@ -10,6 +13,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  retrySendOTP: () => {
+    dispatch(submitRetryRequestOTP())
+  },
   onSubmit: (formValues) => {
     dispatch(submitConfirmPaymentTransaction(formValues))
   },

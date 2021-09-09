@@ -34,7 +34,7 @@ export default class StepZeroRegister extends React.Component {
   }
 
   handleGoBack = () => {
-    this.props.history.goBack()
+    this.props.history.push('/')
   }
   render() {
     const {

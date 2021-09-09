@@ -1,7 +1,10 @@
 import { connect } from 'react-redux'
 import { formValueSelector } from 'redux-form'
 import { submitRegister, submitAdvisory } from 'redux/actions/registerActions'
-import { fetchInitialRegister } from 'redux/actions/resourceActions'
+import {
+  fetchInitialRegister,
+  fetchLeadSessionRequest,
+} from 'redux/actions/resourceActions'
 import {
   showModalWelcome,
   closeModalWelcome,
@@ -20,7 +23,11 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   fetchInitialValues: () => {
     const params = props.location.search
-    dispatch(fetchInitialRegister(params))
+    if (sessionStorage.getItem('access_token')) {
+      dispatch(fetchLeadSessionRequest())
+    } else {
+      dispatch(fetchInitialRegister(params))
+    }
   },
   openPopupWelcome: () => {
     dispatch(showModalWelcome())
