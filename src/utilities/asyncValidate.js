@@ -7,7 +7,7 @@ function ErrorValidate(field, message) {
   this[field] = message
 }
 
-export const asyncValidateRegisterStep = async (values, dispatch, props) => {
+export const asyncValidateRegisterStep = async (values, props) => {
   if (values.tierId && values.effectiveDate && values.personBirth) {
     try {
       props.handleLoadingAmount()
@@ -20,11 +20,11 @@ export const asyncValidateRegisterStep = async (values, dispatch, props) => {
       const {
         data: { id, price },
       } = await simplePostRequest('/v1/sale/calculating-money', submitPrice)
-      dispatch(change(props.form, 'priceId', id))
-      dispatch(change(props.form, 'price', price))
+      props.dispatch(change(props.form, 'priceId', id))
+      props.dispatch(change(props.form, 'price', price))
     } catch (e) {
       commonHandleError(e)
-      dispatch(change(props.form, 'price', null))
+      props.dispatch(change(props.form, 'price', null))
       throw new ErrorValidate('tierId', e.messages || e.data)
     } finally {
       props.handleLoadingAmount()

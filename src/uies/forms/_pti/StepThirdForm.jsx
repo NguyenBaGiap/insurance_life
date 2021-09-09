@@ -253,7 +253,7 @@ class StepThirdForm extends React.Component {
 }
 export default reduxForm({
   form: 'StepThirdForm',
-  asyncValidate: asyncValidateRegisterStep,
+  validate: asyncValidateRegisterStep,
   asyncChangeFields: [
     'price',
     'tierId',

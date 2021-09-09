@@ -35,14 +35,14 @@ export class LeadSessionResultJson {
     }
     this.tierId = packageDto.tierId
       ? _.find(insurancePackage, { value: packageDto.tierId })
-      : {}
+      : null
     this.personGender = personDto.gender
       ? _.find(GENDER_OPTION, { value: personDto.gender })
-      : {}
+      : null
 
     this.relationship = personDto.relationship
       ? _.find(RELATIONSHIP_OPTION, { value: personDto.relationship })
-      : {}
+      : null
     // commit
     this.condition = true
     this.participation = true
