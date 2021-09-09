@@ -6,8 +6,7 @@ import SimpleTextField from 'uies/components/_field/SimpleTextField'
 
 class PaymentTransactionForm extends React.Component {
   render() {
-    const { initialValues, handleSubmit } = this.props
-    console.log(initialValues)
+    const { handleGoBack, handleSubmit, accountOptions } = this.props
     return (
       <form
         autoComplete="off"
@@ -20,14 +19,13 @@ class PaymentTransactionForm extends React.Component {
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
-              name="accountPayment"
+              name="accountOptions"
               label="Chọn tài khoản nguồn"
               placeholder="Chọn tài khoản nguồn"
               validate={[required]}
-              //loading
               required
               component={SimpleSelectField}
-              selectableValues={initialValues.optionPayment}
+              selectableValues={accountOptions}
             />
           </div>
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
@@ -81,7 +79,11 @@ class PaymentTransactionForm extends React.Component {
         </div>
         <div className="row">
           <div className="col-md-12 col-sm-12 btn-action pb-5">
-            <button type="button" className="btn-back mr-3">
+            <button
+              type="button"
+              className="btn-back mr-3"
+              onClick={handleGoBack}
+            >
               Quay lại
             </button>
             <button type="submit" className="btn-submit">

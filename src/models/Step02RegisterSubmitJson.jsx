@@ -8,6 +8,6 @@ export class Step02RegisterSubmitJson {
     this.billExport = formValues.exportBill
     this.participation = formValues.participation
     this.effectiveDate = moment(formValues.effectiveDate).format('DD-MM-yyyy')
-    this.condition = !!formValues.condition
+    this.condition = !!Number(formValues.condition)
   }
 }

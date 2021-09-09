@@ -13,7 +13,7 @@ class StepThirdRegister extends React.Component {
   }
 
   handleGoBack = () => {
-    this.props.history.goBack()
+    this.props.history.push('/pti/register/step2')
   }
 
   handleLoadingAmount = () => {

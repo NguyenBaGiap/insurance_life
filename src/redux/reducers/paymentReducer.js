@@ -1,7 +1,7 @@
 import { SET_PAYMENT_DATA_REQUEST } from 'redux/actions/actionTypes'
 
 const initialState = {
-  paymentInformation: {},
+  paymentInformation: [],
 }
 
 export const paymentReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ export const paymentReducer = (state = initialState, action) => {
     case SET_PAYMENT_DATA_REQUEST:
       return {
         ...state,
-        paymentInformation: { ...action.payload },
+        paymentInformation: [...action.payload],
       }
 
     default:

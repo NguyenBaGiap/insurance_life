@@ -6,14 +6,19 @@ class PaymentTransaction extends React.Component {
   componentDidMount() {
     this.props.fetchPaymentInformation()
   }
+  handleGoBack = () => {
+    this.props.history.goBack()
+  }
 
   render() {
-    const { initialValues, onSubmit } = this.props
+    const { initialValues, onSubmit, accountOptions } = this.props
     return (
       <PaymentTemplate>
         <PaymentTransactionForm
           initialValues={initialValues}
+          accountOptions={accountOptions}
           onSubmit={onSubmit}
+          handleGoBack={this.handleGoBack}
         />
       </PaymentTemplate>
     )

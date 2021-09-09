@@ -10,14 +10,6 @@ import SimpleCheckBoxField from 'uies/components/_field/SimpleCheckBoxField'
 import dot from 'static/img/_intro/dot.svg'
 
 class StepSecondForm extends React.Component {
-  state = {
-    reRender: true,
-  }
-  handleClickCondition = () => {
-    this.setState({
-      reRender: !this.state.reRender,
-    })
-  }
   render() {
     const {
       handleSubmit,
@@ -112,27 +104,21 @@ class StepSecondForm extends React.Component {
             className="col-md-12 col-sm-12 pt-3 d-flex align-items-baseline"
           >
             <div className="btn-group btn-group-toggle" data-toggle="buttons">
-              <label
-                className="btn btn-confirm-custom"
-                onClick={this.handleClickCondition}
-              >
+              <label className="btn btn-confirm-custom">
                 <Field
                   name="condition"
                   component="input"
                   type="radio"
-                  value={false}
+                  value={0}
                 />
                 &nbsp; Có
               </label>
-              <label
-                className="btn btn-confirm-custom active"
-                onClick={this.handleClickCondition}
-              >
+              <label className="btn btn-confirm-custom active">
                 <Field
                   name="condition"
                   component="input"
                   type="radio"
-                  value={true}
+                  value={1}
                 />
                 &nbsp; Không
               </label>

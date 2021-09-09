@@ -13,4 +13,10 @@ export class PaymentRequestClient {
       formValues
     )
   }
+  submitPaymentTransaction = async (formValues) => {
+    return await simplePostRequest(
+      `/v1/web/non-life/customer/init-payment`,
+      formValues
+    )
+  }
 }

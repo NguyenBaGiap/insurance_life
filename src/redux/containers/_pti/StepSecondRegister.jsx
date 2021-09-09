@@ -17,6 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchLeadSessionRequest())
   },
   onSubmit: (values) => {
+    console.log(JSON.stringify(values, 0, 2))
     dispatch(submitRegisterStep2(values))
   },
 })

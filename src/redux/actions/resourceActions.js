@@ -1,4 +1,5 @@
 import * as baseActions from './baseActions'
+import { push } from 'connected-react-router'
 import { LeadSessionResultJson } from 'models/LeadSessionResultJson'
 import { PaymentInfoResultJson } from 'models/PaymentInfoResultJson'
 import {
@@ -9,6 +10,7 @@ import {
 import { twoGetRequest } from 'services/api'
 import { PtiRequestClient } from 'services/PtiRequestClient'
 import { PaymentRequestClient } from 'services/PaymentRequestClient'
+import _ from 'lodash'
 
 const ptiClient = new PtiRequestClient()
 const paymentClient = new PaymentRequestClient()
@@ -72,10 +74,39 @@ export const fetchPaymentDataRequest = () => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
       const response = await paymentClient.fetchPaymentInfo()
+      const {
+        data: {
+          accounts: { ca },
+          cards: { credit, debit },
+        },
+      } = response
+      const cardList = _.concat(credit, debit).map(
+        ({ productName, cardMaskNumber, cardNumber, typeCard }) => ({
+          label: `${productName} - ${cardMaskNumber}`,
+          value: {
+            accountNumber: null,
+            categoryAccount: null,
+            cardNumber,
+            cardType: typeCard,
+          },
+        })
+      )
+      const caList = ca.map(({ accountNumber, accountCategory, typeCard }) => ({
+        label: `Tài khoản thanh toán - ${accountNumber}`,
+        value: {
+          accountNumber,
+          categoryAccount: accountCategory,
+          cardNumber: null,
+          cardType: typeCard,
+        },
+      }))
+      const optionPayment = _.concat(cardList, caList)
+      dispatch(fetchPaymentInformation(optionPayment))
       const initialValues = new PaymentInfoResultJson(response.data)
-      dispatch(fetchPaymentInformation(initialValues))
+      dispatch(fetchInitialValuesForm(initialValues))
     } catch (error) {
       baseActions.commonHandleError(error)
+      dispatch(push('/register/payment/login'))
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }

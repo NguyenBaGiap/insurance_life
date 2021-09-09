@@ -23,5 +23,5 @@ export const fetchPtiPackages = (data) => ({
 // payment information
 export const fetchPaymentInformation = (data) => ({
   type: actionTypes.SET_PAYMENT_DATA_REQUEST,
-  payload: { ...data },
+  payload: [...data],
 })

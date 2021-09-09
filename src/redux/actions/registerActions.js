@@ -5,6 +5,7 @@ import { Step00RegisterSubmitJson } from 'models/Step00RegisterSubmitJson'
 import { Step01RegisterSubmitJson } from 'models/Step01RegisterSubmitJson'
 import { Step02RegisterSubmitJson } from 'models/Step02RegisterSubmitJson'
 import { Step03RegisterSubmitJson } from 'models/Step03RegisterSubmitJson'
+import { PaymentSubmitJson } from 'models/PaymentSubmitJson'
 import { PtiRequestClient } from 'services/PtiRequestClient'
 import { toastr } from 'react-redux-toastr'
 import { simplePostRequest } from 'services/api'
@@ -136,8 +137,8 @@ export const submitInformationPaymentTransaction = (formValue) => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
-      console.log(JSON.stringify(formValue, 0, 2))
-      await sleep(3000)
+      const submitValues = new PaymentSubmitJson(formValue)
+      await payClient.submitPaymentTransaction(submitValues)
       dispatch(push('/register/payment/transaction-confirm'))
     } catch (error) {
       baseActions.commonHandleError(error)

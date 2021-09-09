@@ -8,7 +8,7 @@ function ErrorValidate(field, message) {
 }
 
 export const asyncValidateRegisterStep = async (values, dispatch, props) => {
-  if (values.tierId && values.effectiveDate) {
+  if (values.tierId && values.effectiveDate && values.personBirth) {
     try {
       props.handleLoadingAmount()
       const submitPrice = {
