@@ -2,6 +2,7 @@ import React from 'react'
 import { Field, FieldArray, reduxForm } from 'redux-form'
 import SimpleNumberField from 'uies/components/_field/SimpleNumberField'
 import Countdown from 'react-countdown'
+import { required } from 'utilities/validate'
 
 const renderItems = ({ fields, meta: { error } }) => {
   const inputFocus = (element) => {
@@ -34,6 +35,7 @@ const renderItems = ({ fields, meta: { error } }) => {
           style={{ width: '60px', marginRight: 20 }}
           tabIndex={`${index + 1}`}
           onKeyUp={inputFocus}
+          validate={[required]}
         />
       ))}
       {error && <span className="text-danger">{error}</span>}

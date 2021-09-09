@@ -127,7 +127,6 @@ export const insurancePackage = {
       label: 'Gói Bạc',
       moneyTotal: '110.000.000',
       moneyMonth: '220.000',
-      id: 4,
       code: '01',
     },
     {
@@ -135,7 +134,6 @@ export const insurancePackage = {
       label: 'Gói Vàng',
       moneyTotal: '220.000.000',
       moneyMonth: '330.000',
-      id: 5,
       code: '02',
     },
     {
@@ -143,7 +141,6 @@ export const insurancePackage = {
       label: 'Gói Kim Cương',
       moneyTotal: '330.000.000',
       moneyMonth: '483.000',
-      id: 6,
       code: '03',
     },
   ],

@@ -18,9 +18,6 @@ export const mobileNumber = (value) =>
 export const required = (value) =>
   value || typeof value === 'number' ? undefined : 'Vui lòng nhập thông tin'
 
-export const requiredObject = (value) =>
-  value && value.value ? undefined : 'Vui lòng chọn giá trị'
-
 export const requiredCheckbox = (value) =>
   value && value === true ? undefined : 'Yêu cầu xác nhận'
 

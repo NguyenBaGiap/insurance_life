@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import * as baseActions from './baseActions'
 import { push } from 'connected-react-router'
 import { LeadSessionResultJson } from 'models/LeadSessionResultJson'
@@ -10,7 +11,7 @@ import {
 import { twoGetRequest } from 'services/api'
 import { PtiRequestClient } from 'services/PtiRequestClient'
 import { PaymentRequestClient } from 'services/PaymentRequestClient'
-import _ from 'lodash'
+import { insurancePackage } from 'utilities/initialHomePage'
 
 const ptiClient = new PtiRequestClient()
 const paymentClient = new PaymentRequestClient()
@@ -52,16 +53,15 @@ export const fetchLeadSessionRequest = () => {
     }
   }
 }
-
+// in landing page
 export const fetchPtiPackageRequest = () => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
       const response = await ptiClient.fetchPackages()
-      const packages = [...response.data].map(({ tierName, id }) => ({
-        label: tierName,
-        value: id,
-      }))
+      const packages = _.map(insurancePackage.contents, function (p) {
+        return _.merge(p, _.find(response.data, { code: p.code }))
+      })
       dispatch(fetchPtiPackages(packages))
     } catch (error) {
       baseActions.commonHandleError(error)

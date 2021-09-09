@@ -21,6 +21,7 @@ export const genRequestFinishAction = () => ({
 })
 
 export const commonHandleError = (error) => {
+  console.log(error)
   if (error instanceof CustomException) {
     toastr.error('Có lỗi xảy ra', error.message)
   }

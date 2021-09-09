@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       fetchInitialValuesForm({
         ...values,
-        items: ['', '', '', ''],
+        items: ['', '', '', '', '', ''],
       })
     )
   },

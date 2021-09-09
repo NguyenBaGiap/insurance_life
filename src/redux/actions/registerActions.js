@@ -39,12 +39,11 @@ export const submitAdvisory = (formValue) => {
   }
 }
 
-export const submitRegister = (formValue, params) => {
+export const submitRegister = (formValue) => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
-      const searchParams = new URLSearchParams(params)
-      const submitValues = new Step00RegisterSubmitJson(formValue, searchParams)
+      const submitValues = new Step00RegisterSubmitJson(formValue)
       const {
         status: { code },
         data: { token, leadStep },

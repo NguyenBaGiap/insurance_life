@@ -9,6 +9,6 @@ export class Step00RegisterSubmitJson {
     // get in params
     this.productId = formValues.productId
     this.daoSale = formValues.daoSale
-    this.tierId = formValues.tierId.value
+    this.tierId = formValues.tierId?.value
   }
 }

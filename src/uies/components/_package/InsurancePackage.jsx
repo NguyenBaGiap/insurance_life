@@ -41,7 +41,7 @@ const PackageCard = ({
 )
 
 export default function InsurancePackage({
-  data: { contents },
+  data,
   handleRedirectRegister,
   handleRedirectAdvise,
 }) {
@@ -55,7 +55,7 @@ export default function InsurancePackage({
               <p className="sub-title">Số tiền bảo hiểm: VNĐ/người/năm</p>
             </div>
           </div>
-          {contents.map((content, index) => (
+          {data.map((content, index) => (
             <PackageCard
               key={index}
               data={content}
