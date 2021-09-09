@@ -5,7 +5,7 @@ export class Step01RegisterSubmitJson {
     this.personName = formValues.personName
     this.personLegalId = formValues.personLegalId
     this.relationship = formValues.relationship.value
-    this.gender = formValues.gender.value
+    this.personGender = formValues.personGender.value
     this.daoSale = formValues.daoSale
     this.personAddress = formValues.personAddress
     this.personBirth = moment(formValues.personBirth).format('DD-MM-yyyy')

@@ -42,7 +42,7 @@ function StepFirstForm({ handleGoBack, handleSubmit, hasDaoSale }) {
         </div>
         <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
           <Field
-            name="gender"
+            name="personGender"
             label="Giới tính"
             validate={[required]}
             //loading
