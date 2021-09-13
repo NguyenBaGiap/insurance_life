@@ -95,8 +95,8 @@ class StepSecondForm extends React.Component {
           <div className="col-md-12 col-sm-12 pt-3">
             <h4>
               Vui lòng lựa chọn 1 trong 2 đáp án Có hoặc Không. Nếu Khách hàng
-              có 01 trong các điều kiện trên thì ấn vào Có, nếu không nằm trong
-              điều kiện nào thì ấn vào Không.
+              có 01 trong các điều kiện trên thì chọn Có, nếu không nằm trong
+              điều kiện nào thì chọn Không.
             </h4>
           </div>
           <div
@@ -139,23 +139,23 @@ class StepSecondForm extends React.Component {
             </div>
             <div className="participation-confirm">
               <p>
-                Chúng tôi (tôi và người có tên ở trên) đồng ý tham gia chương
+                Chúng tôi (Tôi và người có tên ở trên) đồng ý tham gia chương
                 trình bảo hiểm. Tôi cam kết với kiến thức và sự hiểu biết tốt
                 nhất của tôi đảm bảo rằng những thông tin bên trên là đúng, đầy
-                đủ và là cơ sở để phát hành hợp đồng bảo hiểm. Chúng tôi xác
+                đủ và là cơ sở để phát hành hợp đồng bảo hiểm. Chúng tôi xác xác
                 nhận hiểu rõ các điều khoản, điều kiện và quy tắc của chương
                 trình bảo hiểm.
               </p>
               <p>
                 Tôi đồng ý thông báo cho PTI ngay lập tức nếu có sự thay đổi về
-                tình trạng sức khỏe và/ hoặc thông tin cá nhân trước ngày bắt
-                đầu bảo hiểm. Tôi đồng ý để PTI tìm kiếm thông tin y tế từ các
-                cơ sở y tế chúng tôi đã điều trị hoặc từ các công ty bảo hiểm đã
-                chấp thuận giấy yêu cầu bảo hiểm của chúng tôi.
+                tình trạng sức khỏe và/hoặc thông tin cá nhân trước ngày bắt đầu
+                bảo hiểm.
               </p>
               <p>
-                Tôi đại diện cho người có tên ở trên đồng ý cho việc cung cấp
-                những thông tin trên.
+                Tôi đồng ý để PTI tìm kiếm thông tin y tế từ các cơ sở y tế
+                chúng tôi đã điều trị hoặc từ các công ty bảo hiểm đã chấp thuận
+                giấy yêu cầu bảo hiểm của chúng tôi. Tôi đại diện cho người có
+                tên ở trên đồng ý cho việc cung cấp những thông tin trên.
               </p>
               <p>
                 Tôi đồng ý chia sẻ các thông tin kê khai trên đây từ VPBank cho

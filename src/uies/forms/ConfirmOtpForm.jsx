@@ -89,7 +89,7 @@ class ConfirmOtpForm extends React.Component {
         <div className="row">
           <div className="col-md-12 col-sm-12">
             <Countdown
-              date={this.state.now + 10000}
+              date={this.state.now + 180000}
               renderer={renderCountDown}
             />
           </div>
