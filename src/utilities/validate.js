@@ -66,6 +66,7 @@ export const minLength2 = minLength(2)
 export const maxLength100 = maxLength(100)
 export const maxLength50 = maxLength(50)
 
-export const maxLength10 = maxLength(10)
-export const maxLength12 = maxLength(12)
+export const maxLength10 = maxLength(10) // phone
+export const maxLength6 = maxLength(6) // daoSale
+export const maxLength15 = maxLength(15) // pid
 export const length10 = length(10)

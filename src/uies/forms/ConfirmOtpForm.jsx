@@ -54,6 +54,8 @@ const renderCountDown = (props) => {
   return (
     <p className="text-center pt-3" style={{ fontSize: 'medium' }}>
       Mã OTP sẽ hết hiệu lực trong vòng &nbsp;
+      <strong style={{ color: '#00B74F' }}>{props.minutes}</strong> &nbsp;phút
+      &nbsp;
       <strong style={{ color: '#00B74F' }}>{props.seconds}</strong> &nbsp;giây
     </p>
   )
@@ -89,7 +91,8 @@ class ConfirmOtpForm extends React.Component {
         <div className="row">
           <div className="col-md-12 col-sm-12">
             <Countdown
-              date={this.state.now + 180000}
+              date={this.state.now + 1000 * 180}
+              precision={3}
               renderer={renderCountDown}
             />
           </div>

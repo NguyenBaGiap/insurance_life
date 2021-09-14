@@ -26,7 +26,6 @@ export default class StepFirstRegister extends React.Component {
             initialValues={this.props.initialValues}
             onSubmit={this.props.onSubmit}
             handleGoBack={this.handleGoBack}
-            hasDaoSale={this.props.hasDaoSale}
           />
         </section>
       </React.Fragment>

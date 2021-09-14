@@ -3,11 +3,10 @@ import { Field, reduxForm } from 'redux-form'
 import {
   required,
   email,
-  pid,
   mobileNumber,
   normalizeNumber,
   length10,
-  maxLength12,
+  maxLength15,
   minLength2,
   maxLength50,
 } from 'utilities/validate'
@@ -87,10 +86,9 @@ class StepZeroForm extends React.Component {
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3">
             <Field
               name="cusLegalId"
-              label="Số Hộ chiếu / CMND"
+              label="SỐ HỘ CHIẾU / CMND / CCCD "
               type="text"
-              validate={[required, pid, maxLength12]}
-              normalize={normalizeNumber}
+              validate={[required, maxLength15]}
               //loading
               required
               component={SimpleTextField}

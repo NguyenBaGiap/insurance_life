@@ -10,7 +10,7 @@ import {
   normalizeDate,
   normalizeNumber,
   maxLength10,
-  pid,
+  maxLength15,
   normalizeMoney,
 } from 'utilities/validate'
 import { asyncValidateRegisterStep } from 'utilities/asyncValidate'
@@ -63,9 +63,9 @@ class StepThirdForm extends React.Component {
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
               name="cusLegalId"
-              label="Số Hộ chiếu / CMND"
+              label="SỐ HỘ CHIẾU / CMND / CCCD "
               type="text"
-              validate={[required, pid]}
+              validate={[required, maxLength15]}
               //loading
               required
               component={SimpleTextField}
@@ -152,9 +152,9 @@ class StepThirdForm extends React.Component {
           <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
             <Field
               name="personLegalId"
-              label="Số Hộ chiếu / CMND"
+              label="SỐ HỘ CHIẾU / CMND / CCCD "
               type="text"
-              validate={[required, pid]}
+              validate={[required, maxLength15]}
               //loading
               required
               component={SimpleTextField}
@@ -195,6 +195,7 @@ class StepThirdForm extends React.Component {
               name="effectiveDate"
               label="Ngày hiệu lực"
               component={SimpleDateField}
+              min={new Date()}
               validate={[required]}
               normalize={normalizeDate}
               required
