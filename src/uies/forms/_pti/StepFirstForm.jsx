@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, clearFields } from 'redux-form'
 import {
   normalizeNumber,
   normalizeDate,
@@ -12,106 +12,130 @@ import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
 
-function StepFirstForm({ handleGoBack, handleSubmit, initialValues }) {
-  return (
-    <form autoComplete="off" className="container mt-3" onSubmit={handleSubmit}>
-      <div className="row">
-        <div className="col-md-12 col-sm-12 title-form pt-3">
-          <h3>Thông tin về Người được bảo hiểm</h3>
+class StepFirstForm extends React.Component {
+  handleChangeRelationship = () => {
+    const { form, dispatch } = this.props
+    dispatch(
+      clearFields(
+        form,
+        false,
+        false,
+        'personName',
+        'personGender',
+        'personBirth',
+        'personLegalId',
+        'personAddress'
+      )
+    )
+  }
+  render() {
+    const { handleGoBack, handleSubmit, initialValues } = this.props
+    return (
+      <form
+        autoComplete="off"
+        className="container mt-3"
+        onSubmit={handleSubmit}
+      >
+        <div className="row">
+          <div className="col-md-12 col-sm-12 title-form pt-3">
+            <h3>Thông tin về Người được bảo hiểm</h3>
+          </div>
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+            <Field
+              name="relationship"
+              label="Mối quan hệ với Người mua bảo hiểm"
+              validate={[required]}
+              placeholder="Chọn người được bảo hiểm"
+              onChange={this.handleChangeRelationship}
+              required
+              component={SimpleSelectField}
+              selectableValues={RELATIONSHIP_OPTION}
+            />
+          </div>
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+            <Field
+              name="personName"
+              label="Người Được bảo hiểm"
+              type="text"
+              validate={[required]}
+              //loading
+              required
+              component={SimpleTextField}
+            />
+          </div>
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+            <Field
+              name="personGender"
+              label="Giới tính"
+              validate={[required]}
+              //loading
+              required
+              component={SimpleSelectField}
+              selectableValues={GENDER_OPTION}
+            />
+          </div>
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+            <Field
+              name="personBirth"
+              label="Ngày sinh"
+              component={SimpleDateField}
+              validate={[required]}
+              normalize={normalizeDate}
+              required
+            />
+          </div>
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+            <Field
+              name="personLegalId"
+              label="SỐ HỘ CHIẾU / CMND / CCCD "
+              validate={[required, maxLength15]}
+              required
+              component={SimpleTextField}
+            />
+          </div>
+          <div className="col-md-9 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+            <Field
+              name="personAddress"
+              label="Địa chỉ liên hệ"
+              type="text"
+              validate={[required]}
+              //loading
+              required
+              component={SimpleTextField}
+            />
+          </div>
+          <div className="col-md-12 col-sm-12 title-form pt-3">
+            <h3>Thông tin cán bộ bán</h3>
+          </div>
+          <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
+            <Field
+              name="daoSale"
+              label="Mã DAO"
+              type="text"
+              validate={[maxLength6]}
+              disabled={!!initialValues.daoSale}
+              normalize={normalizeNumber}
+              component={SimpleTextField}
+            />
+          </div>
+          <div className="col-md-12 col-sm-12 btn-action pb-5">
+            <button
+              type="button"
+              className="btn-back mr-3"
+              onClick={handleGoBack}
+            >
+              Quay lại
+            </button>
+            <button type="submit" className="btn-submit">
+              Tiếp tục
+            </button>
+          </div>
         </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
-          <Field
-            name="relationship"
-            label="Mối quan hệ với Người mua bảo hiểm"
-            validate={[required]}
-            placeholder="Chọn người được bảo hiểm"
-            required
-            component={SimpleSelectField}
-            selectableValues={RELATIONSHIP_OPTION}
-          />
-        </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
-          <Field
-            name="personName"
-            label="Người Được bảo hiểm"
-            type="text"
-            validate={[required]}
-            //loading
-            required
-            component={SimpleTextField}
-          />
-        </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
-          <Field
-            name="personGender"
-            label="Giới tính"
-            validate={[required]}
-            //loading
-            required
-            component={SimpleSelectField}
-            selectableValues={GENDER_OPTION}
-          />
-        </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
-          <Field
-            name="personBirth"
-            label="Ngày sinh"
-            component={SimpleDateField}
-            validate={[required]}
-            normalize={normalizeDate}
-            required
-          />
-        </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
-          <Field
-            name="personLegalId"
-            label="SỐ HỘ CHIẾU / CMND / CCCD "
-            validate={[required, maxLength15]}
-            required
-            component={SimpleTextField}
-          />
-        </div>
-        <div className="col-md-9 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
-          <Field
-            name="personAddress"
-            label="Địa chỉ liên hệ"
-            type="text"
-            validate={[required]}
-            //loading
-            required
-            component={SimpleTextField}
-          />
-        </div>
-        <div className="col-md-12 col-sm-12 title-form pt-3">
-          <h3>Thông tin cán bộ bán</h3>
-        </div>
-        <div className="col-md-3 col-sm-12 pt-sm-3 pt-md-3 min-height-col">
-          <Field
-            name="daoSale"
-            label="Mã DAO"
-            type="text"
-            validate={[maxLength6]}
-            disabled={!!initialValues.daoSale}
-            normalize={normalizeNumber}
-            component={SimpleTextField}
-          />
-        </div>
-        <div className="col-md-12 col-sm-12 btn-action pb-5">
-          <button
-            type="button"
-            className="btn-back mr-3"
-            onClick={handleGoBack}
-          >
-            Quay lại
-          </button>
-          <button type="submit" className="btn-submit">
-            Tiếp tục
-          </button>
-        </div>
-      </div>
-    </form>
-  )
+      </form>
+    )
+  }
 }
+
 export default reduxForm({
   form: 'StepFirstForm',
   destroyOnUnmount: true,

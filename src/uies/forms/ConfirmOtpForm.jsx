@@ -2,7 +2,6 @@ import React from 'react'
 import { Field, FieldArray, reduxForm } from 'redux-form'
 import SimpleNumberField from 'uies/components/_field/SimpleNumberField'
 import Countdown from 'react-countdown'
-import { required } from 'utilities/validate'
 
 const renderItems = ({ fields, meta: { error } }) => {
   const inputFocus = (element) => {
@@ -26,19 +25,24 @@ const renderItems = ({ fields, meta: { error } }) => {
   }
   return (
     <React.Fragment>
-      {fields.map((item, index) => (
-        <Field
-          key={index}
-          name={item}
-          component={SimpleNumberField}
-          maxLength={1}
-          style={{ width: '60px', marginRight: 20 }}
-          tabIndex={`${index + 1}`}
-          onKeyUp={inputFocus}
-          validate={[required]}
-        />
-      ))}
-      {error && <span className="text-danger">{error}</span>}
+      <div
+        className="items"
+        style={{ display: 'flex', justifyContent: 'center' }}
+      >
+        {fields.map((item, index) => (
+          <Field
+            key={index}
+            name={item}
+            component={SimpleNumberField}
+            maxLength={1}
+            style={{ width: '60px', marginRight: 20 }}
+            tabIndex={`${index + 1}`}
+            onKeyUp={inputFocus}
+          />
+        ))}
+      </div>
+
+      {error && <div className="text-danger text-center mt-3">{error}</div>}
     </React.Fragment>
   )
 }
@@ -82,12 +86,7 @@ class ConfirmOtpForm extends React.Component {
             <h3 className="text-center">{title}</h3>
           </div>
         </div>
-        <div
-          className="items"
-          style={{ display: 'flex', justifyContent: 'center' }}
-        >
-          <FieldArray name="items" component={renderItems} />
-        </div>
+        <FieldArray name="items" component={renderItems} />
         <div className="row">
           <div className="col-md-12 col-sm-12">
             <Countdown
@@ -120,7 +119,18 @@ ConfirmOtpForm.defaultProps = {
   title: 'Nhập mã OTP đã được gửi đến số điện thoại của bạn',
   labelSubmit: 'Tiếp tục',
 }
+const validate = (values) => {
+  const errors = {}
+  if (values.items && values.items.length) {
+    const otpStr = values.items.toString().replaceAll(',', '')
+    if (otpStr.length < 6 && otpStr.length > 0) {
+      errors.items = { _error: 'Vui lòng nhập đầy đủ mã OTP.' }
+    }
+  }
+  return errors
+}
 export default reduxForm({
   form: 'ConfirmOtpForm',
+  validate,
   enableReinitialize: true,
 })(ConfirmOtpForm)

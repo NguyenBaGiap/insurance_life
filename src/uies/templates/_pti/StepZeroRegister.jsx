@@ -30,7 +30,14 @@ export default class StepZeroRegister extends React.Component {
     }
   }
   componentDidMount() {
-    this.props.fetchInitialValues()
+    const params = this.props.location.search
+    const searchParams = new URLSearchParams(params)
+    const productId = searchParams.get('product')
+    if (productId) {
+      this.props.fetchInitialValues(params)
+    } else {
+      this.props.history.push('/')
+    }
   }
 
   handleGoBack = () => {

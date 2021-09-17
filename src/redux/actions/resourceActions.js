@@ -25,6 +25,7 @@ export const fetchInitialRegister = (params) => {
       tierId: {
         value: searchParams.get('tier'),
       },
+      target: searchParams.get('target'),
       participation: true,
     }
     dispatch(fetchInitialValuesForm(initialValues))

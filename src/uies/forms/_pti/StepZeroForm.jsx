@@ -5,8 +5,9 @@ import {
   email,
   mobileNumber,
   normalizeNumber,
+  pid,
   length10,
-  maxLength15,
+  maxLength12,
   minLength2,
   maxLength50,
 } from 'utilities/validate'
@@ -88,8 +89,8 @@ class StepZeroForm extends React.Component {
               name="cusLegalId"
               label="SỐ HỘ CHIẾU / CMND / CCCD "
               type="text"
-              validate={[required, maxLength15]}
-              //loading
+              validate={[required, pid, maxLength12]}
+              normalize={normalizeNumber}
               required
               component={SimpleTextField}
             />

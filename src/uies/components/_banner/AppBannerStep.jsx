@@ -15,7 +15,7 @@ class AppBannerStep extends React.Component {
           />
           <div className="container pt-5">
             <div className="row d-flex flex-grow-1">
-              <div className="col-md-8">
+              <div className="col-md-12">
                 <div className="content-title text-white font-weight-bold d-flex flex-column">
                   <span className="font-weight-bold">{title}</span>
                   <span className="font-weight-bold">{subTitle}</span>
@@ -29,8 +29,8 @@ class AppBannerStep extends React.Component {
   }
 }
 AppBannerStep.defaultProps = {
-  title: 'Đăng ký mua Bảo hiểm Bệnh hiểm nghèo',
-  subTitle: 'PTI liên kết với VPBank',
+  title: 'Đăng ký Bảo hiểm Phi nhân thọ',
+  subTitle: 'trực tuyến cùng VPBank',
 }
 
 export default AppBannerStep

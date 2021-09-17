@@ -33,7 +33,7 @@ PopupWelCome.defaultProps = {
   title: 'Chào mừng Quý Khách',
   description:
     'Cảm ơn Quý Khách đã quan tâm đến sản phẩm của VPBank. Chúng tôi sẽ\n' +
-    '            liên hệ và tư vấn cho Quý Khách trong thời gian sớm nhất.',
+    '            liên hệ Quý Khách trong thời gian sớm nhất.',
 }
 
 export default PopupWelCome

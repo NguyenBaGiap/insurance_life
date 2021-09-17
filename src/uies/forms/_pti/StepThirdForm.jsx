@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { clearFields, Field, reduxForm } from 'redux-form'
 import { GENDER_OPTION, RELATIONSHIP_OPTION } from 'utilities/constants'
 import dots from 'static/img/_intro/dot.svg'
 import editIcon from 'static/img/editIcon.svg'
@@ -25,6 +25,21 @@ class StepThirdForm extends React.Component {
   }
   handleAllowEdit = () => {
     this.setState({ enableEdit: true })
+  }
+  handleChangeRelationship = () => {
+    const { form, dispatch } = this.props
+    dispatch(
+      clearFields(
+        form,
+        false,
+        false,
+        'personName',
+        'personGender',
+        'personBirth',
+        'personLegalId',
+        'personAddress'
+      )
+    )
   }
   render() {
     const { enableEdit } = this.state
@@ -107,6 +122,7 @@ class StepThirdForm extends React.Component {
               name="relationship"
               label="Mối quan hệ với Người mua bảo hiểm"
               validate={[required]}
+              onChange={this.handleChangeRelationship}
               placeholder="Chọn người được bảo hiểm"
               required
               component={SimpleSelectField}

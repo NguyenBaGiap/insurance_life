@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { goBack } from 'connected-react-router'
 import { formValueSelector } from 'redux-form'
 import { submitRegister, submitAdvisory } from 'redux/actions/registerActions'
 import {
@@ -20,9 +21,8 @@ const mapStateToProps = (state) => ({
   isParticipation: selector(state, 'participation'),
 })
 
-const mapDispatchToProps = (dispatch, props) => ({
-  fetchInitialValues: () => {
-    const params = props.location.search
+const mapDispatchToProps = (dispatch) => ({
+  fetchInitialValues: (params) => {
     if (sessionStorage.getItem('access_token')) {
       dispatch(fetchLeadSessionRequest())
     } else {
@@ -34,10 +34,10 @@ const mapDispatchToProps = (dispatch, props) => ({
   },
   closePopupWelcome: () => {
     dispatch(closeModalWelcome())
-    props.history.goBack()
+    dispatch(goBack())
   },
   onSubmit: (values) => {
-    const isAdvisory = props.location.state?.target === 'advise'
+    const isAdvisory = values.target === 'advise'
     if (isAdvisory) {
       dispatch(submitAdvisory(values))
     } else {

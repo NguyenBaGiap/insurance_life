@@ -22,12 +22,12 @@ class LandingPage extends React.Component {
     () => {
       const searchParams = new URLSearchParams(this.props.location.search)
       searchParams.set('product', '1')
+      searchParams.set('target', 'register')
       if (id) {
         searchParams.set('tier', id)
       }
       const location = {
         pathname: '/pti/register/step0',
-        state: { target: 'register' },
         search: searchParams.toString(),
       }
       this.props.history.push(location)
@@ -35,12 +35,12 @@ class LandingPage extends React.Component {
   handleRedirectAdvise = (id) => () => {
     const searchParams = new URLSearchParams(this.props.location.search)
     searchParams.set('product', '1')
+    searchParams.set('target', 'advise')
     if (id) {
       searchParams.set('tier', id)
     }
     const location = {
       pathname: '/pti/register/step0',
-      state: { id, target: 'advise' },
       search: searchParams.toString(),
     }
     this.props.history.push(location)
@@ -59,12 +59,17 @@ class LandingPage extends React.Component {
               />
               <div className="container contents">
                 <div className="row d-flex flex-md-row ">
-                  <div className="col-md-6 col-sm-12">
+                  <div className="col-md-12 col-sm-12">
                     <div className="content-title text-white d-flex flex-column">
                       <span className="font-weight-bold">
-                        Mua bảo hiểm online
+                        Đăng ký Bảo hiểm Phi nhân thọ
                       </span>
-                      <span className="font-weight-bold">qua VPBank</span>
+                      <span className="font-weight-bold">
+                        trực tuyến cùng VPBank
+                      </span>
+                      <span className="description mt-3">
+                        Đơn giản - Nhanh chóng - Dễ hiểu
+                      </span>
                     </div>
                     <div className="content-text d-flex flex-column text-white">
                       <span>Những hoài bão trong công việc</span>

@@ -32,7 +32,7 @@ export const submitAdvisory = (formValue) => {
         showModalWelcome({
           title: 'Đăng ký thành công.',
           description:
-            'Yêu cầu đã được hệ thống VPBank ghi nhận. Chúng tôi sẽ liên hệ và tư vấn Khách hàng trong thời gian sớm nhất. Cảm ơn Quý khách.',
+            'Cám ơn Quý khách. Chúng tôi sẽ liên hệ Quý khách trong thời gian sớm nhất.',
         })
       )
     }
@@ -46,24 +46,19 @@ export const submitRegister = (formValue) => {
       const submitValues = new Step00RegisterSubmitJson(formValue)
       const {
         status: { code },
-        data: { token, leadStep },
+        data: { token },
       } = await apiClient.submitRegisterStepInit(submitValues)
       if (code === 'INS201') {
         return dispatch(
           showModalWelcome({
             title: 'Chào mừng Quý Khách',
             description:
-              'Cảm ơn Quý Khách đã quan tâm đến sản phẩm của VPBank. Chúng tôi sẽ liên hệ và tư vấn cho Quý Khách trong thời gian sớm nhất.',
+              'Cảm ơn Quý Khách đã quan tâm đến sản phẩm của VPBank. Chúng tôi sẽ liên hệ Quý Khách trong thời gian sớm nhất.',
           })
         )
       }
       sessionStorage.setItem('access_token', token)
-      const step = leadStep?.replace('STEP', '') || 1
-      if (step === '4') {
-        dispatch(push(`/register/payment/login`))
-      } else {
-        dispatch(push(`/pti/register/step${step}`))
-      }
+      dispatch(push(`/pti/register/step1`))
     } catch (error) {
       baseActions.commonHandleError(error)
     } finally {
@@ -138,7 +133,6 @@ export const submitInformationPaymentTransaction = (formValue) => {
       dispatch(baseActions.genRequestLoadingAction())
       const submitValues = new PaymentSubmitJson(formValue)
       const response = await payClient.submitPaymentTransaction(submitValues)
-      console.log(response.data)
       dispatch(
         push('/register/payment/transaction-confirm', {
           uuid: response.data,

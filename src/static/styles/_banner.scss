@@ -9,6 +9,10 @@
     padding-bottom: 100px;
     .content-title {
       font-size: xxx-large;
+      .description {
+        font-size: x-large;
+        font-weight: 500;
+      }
     }
     .content-text {
       font-size: medium;
@@ -51,6 +55,9 @@
       .content-title {
         text-align: center;
         font-size: xx-large;
+        .description {
+          font-size: large;
+        }
       }
     }
     .content-text {

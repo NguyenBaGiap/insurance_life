@@ -94,7 +94,7 @@ class StepSecondForm extends React.Component {
         </div>
         <div className="row">
           <div className="col-md-12 col-sm-12 pt-3">
-            <h4 className="text-danger">
+            <h4 className="participation-confirm">
               Vui lòng lựa chọn 1 trong 2 đáp án Có hoặc Không. Nếu Khách hàng
               có 01 trong các điều kiện trên thì chọn Có, nếu không nằm trong
               điều kiện nào thì chọn Không.
