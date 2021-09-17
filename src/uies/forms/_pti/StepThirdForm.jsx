@@ -1,5 +1,5 @@
 import React from 'react'
-import { clearFields, Field, reduxForm } from 'redux-form'
+import { change, Field, reduxForm } from 'redux-form'
 import { GENDER_OPTION, RELATIONSHIP_OPTION } from 'utilities/constants'
 import dots from 'static/img/_intro/dot.svg'
 import editIcon from 'static/img/editIcon.svg'
@@ -26,20 +26,18 @@ class StepThirdForm extends React.Component {
   handleAllowEdit = () => {
     this.setState({ enableEdit: true })
   }
-  handleChangeRelationship = () => {
+  handleChangeRelationship = (e, newValue, previousValue) => {
     const { form, dispatch } = this.props
-    dispatch(
-      clearFields(
-        form,
-        false,
-        false,
-        'personName',
-        'personGender',
-        'personBirth',
-        'personLegalId',
-        'personAddress'
-      )
-    )
+    const fieldsClear = [
+      'personName',
+      'personGender',
+      'personBirth',
+      'personLegalId',
+      'personAddress',
+    ]
+    if (newValue.value !== previousValue.value) {
+      fieldsClear.forEach((field) => dispatch(change(form, field, null)))
+    }
   }
   render() {
     const { enableEdit } = this.state

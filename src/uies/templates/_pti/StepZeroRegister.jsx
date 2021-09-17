@@ -9,9 +9,9 @@ export default class StepZeroRegister extends React.Component {
   constructor(props) {
     super(props)
     const {
-      location: { state },
+      location: { query },
     } = props
-    if (state && state.target === 'advise') {
+    if (query.target === 'advise') {
       this.state = {
         titleBanner: 'Đăng ký tư vấn Bảo hiểm Bệnh hiểm nghèo',
         titleForm: 'Thông tin Người đăng ký tư vấn',
@@ -48,7 +48,7 @@ export default class StepZeroRegister extends React.Component {
       popupWelcomeCustomer: { isOpen, title, description },
       initialValues,
       onSubmit,
-      location: { state },
+      location: { query },
       isParticipation,
     } = this.props
     const { titleBanner, titleForm, titleStep, labelSubmit, isShowStep } =
@@ -65,7 +65,7 @@ export default class StepZeroRegister extends React.Component {
           <StepZeroForm
             initialValues={initialValues}
             onSubmit={onSubmit}
-            initialState={state} // KH register or advise
+            initialState={query} // KH register or advise
             handleGoBack={this.handleGoBack}
             title={titleForm}
             labelSubmit={labelSubmit}

@@ -20,6 +20,7 @@ const renderItems = ({ fields, meta: { error } }) => {
       const next = element.target.tabIndex
       if (next < fields.length) {
         els[next].focus()
+        els[next].select()
       }
     }
   }
@@ -123,7 +124,7 @@ const validate = (values) => {
   const errors = {}
   if (values.items && values.items.length) {
     const otpStr = values.items.toString().replaceAll(',', '')
-    if (otpStr.length < 6 && otpStr.length > 0) {
+    if (otpStr.length < 6 && otpStr.length >= 0) {
       errors.items = { _error: 'Vui lòng nhập đầy đủ mã OTP.' }
     }
   }
@@ -131,6 +132,6 @@ const validate = (values) => {
 }
 export default reduxForm({
   form: 'ConfirmOtpForm',
-  validate,
   enableReinitialize: true,
+  validate,
 })(ConfirmOtpForm)

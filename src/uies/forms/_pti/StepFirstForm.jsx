@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field, reduxForm, clearFields } from 'redux-form'
+import { Field, reduxForm, change } from 'redux-form'
 import {
   normalizeNumber,
   normalizeDate,
@@ -13,20 +13,18 @@ import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
 
 class StepFirstForm extends React.Component {
-  handleChangeRelationship = () => {
+  handleChangeRelationship = (e, newValue, previousValue) => {
     const { form, dispatch } = this.props
-    dispatch(
-      clearFields(
-        form,
-        false,
-        false,
-        'personName',
-        'personGender',
-        'personBirth',
-        'personLegalId',
-        'personAddress'
-      )
-    )
+    const fieldsClear = [
+      'personName',
+      'personGender',
+      'personBirth',
+      'personLegalId',
+      'personAddress',
+    ]
+    if (newValue.value !== previousValue.value) {
+      fieldsClear.forEach((field) => dispatch(change(form, field, null)))
+    }
   }
   render() {
     const { handleGoBack, handleSubmit, initialValues } = this.props
