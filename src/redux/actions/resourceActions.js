@@ -1,6 +1,5 @@
 import _ from 'lodash'
 import * as baseActions from './baseActions'
-import { push } from 'connected-react-router'
 import { LeadSessionResultJson } from 'models/LeadSessionResultJson'
 import { PaymentInfoResultJson } from 'models/PaymentInfoResultJson'
 import {
@@ -48,7 +47,7 @@ export const fetchLeadSessionRequest = () => {
       dispatch(fetchPtiPackages(packages))
       dispatch(fetchInitialValuesForm(initialValues))
     } catch (error) {
-      baseActions.commonHandleError(error)
+      baseActions.commonHandleError(error, dispatch)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -65,7 +64,7 @@ export const fetchPtiPackageRequest = () => {
       })
       dispatch(fetchPtiPackages(packages))
     } catch (error) {
-      baseActions.commonHandleError(error)
+      baseActions.commonHandleError(error, dispatch)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -108,8 +107,7 @@ export const fetchPaymentDataRequest = () => {
       const initialValues = new PaymentInfoResultJson(response.data)
       dispatch(fetchInitialValuesForm(initialValues))
     } catch (error) {
-      baseActions.commonHandleError(error)
-      dispatch(push('/register/payment/login'))
+      baseActions.commonHandleError(error, dispatch)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }

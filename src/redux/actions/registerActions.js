@@ -57,7 +57,7 @@ export const submitRegister = (formValue) => {
       sessionStorage.setItem('access_token', token)
       dispatch(push(`/pti/register/step1`))
     } catch (error) {
-      baseActions.commonHandleError(error)
+      baseActions.commonHandleError(error, dispatch)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -72,7 +72,7 @@ export const submitRegisterStep1 = (formValue) => {
       await apiClient.submitRegisterStepOne(submitValues)
       dispatch(push('/pti/register/step2'))
     } catch (error) {
-      baseActions.commonHandleError(error)
+      baseActions.commonHandleError(error, dispatch)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -87,7 +87,7 @@ export const submitRegisterStep2 = (formValue) => {
       await apiClient.submitRegisterStepSecond(submitValues)
       dispatch(push('/pti/register/step3'))
     } catch (error) {
-      baseActions.commonHandleError(error)
+      baseActions.commonHandleError(error, dispatch)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -103,7 +103,7 @@ export const submitRegisterStep3 = (formValue) => {
       dispatch(push('/register/payment/login'))
     } catch (error) {
       console.log(error)
-      baseActions.commonHandleError(error)
+      baseActions.commonHandleError(error, dispatch)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -117,7 +117,7 @@ export const submitLoginVPBankNEO = (formValue) => {
       await payClient.submitLoginNEO(formValue)
       dispatch(replace('/register/payment/transaction'))
     } catch (error) {
-      baseActions.commonHandleError(error)
+      baseActions.commonHandleError(error, dispatch)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -136,7 +136,7 @@ export const submitInformationPaymentTransaction = (formValue) => {
         })
       )
     } catch (error) {
-      baseActions.commonHandleError(error)
+      baseActions.commonHandleError(error, dispatch)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -154,7 +154,7 @@ export const submitConfirmPaymentTransaction = (formValue) => {
       await payClient.submitPaymentByOTP(submitValues)
       dispatch(push('/register/payment/success'))
     } catch (error) {
-      baseActions.commonHandleError(error)
+      baseActions.commonHandleError(error, dispatch)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -179,7 +179,7 @@ export const submitRetryRequestOTP = (formValues) => {
       )
       dispatch(baseActions.genRequestFinishAction())
     } catch (error) {
-      baseActions.commonHandleError(error)
+      baseActions.commonHandleError(error, dispatch)
     } finally {
       dispatch(baseActions.genRequestFinishAction())
     }
@@ -198,7 +198,7 @@ export const submitEmailSubscribe = (formValues) => {
         null
       )
     } catch (error) {
-      baseActions.commonHandleError(error)
+      baseActions.commonHandleError(error, dispatch)
     } finally {
       toastr.success(
         'Chào mừng Quý Khách',

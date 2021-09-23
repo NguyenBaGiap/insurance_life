@@ -3,6 +3,10 @@ import PaymentTemplate from 'uies/templates/_payment/PaymentTemplate'
 import VPBankNeoLoginForm from 'uies/forms/_payment/VPBankNeoLoginForm'
 
 class PaymentLoginNEO extends React.Component {
+  componentDidMount() {
+    this.props.fetchLeadSessionValues()
+  }
+
   handleGoBack = () => {
     this.props.history.goBack()
   }

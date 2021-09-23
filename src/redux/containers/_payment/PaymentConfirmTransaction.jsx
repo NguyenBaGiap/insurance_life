@@ -6,6 +6,7 @@ import {
 } from 'redux/actions/registerActions'
 import { fetchInitialValuesForm } from 'redux/actions/actionCreator'
 import PaymentConfirmTransaction from 'uies/templates/_payment/PaymentConfirmTransaction'
+import { fetchPaymentDataRequest } from '../../actions/resourceActions'
 
 const selector = formValueSelector('ConfirmOtpForm')
 const mapStateToProps = (state) => ({
@@ -16,7 +17,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchInitialValues: (values) => {
+  fetchInitialValues: async (values) => {
+    await dispatch(fetchPaymentDataRequest())
     dispatch(
       fetchInitialValuesForm({
         ...values,

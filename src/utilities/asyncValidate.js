@@ -1,6 +1,5 @@
 import { change } from 'redux-form'
 import { simplePostRequest } from 'services/api'
-import { commonHandleError } from 'redux/actions/baseActions'
 import moment from 'moment'
 
 function ErrorValidate(field, message) {
@@ -23,7 +22,6 @@ export const asyncValidateRegisterStep = async (values, props) => {
       props.dispatch(change(props.form, 'priceId', id))
       props.dispatch(change(props.form, 'price', amountDisplay))
     } catch (e) {
-      commonHandleError(e)
       props.dispatch(change(props.form, 'price', null))
       throw new ErrorValidate('tierId', e.messages || e.data)
     } finally {

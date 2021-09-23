@@ -21,6 +21,13 @@ class StepFirstForm extends React.Component {
     isExistDao: false,
     daoSaleName: undefined,
   }
+  async componentDidMount() {
+    const { initialValues } = this.props
+    if (initialValues.daoSale) {
+      await this.fetchDaoSaleName(initialValues.daoSale)
+    }
+  }
+
   handleChangeRelationship = (e, newValue, previousValue) => {
     const { form, dispatch } = this.props
     const fieldsClear = [
@@ -34,27 +41,30 @@ class StepFirstForm extends React.Component {
       fieldsClear.forEach((field) => dispatch(change(form, field, null)))
     }
   }
+  fetchDaoSaleName = async (daoSale) => {
+    this.setState({ isLoadingDao: true })
+    try {
+      const {
+        data: { name },
+      } = await simpleGetRequest(
+        `/v1/web/non-life/customer/get-employee/${daoSale}`
+      )
+      this.setState({
+        isLoadingDao: false,
+        daoSaleName: name,
+        isExistDao: true,
+      })
+    } catch (e) {
+      this.setState({
+        isExistDao: false,
+        isLoadingDao: false,
+        daoSaleName: e.data || 'Mã DAO không tồn tại.',
+      })
+    }
+  }
   handleOnChangeDaoSale = _.debounce(async (e, newValue, previousValue) => {
     if (newValue !== previousValue) {
-      this.setState({ isLoadingDao: true })
-      try {
-        const {
-          data: { name },
-        } = await simpleGetRequest(
-          `/v1/web/non-life/customer/get-employee/${newValue}`
-        )
-        this.setState({
-          isLoadingDao: false,
-          daoSaleName: name,
-          isExistDao: true,
-        })
-      } catch (e) {
-        this.setState({
-          isExistDao: false,
-          isLoadingDao: false,
-          daoSaleName: e.data || 'Mã DAO không tồn tại.',
-        })
-      }
+      await this.fetchDaoSaleName(newValue)
     }
   }, 1000)
   render() {
