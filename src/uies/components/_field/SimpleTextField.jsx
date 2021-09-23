@@ -11,9 +11,6 @@ export default function SimpleTextField({
   required,
   loading,
   disabled,
-  maxLength,
-  onKeyUp,
-  tabIndex,
   meta: { touched, error, warning },
 }) {
   return (
@@ -31,9 +28,6 @@ export default function SimpleTextField({
         placeholder={placeholder}
         type={type}
         disabled={disabled || loading}
-        maxLength={maxLength}
-        onKeyUp={onKeyUp}
-        tabIndex={tabIndex}
         {...input}
       />
       {loading && <img src={spinnerField} alt="spinner" className="spinner" />}
