@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { formValueSelector } from 'redux-form'
 import {
   submitConfirmPaymentTransaction,
   submitRetryRequestOTP,
@@ -6,10 +7,12 @@ import {
 import { fetchInitialValuesForm } from 'redux/actions/actionCreator'
 import PaymentConfirmTransaction from 'uies/templates/_payment/PaymentConfirmTransaction'
 
+const selector = formValueSelector('ConfirmOtpForm')
 const mapStateToProps = (state) => ({
   requestStatus: state.requestStatusReducer,
   location: state.router.location,
   initialValues: state.formValuesReducer.initialValues,
+  uuid: selector(state, 'uuid'),
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -21,8 +24,8 @@ const mapDispatchToProps = (dispatch) => ({
       })
     )
   },
-  retrySendOTP: () => {
-    dispatch(submitRetryRequestOTP())
+  retrySendOTP: (formValues) => {
+    dispatch(submitRetryRequestOTP(formValues))
   },
   onSubmit: (formValues) => {
     dispatch(submitConfirmPaymentTransaction(formValues))

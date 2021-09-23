@@ -41,7 +41,16 @@ export default class StepZeroRegister extends React.Component {
   }
 
   handleGoBack = () => {
-    this.props.history.push('/')
+    const daoSale = sessionStorage.getItem('daoSale')
+    if (daoSale) {
+      const location = {
+        pathname: '/',
+        search: `?dao=${daoSale}`,
+      }
+      this.props.history.push(location)
+    } else {
+      this.props.history.goBack()
+    }
   }
   render() {
     const {

@@ -22,7 +22,7 @@ class StepFirstForm extends React.Component {
       'personLegalId',
       'personAddress',
     ]
-    if (newValue.value !== previousValue.value) {
+    if (newValue.value !== previousValue?.value) {
       fieldsClear.forEach((field) => dispatch(change(form, field, null)))
     }
   }

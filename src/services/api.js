@@ -3,8 +3,6 @@ const BASE_URL =
     ? `${window.location.origin}${process.env.REACT_APP_API_ENDPOINT}`
     : process.env.REACT_APP_API_ENDPOINT
 
-// const BASE_URL = 'http://10.39.170.154:8080/insurance/api'
-
 export function CustomException(message) {
   this.message = message
 }

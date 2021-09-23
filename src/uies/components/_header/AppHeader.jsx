@@ -8,23 +8,25 @@ export default function AppHeader() {
   const {
     location: { pathname },
   } = useHistory()
+  const daoSale = sessionStorage.getItem('daoSale')
+  const homePage = (daoSale && `/?dao=${daoSale}`) || `/`
   return (
     <header className="app-header">
       <div className="container d-flex justify-content-md-center justify-content-lg-between">
         <div className="logo mb-3 mb-lg-0 me-lg-auto">
-          <Link to="/">
+          <Link to={homePage}>
             <img className="logo-vpbank" src={logoVpbank} alt="logo-vpbank" />
           </Link>
         </div>
         <ul className="menu d-none d-lg-flex">
           <li className="menu-item">
-            <Link to="/" className="nav-link">
+            <Link to={homePage} className="nav-link">
               Trang chủ
             </Link>
             {pathname === '/' && <div className="process-active" />}
           </li>
           <li className="menu-item">
-            <Link to="/pti/register/step0" className="nav-link">
+            <Link to="/pti/register/step0?product=1" className="nav-link">
               Sản phẩm
             </Link>
             {pathname.includes('/register') && (

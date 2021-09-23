@@ -10,16 +10,22 @@ class PaymentConfirmTransaction extends React.Component {
     } = this.props
     fetchInitialValues(state)
   }
+  handleResendOTP = () => {
+    const { uuid, retrySendOTP } = this.props
+    retrySendOTP({
+      uuid,
+    })
+  }
 
   render() {
-    const { initialValues, onSubmit, retrySendOTP } = this.props
+    const { initialValues, onSubmit } = this.props
     return (
       <PaymentTemplate>
         <CustomerConfirmOtp
           title="Nhập mã OTP đã được gửi đến số điện thoại của bạn để xác nhận thanh toán"
           initialValues={initialValues}
           onSubmit={onSubmit}
-          retrySendOTP={retrySendOTP}
+          retrySendOTP={this.handleResendOTP}
           labelSubmit="Xác nhận"
         />
       </PaymentTemplate>

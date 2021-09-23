@@ -25,4 +25,12 @@ export class PaymentRequestClient {
       formValues
     )
   }
+  submitResentOTPPayment = async ({ uuid }) => {
+    const urlSearchParams = new URLSearchParams()
+    urlSearchParams.set('uuid', uuid)
+    return await simpleGetRequest(
+      `/v1/web/non-life/customer/resend-OTP`,
+      urlSearchParams.toString()
+    )
+  }
 }

@@ -1,8 +1,20 @@
 import React from 'react'
 import { Field, FieldArray, reduxForm } from 'redux-form'
-import SimpleNumberField from 'uies/components/_field/SimpleNumberField'
+import { normalizeNumber } from 'utilities/validate'
 import Countdown from 'react-countdown'
 
+const FieldOTP = (props) => {
+  const { tabIndex, onKeyUp, input } = props
+  return (
+    <input
+      className="form-control otp-input-item"
+      maxLength={1}
+      onKeyUp={onKeyUp}
+      tabIndex={tabIndex}
+      {...input}
+    />
+  )
+}
 const renderItems = ({ fields, meta: { error } }) => {
   const inputFocus = (element) => {
     const els = Array.from(element.target.form.elements).filter((el) => {
@@ -19,7 +31,6 @@ const renderItems = ({ fields, meta: { error } }) => {
     } else {
       const next = element.target.tabIndex
       if (next < fields.length) {
-        els[next].focus()
         els[next].select()
       }
     }
@@ -27,18 +38,17 @@ const renderItems = ({ fields, meta: { error } }) => {
   return (
     <React.Fragment>
       <div
-        className="items"
+        className="items mt-3"
         style={{ display: 'flex', justifyContent: 'center' }}
       >
         {fields.map((item, index) => (
           <Field
             key={index}
             name={item}
-            component={SimpleNumberField}
-            maxLength={1}
-            style={{ width: '60px', marginRight: 20 }}
+            component={FieldOTP}
             tabIndex={`${index + 1}`}
             onKeyUp={inputFocus}
+            normalize={normalizeNumber}
           />
         ))}
       </div>
@@ -79,7 +89,7 @@ class ConfirmOtpForm extends React.Component {
     return (
       <form
         autoComplete="off"
-        className="container mt-4 form-otp"
+        className="container mt-4 form-otp-pay"
         onSubmit={handleSubmit}
       >
         <div className="row">

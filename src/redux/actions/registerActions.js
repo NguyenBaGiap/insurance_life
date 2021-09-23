@@ -10,13 +10,10 @@ import { PtiRequestClient } from 'services/PtiRequestClient'
 import { toastr } from 'react-redux-toastr'
 import { simplePostRequest } from 'services/api'
 import { PaymentRequestClient } from 'services/PaymentRequestClient'
+import { change } from 'redux-form'
 
 const apiClient = new PtiRequestClient()
 const payClient = new PaymentRequestClient()
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
 
 export const submitAdvisory = (formValue) => {
   return async (dispatch) => {
@@ -164,11 +161,22 @@ export const submitConfirmPaymentTransaction = (formValue) => {
   }
 }
 
-export const submitRetryRequestOTP = () => {
+export const submitRetryRequestOTP = (formValues) => {
   return async (dispatch) => {
     try {
       dispatch(baseActions.genRequestLoadingAction())
-      await sleep(2000)
+      await payClient.submitResentOTPPayment(formValues)
+      Array.from(Array(6).keys()).forEach((index) => {
+        dispatch(change('ConfirmOtpForm', `items[${index}]`, ''))
+      })
+      toastr.success(
+        'Đã gửi lại mã OTP',
+        'Quý khách vui lòng nhập lại mã OTP đã được gửi đến số điện thoại của bạn.',
+        {
+          timeOut: 10000,
+          position: 'top-right',
+        }
+      )
       dispatch(baseActions.genRequestFinishAction())
     } catch (error) {
       baseActions.commonHandleError(error)

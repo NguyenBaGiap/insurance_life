@@ -13,7 +13,13 @@ import 'static/styles/_landing_page.scss'
 
 class LandingPage extends React.Component {
   componentDidMount() {
-    sessionStorage.clear()
+    sessionStorage.removeItem('access_token')
+    const {
+      query: { dao },
+    } = this.props.location
+    if (dao) {
+      sessionStorage.setItem('daoSale', dao)
+    }
     this.props.fetchInitialData()
   }
 
