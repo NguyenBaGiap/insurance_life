@@ -1,5 +1,7 @@
 import React from 'react'
 import { Field, reduxForm, change } from 'redux-form'
+import classNames from 'classnames'
+import _ from 'lodash'
 import {
   normalizeNumber,
   normalizeDate,
@@ -11,8 +13,14 @@ import { GENDER_OPTION, RELATIONSHIP_OPTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
+import { simpleGetRequest } from 'services/api'
 
 class StepFirstForm extends React.Component {
+  state = {
+    isLoadingDao: false,
+    isExistDao: false,
+    daoSaleName: undefined,
+  }
   handleChangeRelationship = (e, newValue, previousValue) => {
     const { form, dispatch } = this.props
     const fieldsClear = [
@@ -26,8 +34,32 @@ class StepFirstForm extends React.Component {
       fieldsClear.forEach((field) => dispatch(change(form, field, null)))
     }
   }
+  handleOnChangeDaoSale = _.debounce(async (e, newValue, previousValue) => {
+    if (newValue !== previousValue) {
+      this.setState({ isLoadingDao: true })
+      try {
+        const {
+          data: { name },
+        } = await simpleGetRequest(
+          `/v1/web/non-life/customer/get-employee/${newValue}`
+        )
+        this.setState({
+          isLoadingDao: false,
+          daoSaleName: name,
+          isExistDao: true,
+        })
+      } catch (e) {
+        this.setState({
+          isExistDao: false,
+          isLoadingDao: false,
+          daoSaleName: e.data || 'Mã DAO không tồn tại.',
+        })
+      }
+    }
+  }, 1000)
   render() {
     const { handleGoBack, handleSubmit, initialValues } = this.props
+    const { isLoadingDao, daoSaleName, isExistDao } = this.state
     return (
       <form
         autoComplete="off"
@@ -114,7 +146,17 @@ class StepFirstForm extends React.Component {
               disabled={!!initialValues.daoSale}
               normalize={normalizeNumber}
               component={SimpleTextField}
+              onChange={this.handleOnChangeDaoSale}
+              loading={isLoadingDao}
             />
+            <span
+              className={classNames(
+                'font-weight-bolder',
+                !isExistDao && 'text-danger'
+              )}
+            >
+              {daoSaleName}
+            </span>
           </div>
           <div className="col-md-12 col-sm-12 btn-action pb-5">
             <button
