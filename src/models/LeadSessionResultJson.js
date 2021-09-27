@@ -26,7 +26,7 @@ export class LeadSessionResultJson {
     this.gender = personDto.gender || {}
     //packageDto
     this.priceId = packageDto.priceId
-    this.price = packageDto.price
+    this.price = packageDto.amountDisplay
     this.exportBill = Boolean(packageDto.exportBill)
     if (packageDto.effectiveDate) {
       this.effectiveDate = moment(packageDto.effectiveDate, 'DD-MM-YYYY')

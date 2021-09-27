@@ -36,9 +36,8 @@ export default function SimpleDateField(props) {
           touched && !error && !warning && 'success-date-picker'
         )}
       />
-      {touched &&
-        ((error && <i className="text-danger font-weight-bold">{error}</i>) ||
-          (warning && <i className="text-warning">{warning}</i>))}
+      {(error && <i className="text-danger font-weight-bold">{error}</i>) ||
+        (warning && <i className="text-warning">{warning}</i>)}
     </div>
   )
 }

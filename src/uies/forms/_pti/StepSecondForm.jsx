@@ -1,23 +1,84 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
-import { asyncValidateRegisterStep } from 'utilities/asyncValidate'
-import { required, normalizeDate, normalizeMoney } from 'utilities/validate'
+import { Field, reduxForm, change } from 'redux-form'
+import { toastr } from 'react-redux-toastr'
+import moment from 'moment'
+import {
+  required,
+  normalizeDate,
+  normalizeMoney,
+  validatePTIStep,
+} from 'utilities/validate'
 import { LIST_QUESTION } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
 import SimpleCheckBoxField from 'uies/components/_field/SimpleCheckBoxField'
+import { simplePostRequest } from 'services/api'
 import dot from 'static/img/_intro/dot.svg'
 
 class StepSecondForm extends React.Component {
-  render() {
+  state = {
+    isLoadingAmount: false,
+  }
+  handleLoadingPrice = (isLoadingAmount) => {
+    this.setState({ isLoadingAmount })
+  }
+  inputCalculatePrice = (value) => {
     const {
-      handleSubmit,
-      handleGoBack,
-      isLoadingAmount,
-      isParticipation,
-      insurancePackage,
+      currentFormValues: { productId, tierId, effectiveDate, personBirth },
     } = this.props
+    return {
+      productId,
+      birth: moment(personBirth).format('DD-MM-yyyy'),
+      effectiveDate: moment(effectiveDate).format('DD-MM-yyyy'),
+      tierId: tierId?.value,
+      ...value,
+    }
+  }
+  asyncRequestPrice = async (formValues) => {
+    const { form, dispatch } = this.props
+    try {
+      this.handleLoadingPrice(true)
+      const {
+        data: { id, amountDisplay },
+      } = await simplePostRequest('/v1/sale/calculating-money', formValues)
+      dispatch(change(form, 'priceId', id))
+      dispatch(change(form, 'price', amountDisplay))
+    } catch (e) {
+      toastr.warning(
+        'Thông báo',
+        e.message || e.data || 'Chưa có sản phẩm phù hợp.',
+        {
+          timeOut: 5000,
+          position: 'top-right',
+        }
+      )
+      dispatch(change(form, 'price', null))
+      dispatch(change(form, 'priceId', null))
+    } finally {
+      this.handleLoadingPrice(false)
+    }
+  }
+  onChangePackage = async (e, newValue, previousValue) => {
+    if (newValue.value !== previousValue?.value) {
+      const submitValues = this.inputCalculatePrice({
+        tierId: newValue.value,
+      })
+      await this.asyncRequestPrice(submitValues)
+    }
+  }
+  onChangeEffectiveDate = async (e, newValue, previousValue) => {
+    if (newValue !== previousValue) {
+      const submitValues = this.inputCalculatePrice({
+        effectiveDate: moment(newValue).format('DD-MM-yyyy'),
+      })
+      await this.asyncRequestPrice(submitValues)
+    }
+  }
+  render() {
+    const { handleSubmit, handleGoBack, isParticipation, insurancePackage } =
+      this.props
+    const { isLoadingAmount } = this.state
     return (
       <form
         autoComplete="off"
@@ -36,6 +97,7 @@ class StepSecondForm extends React.Component {
               validate={[required]}
               required
               component={SimpleSelectField}
+              onChange={this.onChangePackage}
               selectableValues={insurancePackage}
             />
           </div>
@@ -45,6 +107,7 @@ class StepSecondForm extends React.Component {
               label="Ngày hiệu lực"
               normalize={normalizeDate}
               component={SimpleDateField}
+              onChange={this.onChangeEffectiveDate}
               min={new Date()}
               validate={[required]}
               required
@@ -192,8 +255,8 @@ class StepSecondForm extends React.Component {
 
 export default reduxForm({
   form: 'StepSecondForm',
-  validate: asyncValidateRegisterStep,
-  asyncChangeFields: ['price', 'tierId', 'priceId', 'effectiveDate'],
+  validate: validatePTIStep,
+  asyncChangeFields: ['price', 'priceId'],
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(StepSecondForm)

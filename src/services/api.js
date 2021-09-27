@@ -1,4 +1,4 @@
-const BASE_URL =
+export const BASE_URL =
   process.env.REACT_APP_ENV === 'production'
     ? `${window.location.origin}${process.env.REACT_APP_API_ENDPOINT}`
     : process.env.REACT_APP_API_ENDPOINT

@@ -1,4 +1,4 @@
-// import moment from 'moment'
+import moment from 'moment'
 
 export const email = (value) =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
@@ -62,6 +62,18 @@ export const normalizeMoney = (value) => {
   return `${value.replace(/(\\d)(?=(\\d{3})+(?!\\d))/g, '$1,')} VNĐ`
 }
 
+export const minOneAge = (value) => {
+  return value && moment().diff(moment(value), 'years', true) > 1
+    ? undefined
+    : 'Yêu cầu phải từ 1 tuổi trở lên'
+}
+export const validatePTIStep = (values) => {
+  const errors = {}
+  if (!values.price || !values.priceId) {
+    errors.tierId = 'Chưa đủ điều kiện đăng ký.'
+  }
+  return errors
+}
 export const minLength2 = minLength(2)
 export const maxLength100 = maxLength(100)
 export const maxLength50 = maxLength(50)

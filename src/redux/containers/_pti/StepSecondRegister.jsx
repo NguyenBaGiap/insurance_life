@@ -10,6 +10,13 @@ const mapStateToProps = (state) => ({
   initialValues: state.formValuesReducer.initialValues,
   insurancePackage: state.ptiPackageReducer.options,
   isParticipation: selector(state, 'participation'),
+  currentFormValues: selector(
+    state,
+    'tierId',
+    'effectiveDate',
+    'productId',
+    'personBirth'
+  ),
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -5,9 +5,6 @@ import Stepper from 'uies/components/_stepper/Stepper'
 import 'static/styles/_form.scss'
 
 export default class StepSecondRegister extends React.Component {
-  state = {
-    isLoadingAmount: false,
-  }
   componentDidMount() {
     this.props.fetchInitialValues()
   }
@@ -15,15 +12,14 @@ export default class StepSecondRegister extends React.Component {
   handleGoBack = () => {
     this.props.history.push('/pti/register/step1')
   }
-  handleLoadingAmount = () => {
-    this.setState({
-      isLoadingAmount: !this.state.isLoadingAmount,
-    })
-  }
   render() {
-    const { isParticipation, initialValues, insurancePackage, onSubmit } =
-      this.props
-    const { isLoadingAmount } = this.state
+    const {
+      isParticipation,
+      initialValues,
+      insurancePackage,
+      onSubmit,
+      currentFormValues,
+    } = this.props
     return (
       <React.Fragment>
         <section>
@@ -37,9 +33,8 @@ export default class StepSecondRegister extends React.Component {
             initialValues={initialValues}
             insurancePackage={insurancePackage}
             onSubmit={onSubmit}
-            isLoadingAmount={isLoadingAmount}
             isParticipation={isParticipation}
-            handleLoadingAmount={this.handleLoadingAmount}
+            currentFormValues={currentFormValues}
             handleGoBack={this.handleGoBack}
           />
         </section>

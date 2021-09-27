@@ -1,5 +1,6 @@
 import React from 'react'
 import { change, Field, reduxForm } from 'redux-form'
+import { BASE_URL } from 'services/api'
 import { GENDER_OPTION, RELATIONSHIP_OPTION } from 'utilities/constants'
 import dots from 'static/img/_intro/dot.svg'
 import editIcon from 'static/img/editIcon.svg'
@@ -12,12 +13,14 @@ import {
   maxLength10,
   maxLength15,
   normalizeMoney,
+  minOneAge,
+  validatePTIStep,
 } from 'utilities/validate'
-import { asyncValidateRegisterStep } from 'utilities/asyncValidate'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleDateField from 'uies/components/_field/SimpleDateField'
 import SimpleCheckBoxField from 'uies/components/_field/SimpleCheckBoxField'
+import moment from 'moment'
 
 class StepThirdForm extends React.Component {
   state = {
@@ -157,7 +160,7 @@ class StepThirdForm extends React.Component {
               name="personBirth"
               label="Ngày sinh"
               component={SimpleDateField}
-              validate={[required]}
+              validate={[required, minOneAge]}
               normalize={normalizeDate}
               required
               disabled={!enableEdit}
@@ -196,7 +199,7 @@ class StepThirdForm extends React.Component {
             <Field
               name="tierId"
               label="Gói bảo hiểm"
-              validate={[required]}
+              validate={[required, validateFieldPackage]}
               //loading
               required
               component={SimpleSelectField}
@@ -266,9 +269,55 @@ class StepThirdForm extends React.Component {
     )
   }
 }
+const validateFieldPackage = (value, allValues, props) => {
+  const { form, dispatch } = props
+  const checkAge = minOneAge(allValues.personBirth)
+  if (checkAge) {
+    dispatch(change(form, 'price', null))
+    return 'Gói sản phẩm chỉ áp dụng cho người trên 1 tuổi.'
+  }
+}
+const asyncValidate = (values, dispatch, props, currentFieldName) => {
+  const submitValues = {
+    productId: values.productId,
+    birth: moment(values.personBirth).format('DD-MM-yyyy'),
+    effectiveDate: moment(values.effectiveDate).format('DD-MM-yyyy'),
+    tierId: values.tierId?.value,
+  }
+  props.handleLoadingAmount()
+  return fetch(`${BASE_URL}/v1/sale/calculating-money`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      Authorization: `Bearer ${window.sessionStorage.getItem('access_token')}`,
+    },
+    body: JSON.stringify(submitValues),
+  })
+    .then((response) => {
+      return response.json()
+    })
+    .then((data) => {
+      const isErrors = typeof data.data === 'string'
+      if (isErrors) {
+        return {
+          [currentFieldName]: 'loi cmmr ne',
+        }
+      } else {
+        const {
+          data: { id, amountDisplay },
+        } = data
+        dispatch(change(props.form, 'priceId', id))
+        dispatch(change(props.form, 'price', amountDisplay))
+      }
+    })
+    .finally(() => {
+      props.handleLoadingAmount()
+    })
+}
 export default reduxForm({
   form: 'StepThirdForm',
-  validate: asyncValidateRegisterStep,
+  validate: validatePTIStep,
+  asyncValidate,
   asyncChangeFields: [
     'price',
     'tierId',
@@ -276,6 +325,8 @@ export default reduxForm({
     'effectiveDate',
     'personBirth',
   ],
+  asyncBlurFields: ['tierId', 'priceId', 'effectiveDate', 'personBirth'],
+  shouldAsyncValidate: ({ trigger }) => trigger !== 'submit',
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(StepThirdForm)
