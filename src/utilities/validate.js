@@ -55,6 +55,13 @@ export const normalizeNumber = (value) => {
   return value.replace(/[^\d]/g, '')
 }
 
+export const normalizeAlphaCharacter = (value) => {
+  if (!value) {
+    return value
+  }
+  return value.replace(/[^a-zA-Z ]/g, '')
+}
+
 export const normalizeMoney = (value) => {
   if (!value) {
     return value

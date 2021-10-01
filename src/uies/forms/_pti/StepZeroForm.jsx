@@ -6,6 +6,7 @@ import {
   mobileNumber,
   normalizeNumber,
   pid,
+  normalizeAlphaCharacter,
   length10,
   maxLength12,
   minLength2,
@@ -79,7 +80,7 @@ class StepZeroForm extends React.Component {
               label="Tên khách hàng"
               type="text"
               validate={[required, minLength2, maxLength50]}
-              //loading
+              normalize={normalizeAlphaCharacter}
               required
               component={SimpleTextField}
             />

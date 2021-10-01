@@ -1,6 +1,6 @@
 import React from 'react'
 import { change, Field, reduxForm } from 'redux-form'
-import { BASE_URL } from 'services/api'
+import { BASE_URL, validateCaptcha } from 'services/api'
 import { GENDER_OPTION, RELATIONSHIP_OPTION } from 'utilities/constants'
 import dots from 'static/img/_intro/dot.svg'
 import editIcon from 'static/img/editIcon.svg'
@@ -10,6 +10,7 @@ import {
   mobileNumber,
   normalizeDate,
   normalizeNumber,
+  normalizeAlphaCharacter,
   maxLength10,
   maxLength15,
   normalizeMoney,
@@ -137,7 +138,7 @@ class StepThirdForm extends React.Component {
               label="Người Được bảo hiểm"
               type="text"
               validate={[required]}
-              //loading
+              normalize={normalizeAlphaCharacter}
               required
               component={SimpleTextField}
               disabled={!enableEdit}
@@ -285,33 +286,44 @@ const asyncValidate = (values, dispatch, props, currentFieldName) => {
     tierId: values.tierId?.value,
   }
   props.handleLoadingAmount()
-  return fetch(`${BASE_URL}/v1/sale/calculating-money`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-      Authorization: `Bearer ${window.sessionStorage.getItem('access_token')}`,
-    },
-    body: JSON.stringify(submitValues),
-  })
-    .then((response) => {
-      return response.json()
-    })
-    .then((data) => {
-      const isErrors = typeof data.data === 'string'
-      if (isErrors) {
-        return {
-          [currentFieldName]: 'loi cmmr ne',
-        }
-      } else {
-        const {
-          data: { id, amountDisplay },
-        } = data
-        dispatch(change(props.form, 'priceId', id))
-        dispatch(change(props.form, 'price', amountDisplay))
-      }
-    })
-    .finally(() => {
-      props.handleLoadingAmount()
+  return validateCaptcha()
+    .then((captcha) =>
+      fetch(`${BASE_URL}/v1/sale/calculating-money`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Authorization: `Bearer ${window.sessionStorage.getItem(
+            'access_token'
+          )}`,
+        },
+        body: JSON.stringify({
+          captcha,
+          ...submitValues,
+        }),
+      })
+        .then((response) => {
+          return response.json()
+        })
+        .then((data) => {
+          const isErrors = typeof data.data === 'string'
+          if (isErrors) {
+            return {
+              [currentFieldName]: data.data || 'Gói bảo hiểm chưa phù hợp.',
+            }
+          } else {
+            const {
+              data: { id, amountDisplay },
+            } = data
+            dispatch(change(props.form, 'priceId', id))
+            dispatch(change(props.form, 'price', amountDisplay))
+          }
+        })
+        .finally(() => {
+          props.handleLoadingAmount()
+        })
+    )
+    .catch((error) => {
+      console.log('generate captcha errors', error)
     })
 }
 export default reduxForm({

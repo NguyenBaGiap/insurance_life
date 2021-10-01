@@ -5,6 +5,7 @@ import PaymentLoginNEO from 'uies/templates/_payment/PaymentLoginNEO'
 
 const mapStateToProps = (state) => ({
   requestStatus: state.requestStatusReducer,
+  location: state.router.location,
 })
 
 const mapDispatchToProps = (dispatch) => ({

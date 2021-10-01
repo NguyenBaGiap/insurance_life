@@ -151,7 +151,12 @@ export const submitConfirmPaymentTransaction = (formValue) => {
         uuid: formValue.uuid,
         otp: formValue.items.toString().replaceAll(',', ''),
       }
-      await payClient.submitPaymentByOTP(submitValues)
+      const {
+        status: { code },
+      } = await payClient.submitPaymentByOTP(submitValues)
+      if (code === 'INS202') {
+        return dispatch(push('/register/payment/success-pending'))
+      }
       dispatch(push('/register/payment/success'))
     } catch (error) {
       baseActions.commonHandleError(error, dispatch)

@@ -38,6 +38,9 @@ const PaymentConfirmTransaction = React.lazy(() =>
 const PaymentSuccess = React.lazy(() =>
   import('uies/templates/_payment/PaymentSuccess')
 )
+const PaymentTimeout = React.lazy(() =>
+  import('uies/templates/_payment/PaymentTimeout')
+)
 class AppContainer extends React.Component {
   componentDidMount() {
     AOS.init({
@@ -67,6 +70,10 @@ class AppContainer extends React.Component {
           <Route
             path="/register/payment/transaction-confirm"
             component={PaymentConfirmTransaction}
+          />
+          <Route
+            path="/register/payment/success-pending"
+            component={PaymentTimeout}
           />
           <Route path="/register/payment/success" component={PaymentSuccess} />
           <Route component={NoMatch} />

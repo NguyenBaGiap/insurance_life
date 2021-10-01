@@ -3,6 +3,7 @@ import { Field, reduxForm, change } from 'redux-form'
 import classNames from 'classnames'
 import _ from 'lodash'
 import {
+  normalizeAlphaCharacter,
   normalizeNumber,
   normalizeDate,
   required,
@@ -98,7 +99,7 @@ class StepFirstForm extends React.Component {
               label="Người Được bảo hiểm"
               type="text"
               validate={[required]}
-              //loading
+              normalize={normalizeAlphaCharacter}
               required
               component={SimpleTextField}
             />
