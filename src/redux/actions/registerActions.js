@@ -203,7 +203,8 @@ export const submitEmailSubscribe = (formValues) => {
         null
       )
     } catch (error) {
-      baseActions.commonHandleError(error, dispatch)
+      //baseActions.commonHandleError(error, dispatch)
+      console.log('error email follow', error)
     } finally {
       toastr.success(
         'Chào mừng Quý Khách',

@@ -59,7 +59,9 @@ export const normalizeAlphaCharacter = (value) => {
   if (!value) {
     return value
   }
-  return value.replace(/[^a-zA-Z ]/g, '')
+  return value
+    .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/]/gi, '')
+    .replace(/[0-9]/g, '')
 }
 
 export const normalizeMoney = (value) => {
