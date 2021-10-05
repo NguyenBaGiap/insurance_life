@@ -15,8 +15,9 @@ export default function SimpleDateField(props) {
     input,
     label,
     required,
-    meta: { touched, error, warning },
+    meta: { error, warning },
   } = props
+  const [isFocused, setIsFocused] = React.useState(false)
   return (
     <div className="form-group date-picker-custom">
       <label htmlFor="labelFormInput">
@@ -25,6 +26,7 @@ export default function SimpleDateField(props) {
       </label>
       <DateTimePicker
         {...props}
+        onFocus={() => setIsFocused(true)}
         onChange={(value) => props.input.onChange(value)}
         placeholder="DD/MM/YYYY"
         format="DD/MM/YYYY"
@@ -32,12 +34,13 @@ export default function SimpleDateField(props) {
         value={!input.value ? null : new Date(input.value)}
         selectIcon={<img src={calendar} alt="time-picker" />}
         className={classNames(
-          touched && error && 'error-date-picker',
-          touched && !error && !warning && 'success-date-picker'
+          isFocused && error && 'error-date-picker',
+          isFocused && !error && !warning && 'success-date-picker'
         )}
       />
-      {(error && <i className="text-danger font-weight-bold">{error}</i>) ||
-        (warning && <i className="text-warning">{warning}</i>)}
+      {isFocused &&
+        ((error && <i className="text-danger font-weight-bold">{error}</i>) ||
+          (warning && <i className="text-warning">{warning}</i>))}
     </div>
   )
 }
