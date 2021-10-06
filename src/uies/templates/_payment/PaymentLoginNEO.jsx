@@ -7,8 +7,12 @@ class PaymentLoginNEO extends React.Component {
     const {
       query: { token },
     } = this.props.location
-    token && sessionStorage.setItem('access_token', token)
-    this.props.fetchLeadSessionValues()
+    if (token) {
+      sessionStorage.setItem('access_token', token)
+      this.props.fetchLeadSessionAdminValues()
+    } else {
+      this.props.fetchLeadSessionValues()
+    }
   }
 
   handleGoBack = () => {

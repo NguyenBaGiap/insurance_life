@@ -53,6 +53,20 @@ export const fetchLeadSessionRequest = () => {
     }
   }
 }
+
+export const fetchLeadSessionAdminRequest = () => {
+  return async (dispatch) => {
+    try {
+      dispatch(baseActions.genRequestLoadingAction())
+      const { data } = await ptiClient.fetchLeadSessionAdminRequest()
+      dispatch(fetchInitialValuesForm(data))
+    } catch (error) {
+      baseActions.commonHandleError(error, dispatch)
+    } finally {
+      dispatch(baseActions.genRequestFinishAction())
+    }
+  }
+}
 // in landing page
 export const fetchPtiPackageRequest = () => {
   return async (dispatch) => {

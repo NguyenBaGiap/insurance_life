@@ -73,3 +73,6 @@ export const LIST_QUESTION = [
       'Người được bảo hiểm hút trung bình 20 điếu thuốc lá trở lên /ngày và uống nhiều hơn 13l rượu vang đỏ, 25l bia, 2l rượu whisky/ tuần.',
   },
 ]
+
+export const CONFIRM_ADVISOR =
+  'Bằng việc đăng ký thông tin này, Tôi xác nhận đồng ý nhận thông tin tư vấn về Sản phẩm bảo hiểm mà Tôi đã đăng ký thông qua cuộc gọi điện thoại và các phương tiện khác được VPBank triển khai từng thời kỳ đến số điện thoai, email mà Tôi đã đăng ký; số lần liên hệ và thời điểm liên hệ sẽ do VPBank quyết định.'

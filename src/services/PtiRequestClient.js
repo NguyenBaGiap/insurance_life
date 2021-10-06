@@ -7,6 +7,12 @@ export class PtiRequestClient {
       null
     )
   }
+  fetchLeadSessionAdminRequest = async () => {
+    return await simpleGetRequest(
+      `/v1/web/non-life/customer/get-lead-with-token`,
+      null
+    )
+  }
   submitAdvisoryStepOne = async (formValues) => {
     return await simplePostRequest(
       `/v1/web/non-life/customer/registry-advisory`,

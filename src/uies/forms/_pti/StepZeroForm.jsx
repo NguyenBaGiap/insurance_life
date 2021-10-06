@@ -12,7 +12,7 @@ import {
   minLength2,
   maxLength50,
 } from 'utilities/validate'
-import { RELATIONSHIP_OPTION } from 'utilities/constants'
+import { RELATIONSHIP_OPTION, CONFIRM_ADVISOR } from 'utilities/constants'
 import SimpleTextField from 'uies/components/_field/SimpleTextField'
 import SimpleSelectField from 'uies/components/_field/SimpleSelectField'
 import SimpleCheckBoxField from 'uies/components/_field/SimpleCheckBoxField'
@@ -25,7 +25,7 @@ const RegisterOrAdvise = ({ initialState, isParticipation }) => {
           <Field
             name="participation"
             component={SimpleCheckBoxField}
-            label="Bằng cách đăng ký thông tin này, tôi đồng ý nhận tư vấn bảo hiểm của VPBank."
+            label={CONFIRM_ADVISOR}
           />
         </div>
         <div className="col-md-12 col-sm-12 text-danger">
