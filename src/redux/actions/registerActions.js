@@ -154,6 +154,11 @@ export const submitConfirmPaymentTransaction = (formValue) => {
       const {
         status: { code },
       } = await payClient.submitPaymentByOTP(submitValues)
+      // retry select account or card
+      if (code === 'INS203') {
+        return dispatch(push('/register/payment/transaction'))
+      }
+      // timout case
       if (code === 'INS202') {
         return dispatch(push('/register/payment/success-pending'))
       }
@@ -203,7 +208,6 @@ export const submitEmailSubscribe = (formValues) => {
         null
       )
     } catch (error) {
-      //baseActions.commonHandleError(error, dispatch)
       console.log('error email follow', error)
     } finally {
       toastr.success(
